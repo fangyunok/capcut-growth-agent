@@ -1,0 +1,244 @@
+{
+  "facts": [
+    {
+      "id": "capcut-online-editor",
+      "feature": "online-video-editor",
+      "statement": "CapCut Online lets users edit media on a timeline, including trimming and splitting clips.",
+      "localized_statement": {
+        "en-US": "Edit clips on CapCut Online's timeline by trimming or splitting them.",
+        "es-ES": "Edita clips en la línea de tiempo de CapCut Online, por ejemplo, recortándolos o dividiéndolos."
+      },
+      "source_quote": "Drag and drop your media files to the editing timeline. You can trim, crop, split, reverse, or mirror clips.",
+      "source_url": "https://www.capcut.com/tools/online-video-editor",
+      "source_title": "Free Online Video Editor: Create Videos Easily | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["online video editor", "video editing", "timeline", "trim", "split", "export", "editor de video online", "editar video", "línea de tiempo", "exportar", "网页剪辑"],
+      "availability_note": "Editing options and export settings may vary by account, plan, region, and product version."
+    },
+    {
+      "id": "capcut-auto-captions",
+      "feature": "auto-captions",
+      "statement": "CapCut Auto Captions generates subtitles from spoken audio in a video; users can edit caption text, timing, or style after generation.",
+      "localized_statement": {
+        "en-US": "Auto Captions turns speech in a video into subtitles that you can review and edit.",
+        "es-ES": "Los subtítulos automáticos convierten la voz del vídeo en subtítulos que puedes revisar y editar."
+      },
+      "source_quote": "uses AI speech-to-text technology to automatically generate subtitles from spoken audio in your video. ... Edit timing, text, or style as needed after generation.",
+      "source_url": "https://www.capcut.com/help/how-to-recognise-subtitles",
+      "source_title": "How do I recognise subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["auto captions", "automatic subtitles", "speech to text", "caption editing", "subtítulos automáticos", "subtítulos", "transcripción", "字幕"],
+      "availability_note": "The help page describes Web, Desktop, and Mobile as of January 2026; advanced functions depend on region and app version. Review generated captions before publication."
+    },
+    {
+      "id": "capcut-bilingual-subtitles",
+      "feature": "bilingual-subtitles",
+      "statement": "CapCut International can create bilingual subtitles by recognizing and translating speech in a video.",
+      "localized_statement": {
+        "en-US": "CapCut can recognize speech and translate it into bilingual subtitles.",
+        "es-ES": "CapCut puede reconocer la voz y traducirla para crear subtítulos bilingües."
+      },
+      "source_quote": "CapCut International supports one-click generation of bilingual subtitles, automatically recognizing and translating spoken content in videos without manual input.",
+      "source_url": "https://www.capcut.com/help/bilingual-subtitles",
+      "source_title": "How to Recognize Bilingual Subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["bilingual subtitles", "translate captions", "video translation", "multilingual", "subtítulos bilingües", "traducir subtítulos", "traducción de vídeo", "双语字幕"],
+      "availability_note": "Check the target language, account, region, and current product version before promising a specific translation workflow. Human review of translated text is recommended."
+    },
+    {
+      "id": "capcut-text-to-speech",
+      "feature": "text-to-speech",
+      "statement": "In CapCut Web, users can enter text, choose a voice and language, and generate speech audio.",
+      "localized_statement": {
+        "en-US": "Enter text in CapCut Web, choose a voice and language, and generate speech audio.",
+        "es-ES": "Introduce texto en CapCut Web, elige una voz y un idioma y genera audio de voz."
+      },
+      "source_quote": "Enter the text you want to convert to speech. ... Choose a voice and language. ... Click Generate and wait for the audio to appear.",
+      "source_url": "https://www.capcut.com/help/text-to-speech-feature",
+      "source_title": "Why Is the Text-to-Speech Feature Not Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["text to speech", "voiceover", "AI voice", "narration", "texto a voz", "voz en off", "narración", "文字转语音"],
+      "availability_note": "Voice and language availability may vary. The help page notes that network problems or unsupported text, languages, or voices can interrupt generation."
+    },
+    {
+      "id": "capcut-subtitle-import",
+      "feature": "subtitle-import",
+      "statement": "CapCut Web supports importing external SRT subtitle files.",
+      "localized_statement": {
+        "en-US": "Import an SRT subtitle file into CapCut Web.",
+        "es-ES": "Importa un archivo de subtítulos SRT en CapCut Web."
+      },
+      "source_quote": "Choose a .srt file from your device. TXT files are not supported on Web—only SRT.",
+      "source_url": "https://www.capcut.com/help/how-to-import-subtitles",
+      "source_title": "How Do I Import Subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["import subtitles", "SRT", "caption file", "external subtitles", "importar subtítulos", "archivo SRT", "字幕导入"],
+      "availability_note": "Direct subtitle-file import is described for Web and Desktop, not Mobile, as of 2026. Validate SRT timing and encoding before import."
+    },
+    {
+      "id": "capcut-auto-captions-web-steps",
+      "feature": "auto-captions",
+      "statement": "In CapCut Web, users select Auto Captions > Recognise, choose a language, and click Generate to create captions.",
+      "localized_statement": {
+        "en-US": "In CapCut Web, choose Auto Captions > Recognise, select a language, and generate captions.",
+        "es-ES": "En CapCut Web, elige Auto Captions > Recognise, selecciona un idioma y genera subtítulos."
+      },
+      "source_quote": "Select \"Auto Captions\" → \"Recognise\". ... Choose language and click \"Generate\".",
+      "source_url": "https://www.capcut.com/help/how-to-recognise-subtitles",
+      "source_title": "How do I recognise subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["auto captions steps", "recognise subtitles", "generate captions", "Web captions", "generar subtítulos", "subtítulos automáticos pasos", "idioma de subtítulos", "网页自动字幕"],
+      "availability_note": "These are CapCut Web steps from the help page; interface labels may vary by version or region."
+    },
+    {
+      "id": "capcut-auto-captions-manual-review",
+      "feature": "auto-captions",
+      "statement": "CapCut recommends reviewing auto-generated subtitles and making manual corrections where needed.",
+      "localized_statement": {
+        "en-US": "Review auto-generated captions and correct mistakes by hand when needed.",
+        "es-ES": "Revisa los subtítulos automáticos y corrige manualmente los errores cuando sea necesario."
+      },
+      "source_quote": "For best results, always review auto-generated subtitles and make manual corrections where needed.",
+      "source_url": "https://www.capcut.com/help/how-to-recognise-subtitles",
+      "source_title": "How do I recognise subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["review captions", "manual correction", "proofread subtitles", "caption quality", "revisar subtítulos", "corrección manual", "revisión humana", "人工复核字幕"],
+      "availability_note": "This is a review recommendation, not a guarantee that generated captions are error-free."
+    },
+    {
+      "id": "capcut-auto-captions-audio-quality",
+      "feature": "auto-captions",
+      "statement": "Unclear, distorted, or noisy audio may prevent CapCut Auto Captions from detecting speech accurately.",
+      "localized_statement": {
+        "en-US": "Unclear, distorted, or noisy audio can make automatic caption recognition less reliable.",
+        "es-ES": "El audio poco claro, distorsionado o con ruido puede dificultar el reconocimiento de subtítulos automáticos."
+      },
+      "source_quote": "If the audio is unclear, distorted, or full of background noise, CapCut may fail to detect speech accurately.",
+      "source_url": "https://www.capcut.com/help/auto-captions",
+      "source_title": "Why Aren't Auto Captions Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["caption audio quality", "background noise", "speech recognition", "distorted audio", "calidad de audio", "ruido de fondo", "reconocimiento de voz", "字幕音质"],
+      "availability_note": "Caption quality depends on the source audio; review generated text before use."
+    },
+    {
+      "id": "capcut-auto-captions-language-setting",
+      "feature": "auto-captions",
+      "statement": "Choosing the wrong language in Auto Captions can result in missing captions or incorrect transcription.",
+      "localized_statement": {
+        "en-US": "A wrong language setting can produce no captions or an incorrect transcript.",
+        "es-ES": "Elegir un idioma incorrecto puede impedir que aparezcan subtítulos o producir una transcripción errónea."
+      },
+      "source_quote": "Choosing the wrong language can result in no captions or incorrect transcription.",
+      "source_url": "https://www.capcut.com/help/auto-captions",
+      "source_title": "Why Aren't Auto Captions Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["caption language setting", "wrong language", "incorrect transcription", "missing captions", "idioma incorrecto", "transcripción errónea", "sin subtítulos", "字幕语言设置"],
+      "availability_note": "Select a supported language matching the spoken audio; available languages may vary."
+    },
+    {
+      "id": "capcut-bilingual-subtitles-desktop-target",
+      "feature": "bilingual-subtitles",
+      "statement": "In CapCut Desktop's bilingual subtitle workflow, users select a target language and click Generate.",
+      "localized_statement": {
+        "en-US": "On Desktop, select the target language and click Generate for bilingual subtitles.",
+        "es-ES": "En la versión de escritorio, selecciona el idioma de destino y pulsa Generate para crear subtítulos bilingües."
+      },
+      "source_quote": "Select the target language you want, then Click \"Generate\" to generate bilingual subtitles automatically",
+      "source_url": "https://www.capcut.com/help/bilingual-subtitles",
+      "source_title": "How to Recognize Bilingual Subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["bilingual subtitles desktop", "target language", "generate translated subtitles", "subtítulos bilingües escritorio", "idioma de destino", "generar subtítulos", "桌面双语字幕"],
+      "availability_note": "The page places these steps under CapCut Desktop; target-language choices may differ by product version or region."
+    },
+    {
+      "id": "capcut-bilingual-subtitles-mobile-target",
+      "feature": "bilingual-subtitles",
+      "statement": "In the CapCut Mobile bilingual subtitle workflow, users choose the target language in the Translate to selector.",
+      "localized_statement": {
+        "en-US": "On Mobile, choose the target language in the Translate to selector.",
+        "es-ES": "En la aplicación móvil, elige el idioma de destino en la opción Translate to."
+      },
+      "source_quote": "Select the target language you want to translate to in \"Translate to\".",
+      "source_url": "https://www.capcut.com/help/bilingual-subtitles",
+      "source_title": "How to Recognize Bilingual Subtitles? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["bilingual subtitles mobile", "Translate to", "target language", "mobile captions", "subtítulos bilingües móvil", "traducir a", "idioma de destino", "手机双语字幕"],
+      "availability_note": "The page places this selector under CapCut Mobile; interface wording and languages may vary."
+    },
+    {
+      "id": "capcut-text-to-speech-text-layer",
+      "feature": "text-to-speech",
+      "statement": "CapCut Text-to-Speech works on text layers and cannot generate audio if no text is selected.",
+      "localized_statement": {
+        "en-US": "Select a text layer before generating text-to-speech audio.",
+        "es-ES": "Selecciona una capa de texto antes de generar audio con texto a voz."
+      },
+      "source_quote": "TTS only works on text layers. If no text is selected, it won't generate audio.",
+      "source_url": "https://www.capcut.com/help/text-to-speech-feature",
+      "source_title": "Why Is the Text-to-Speech Feature Not Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["text layer", "text to speech setup", "select text", "TTS troubleshooting", "capa de texto", "texto a voz", "seleccionar texto", "文字层语音"],
+      "availability_note": "This is a setup condition described in CapCut's help page."
+    },
+    {
+      "id": "capcut-text-to-speech-network",
+      "feature": "text-to-speech",
+      "statement": "CapCut Text-to-Speech uses cloud processing, so an unstable connection can interrupt generation.",
+      "localized_statement": {
+        "en-US": "Text-to-speech uses cloud processing, and an unstable connection can interrupt generation.",
+        "es-ES": "La función de texto a voz usa procesamiento en la nube; una conexión inestable puede interrumpir la generación."
+      },
+      "source_quote": "Text-to-Speech relies on cloud processing, so a weak or unstable connection can interrupt generation.",
+      "source_url": "https://www.capcut.com/help/text-to-speech-feature",
+      "source_title": "Why Is the Text-to-Speech Feature Not Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["text to speech network", "cloud processing", "connection error", "TTS generation", "texto a voz conexión", "procesamiento en la nube", "red inestable", "语音网络"],
+      "availability_note": "Connection quality may affect generation; the page does not promise offline processing."
+    },
+    {
+      "id": "capcut-text-to-speech-unsupported-choice",
+      "feature": "text-to-speech",
+      "statement": "CapCut Text-to-Speech generation may fail when the selected language or voice is unsupported.",
+      "localized_statement": {
+        "en-US": "An unsupported voice or language can cause text-to-speech generation to fail.",
+        "es-ES": "Una voz o un idioma no compatible puede impedir la generación de audio con texto a voz."
+      },
+      "source_quote": "If the selected language or voice is not supported, the feature may fail.",
+      "source_url": "https://www.capcut.com/help/text-to-speech-feature",
+      "source_title": "Why Is the Text-to-Speech Feature Not Working in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["unsupported voice", "unsupported language", "TTS failure", "voice availability", "voz no compatible", "idioma no compatible", "error texto a voz", "不支持语音"],
+      "availability_note": "Available language and voice options depend on the current product offering."
+    },
+    {
+      "id": "capcut-text-to-speech-voice-rollout",
+      "feature": "text-to-speech",
+      "statement": "Some CapCut Text-to-Speech voice options roll out gradually and may not be available on every account.",
+      "localized_statement": {
+        "en-US": "Some voice options are released gradually and may be missing from an account.",
+        "es-ES": "Algunas voces se habilitan gradualmente y pueden no aparecer en determinadas cuentas."
+      },
+      "source_quote": "Certain voice options being rolled out gradually and not yet available on all accounts.",
+      "source_url": "https://www.capcut.com/help/voice-options-missing",
+      "source_title": "Why are some voice options in Text to Speech and AI Video Maker on CapCut missing or unavailable? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["voice options", "gradual rollout", "missing voices", "account availability", "opciones de voz", "lanzamiento gradual", "voces no disponibles", "语音逐步开放"],
+      "availability_note": "The help page also names maintenance and outdated versions as possible causes of missing voices."
+    },
+    {
+      "id": "capcut-auto-captions-batch-edit",
+      "feature": "auto-captions",
+      "statement": "CapCut supports batch editing recognized subtitles across multiple clips.",
+      "localized_statement": {
+        "en-US": "Batch edit recognized subtitles across multiple clips in CapCut.",
+        "es-ES": "Edita por lotes los subtítulos reconocidos de varios clips en CapCut."
+      },
+      "source_quote": "CapCut allows you to batch edit recognized subtitles or lyrics ... across multiple clips at once",
+      "source_url": "https://www.capcut.com/help/batch-edit-to-recognize-subtitle",
+      "source_title": "How Should I Batch Edit to Recognize Subtitle/Lyrics Text in CapCut? | CapCut",
+      "checked_at": "2026-09-29",
+      "keywords": ["batch edit captions", "recognized subtitles", "multiple clips", "caption correction", "edición por lotes", "subtítulos reconocidos", "varios clips", "批量字幕编辑"],
+      "availability_note": "The help page describes workflows for Web, Desktop, and Mobile; controls can vary by version."
+    }
+  ]
+}

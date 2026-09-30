@@ -1,0 +1,544 @@
+{
+  "scope": "deterministic workflow and evidence-ID proxies; no semantic fact judgment",
+  "bundles_evaluated": 24,
+  "evidence_id_coverage": {
+    "numerator": 14,
+    "denominator": 18,
+    "rate": 0.7777777777777778
+  },
+  "correct_abstention": {
+    "numerator": 6,
+    "denominator": 6,
+    "rate": 1.0
+  },
+  "forbidden_phrase_hits": {
+    "numerator": 0,
+    "denominator": 36,
+    "rate": 0.0,
+    "drafts_with_hits": 0,
+    "drafts_checked": 18
+  },
+  "task_success": {
+    "numerator": 18,
+    "denominator": 24,
+    "rate": 0.75
+  },
+  "traced_step_latency_ms": {
+    "measured_bundles": 24,
+    "total_bundles": 24,
+    "p50_ms": 6289,
+    "p95_ms": 17428
+  },
+  "definitions": {
+    "evidence_id_coverage": "Required fact IDs with a retrieved card and a claim sentence present at its declared draft location / all required fact IDs. This does not establish semantic support.",
+    "correct_abstention": "Expected-abstention bundles with status insufficient_evidence and no draft / all expected-abstention bundles.",
+    "forbidden_phrase_hits": "Case-specific normalized phrase matches in publishable draft fields / phrases checked across generated drafts. Negation and paraphrases are not understood.",
+    "task_success": "Bundles with the expected workflow outcome: valid pending_review draft with passing checks, or expected insufficient_evidence without a draft / all bundles. Human approval and content quality are excluded.",
+    "traced_step_latency_ms": "Sum of trace steps that record durations; excludes uninstrumented events and orchestration. P50/P95 use nearest-rank percentiles. Bundles without valid timed steps are excluded and counted separately. Do not compare modes unless they time the same steps."
+  },
+  "per_bundle": [
+    {
+      "brief_id": "eval-01-en",
+      "run_id": "20260930T021758115769Z-eval-01-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-online-editor"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 6289
+    },
+    {
+      "brief_id": "eval-01-es",
+      "run_id": "20260930T021804649056Z-eval-01-es",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-online-editor"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 11063
+    },
+    {
+      "brief_id": "eval-02-en",
+      "run_id": "20260930T021815772244Z-eval-02-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-online-editor"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 3738
+    },
+    {
+      "brief_id": "eval-02-es",
+      "run_id": "20260930T021819578002Z-eval-02-es",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [
+        "capcut-online-editor"
+      ],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 12324
+    },
+    {
+      "brief_id": "eval-03-en",
+      "run_id": "20260930T021831965883Z-eval-03-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-auto-captions"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 4154
+    },
+    {
+      "brief_id": "eval-03-es",
+      "run_id": "20260930T021836174502Z-eval-03-es",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-auto-captions"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 11368
+    },
+    {
+      "brief_id": "eval-04-en",
+      "run_id": "20260930T021847601665Z-eval-04-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-auto-captions"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 8875
+    },
+    {
+      "brief_id": "eval-04-es",
+      "run_id": "20260930T021856540303Z-eval-04-es",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-auto-captions"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 11243
+    },
+    {
+      "brief_id": "eval-05-en",
+      "run_id": "20260930T021907838494Z-eval-05-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-bilingual-subtitles"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 4392
+    },
+    {
+      "brief_id": "eval-05-es",
+      "run_id": "20260930T021912287485Z-eval-05-es",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-bilingual-subtitles"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 6132
+    },
+    {
+      "brief_id": "eval-06-en",
+      "run_id": "20260930T021918472189Z-eval-06-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-bilingual-subtitles"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 4643
+    },
+    {
+      "brief_id": "eval-06-es",
+      "run_id": "20260930T021923165664Z-eval-06-es",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [
+        "capcut-bilingual-subtitles"
+      ],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 15462
+    },
+    {
+      "brief_id": "eval-07-en",
+      "run_id": "20260930T021938685674Z-eval-07-en",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-text-to-speech"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 9009
+    },
+    {
+      "brief_id": "eval-07-es",
+      "run_id": "20260930T021947752549Z-eval-07-es",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [
+        "capcut-text-to-speech"
+      ],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 17428
+    },
+    {
+      "brief_id": "eval-08-en",
+      "run_id": "20260930T022005241243Z-eval-08-en",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-text-to-speech"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 13129
+    },
+    {
+      "brief_id": "eval-08-es",
+      "run_id": "20260930T022018428189Z-eval-08-es",
+      "mode": "qwen_tool_agent",
+      "status": "pending_review",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-text-to-speech"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": true,
+      "traced_step_latency_ms": 11444
+    },
+    {
+      "brief_id": "eval-09-en",
+      "run_id": "20260930T022029938701Z-eval-09-en",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1.0
+      },
+      "covered_fact_ids": [
+        "capcut-subtitle-import"
+      ],
+      "missing_fact_ids": [],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 10916
+    },
+    {
+      "brief_id": "eval-09-es",
+      "run_id": "20260930T022040909078Z-eval-09-es",
+      "mode": "qwen_tool_agent",
+      "status": "needs_revision",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0.0
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [
+        "capcut-subtitle-import"
+      ],
+      "abstain_expected": false,
+      "correct_abstention": null,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 2,
+      "task_success": false,
+      "traced_step_latency_ms": 29051
+    },
+    {
+      "brief_id": "eval-10-en",
+      "run_id": "20260930T022110015853Z-eval-10-en",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 2737
+    },
+    {
+      "brief_id": "eval-10-es",
+      "run_id": "20260930T022112793304Z-eval-10-es",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 3482
+    },
+    {
+      "brief_id": "eval-11-en",
+      "run_id": "20260930T022116314273Z-eval-11-en",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 2163
+    },
+    {
+      "brief_id": "eval-11-es",
+      "run_id": "20260930T022118518807Z-eval-11-es",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 2266
+    },
+    {
+      "brief_id": "eval-12-en",
+      "run_id": "20260930T022120835754Z-eval-12-en",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 2346
+    },
+    {
+      "brief_id": "eval-12-es",
+      "run_id": "20260930T022123233174Z-eval-12-es",
+      "mode": null,
+      "status": "insufficient_evidence",
+      "evidence_id_coverage": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "covered_fact_ids": [],
+      "missing_fact_ids": [],
+      "abstain_expected": true,
+      "correct_abstention": true,
+      "forbidden_phrase_hits": [],
+      "forbidden_phrase_checks": 0,
+      "task_success": true,
+      "traced_step_latency_ms": 1878
+    }
+  ],
+  "batch": {
+    "mode": "qwen",
+    "briefs_path": "data/eval_briefs.jsonl",
+    "gold_path": "data/eval_gold.json",
+    "knowledge_path": "data/knowledge.json",
+    "rules_path": "data/editorial_rules.json",
+    "output_root": "runs/eval-20260930T021758115769Z-qwen",
+    "execution_errors": [],
+    "offline_template_demo": false
+  },
+  "public_export_note": "Local bundle paths removed; full run bundles are excluded because they contain machine-specific paths. Metrics are deterministic workflow proxies."
+}

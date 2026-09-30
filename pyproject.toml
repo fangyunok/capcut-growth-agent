@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capcut-growth-agent"
+version = "0.1.0"
+description = "Independent, evidence-grounded growth content agent prototype using public CapCut information"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "mcp==2.2.0",
+  "pydantic==2.13.5",
+  "starlette>=1.7,<2",
+  "uvicorn>=0.54,<1",
+  "python-multipart>=0.0.32,<1",
+]
+
+[project.scripts]
+growth-agent = "growth_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

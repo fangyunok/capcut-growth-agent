@@ -1,0 +1,124 @@
+# AutoDL 上运行远端 Qwen 工具 Agent
+
+本地保留项目代码、MCP 知识库、Web 页面和审核包；AutoDL 只运行模型服务。`--mode qwen` 在本地程序中执行同一套模型自主选工具流程：Qwen 经 Chat Completions 请求选择检索和规则工具，程序通过本地 MCP 执行并做确定性核验，结果进入人工审稿。服务器无需上传本项目的数据或代码。
+
+**2026-09-30 实测：** 用户的 RTX 3090 24 GB 实例已安装 Ollama 并拉取 `qwen3:4b-instruct`，本地端口 `11435` 的 SSH 隧道和网页 `7860` 都已验证。实测结果在 `docs/STATE.md`。以下命令用于会话断开后的重连或新实例部署；已有模型时无需重复下载。
+
+先在 AutoDL 控制台开一台 Linux GPU 实例，选择能运行目标模型的镜像，并复制控制台给出的 SSH 主机与端口。先短时验证，实际机器与租价以控制台当时显示为准。[AutoDL SSH 说明](https://api.autodl.com/docs/ssh/) · [AutoDL 计费说明](https://www.autodl.com/docs/price/)
+
+## 路径一：AutoDL 上运行 Ollama
+
+### 1. 在 AutoDL 终端安装和启动
+
+通过 AutoDL 提供的 SSH 命令进入实例，检查 GPU，并按 [Ollama Linux 安装文档](https://docs.ollama.com/linux)安装：
+
+```bash
+nvidia-smi
+apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y zstd
+curl -fsSL https://ollama.com/install.sh | sh
+curl -fsS http://127.0.0.1:11434/api/tags
+```
+
+当前使用的 AutoDL 镜像缺少 `zstd`，因此安装前需要补齐。也可把项目中的 `scripts/autodl_model_setup.sh` 上传到服务器并执行；脚本检查 `zstd`、Ollama 服务和模型是否已存在。
+
+安装脚本可能已启动 Ollama 服务。如果最后一条命令能返回模型列表，就不要再次运行 `ollama serve`。如果服务未启动，在远端终端执行下面两条；`ollama serve` 会持续占用该终端。AutoDL 建议用 `tmux` 或 `screen` 保持长时间运行的程序。[AutoDL SSH 说明](https://api.autodl.com/docs/ssh/)
+
+```bash
+tmux new -s growth-ollama
+ollama serve
+```
+
+在 `tmux` 内按 `Ctrl+B`、`D` 可返回普通终端。另开一个远端终端下载模型并检查服务：
+
+```bash
+ollama pull qwen3:4b-instruct
+ollama ls
+curl -fsS http://127.0.0.1:11434/v1/models
+```
+
+`qwen3:4b-instruct` 是 [Ollama 官方模型库中的模型标签](https://ollama.com/library/qwen3:4b-instruct)。首次下载和载入需要时间；能否稳定运行取决于实例的显存、内存和网络。
+
+### 2. 在 Windows 本机建立 SSH 隧道
+
+本机 PowerShell 中，把主机名和端口改为 AutoDL 控制台显示的值。这里用本机 `11435` 转发到远端 `11434`，避免本机 Ollama 已占用 `11434`：
+
+```powershell
+$sshHostName = "替换为AutoDL控制台显示的主机名"
+$sshPortNumber = 12345
+ssh -N -L 11435:127.0.0.1:11434 -p $sshPortNumber "root@$sshHostName"
+```
+
+保持该窗口打开。在第二个本机 PowerShell 窗口检查：
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:11435/v1/models"
+```
+
+如果本机 `11434` 空闲，也可以把隧道左侧端口改成 `11434`，并把下面的 `GROWTH_QWEN_BASE` 改为 `http://127.0.0.1:11434/v1`。[AutoDL SSH 隧道文档](https://api.autodl.com/docs/ssh_proxy/)给出相同的本地端口转发方式。
+
+### 3. 本机运行 Agent
+
+项目依赖按 [README 本机启动步骤](../README.md)安装。在第二个 PowerShell 窗口设置环境变量并运行一条 brief：
+
+```powershell
+cd capcut-growth-agent
+$env:GROWTH_QWEN_BASE = "http://127.0.0.1:11435/v1"
+$env:GROWTH_QWEN_MODEL = "qwen3:4b-instruct"
+.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial --mode qwen
+```
+
+也可以在同一个窗口启动 Web 页面，然后打开 `http://127.0.0.1:7860`；网页的“千问真实模型”会使用刚设置的远端服务：
+
+```powershell
+.\.venv\Scripts\python.exe -m growth_agent serve --host 127.0.0.1 --port 7860
+```
+
+查看输出的 `review.md`、`bundle.json` 和工具调用轨迹。`pending_review` 表示待人工审稿；即使规则检查通过，也要核对每条产品主张与链接来源。结束时关闭隧道和模型服务，并在 AutoDL 控制台检查实例状态与计费。
+
+单条链路运行正常后，可在保持隧道连接的本机终端运行完整的 24 条评测输入；它会生成独立的运行包与 `report.json`，指标仍仅覆盖确定性流程与证据 ID：
+
+```powershell
+.\.venv\Scripts\python.exe -m growth_agent eval-run --mode qwen
+```
+
+## 路径二：已有 vLLM 镜像时使用 Qwen2.5（可选）
+
+如果 AutoDL 镜像已经支持 vLLM，也可以保留远端 vLLM 服务。关键是启用自动工具选择，并为 Qwen2.5 指定 `hermes` 工具解析器。`--mode qwen` 与 `--mode api` 在当前代码中都会进入模型选工具的 Agent 循环；以下沿用 `--mode qwen` 和 `GROWTH_QWEN_*`，以便与 Ollama 路径一致。vLLM 官方说明了 [Qwen2.5 的解析器](https://docs.vllm.ai/en/latest/features/tool_calling/)和 [GPU 安装方式](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/)；模型详情见 [Qwen 官方模型卡](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)。
+
+若镜像未安装 vLLM，先在兼容的 CUDA/Python 环境按官方安装方式准备；常见命令如下，具体轮子仍需匹配镜像：
+
+```bash
+python -m pip install -U uv
+uv venv --python 3.12 --seed --managed-python /root/growth-vllm
+source /root/growth-vllm/bin/activate
+uv pip install vllm --torch-backend=auto
+```
+
+在远端启动服务；若 `8000` 被占用，替换为其他远端端口：
+
+```bash
+vllm serve Qwen/Qwen2.5-7B-Instruct \
+  --host 127.0.0.1 --port 8000 \
+  --dtype half --max-model-len 8192 \
+  --gpu-memory-utilization 0.85 \
+  --enable-auto-tool-choice --tool-call-parser hermes
+```
+
+本机另开隧道并设置模型信息；`8001` 是本机端口，可自行选择空闲端口：
+
+```powershell
+$sshHostName = "替换为AutoDL控制台显示的主机名"
+$sshPortNumber = 12345
+ssh -N -L 8001:127.0.0.1:8000 -p $sshPortNumber "root@$sshHostName"
+```
+
+在第二个 PowerShell 窗口运行：
+
+```powershell
+cd capcut-growth-agent
+$env:GROWTH_QWEN_BASE = "http://127.0.0.1:8001/v1"
+$env:GROWTH_QWEN_MODEL = "Qwen/Qwen2.5-7B-Instruct"
+.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial --mode qwen
+```
+
+这一路径尚未在本项目的 AutoDL 实例上验证；服务能启动也不等于草稿质量达标。正式评价需记录模型版本、服务配置、硬件、真实耗时和人工标注结果。
