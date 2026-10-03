@@ -315,7 +315,26 @@ async def audit_review(request: Request) -> HTMLResponse:
         except (OSError, ValueError, TypeError):
             approval = "<section class='card warn'><h2>旧确认已失效</h2><p>文案或来源与确认记录不匹配，请重新创建审核任务。</p></section>"
     trace = _esc(json.dumps({'strategy': bundle.strategy, 'checks': bundle.revised_checks, 'usage': bundle.usage, 'trace': bundle.trace}, ensure_ascii=False, indent=2))
-    return _page('文案与来源审核', f"<div class='eyebrow'>REVIEW BEFORE CONFIRMATION</div><h1>{_esc(bundle.request.product_name)} · 文案审核</h1><p class='badge {'ok' if bundle.status == 'pending_review' else 'warn'}'>{_esc(_AUDIT_STATES[bundle.status])}</p><p class='muted'>{_esc(messages[bundle.status])}</p><div class='layout'><section class='card'><h2>原始文案</h2><div class='copy'>{_esc(bundle.request.original_copy)}</div><h2 style='margin-top:24px'>需要核查的主张</h2>{issues or '<p class="muted">没有可展示的问题列表；仍需人工检查原文。</p>'}</section><section class='card'><h2>建议修订稿</h2><div class='copy'>{_esc(proposal.revised_copy if proposal else '没有产生可审阅的修订稿。')}</div><h2 style='margin-top:24px'>主张与来源对应</h2>{citations or '<p class="muted">没有可展示的引用。</p>'}</section></div><section class='card'><h2>本次检索到的资料</h2>{sources or '<p class="muted">没有对应产品资料。</p>'}</section>{approval}<details><summary>查看开发记录与字面检查</summary><pre>{trace}</pre></details><p><a href='/'>再审核一条文案</a></p>")
+    issue_content = issues or '<p class="muted">没有可展示的问题列表；仍需人工检查原文。</p>'
+    citation_content = citations or '<p class="muted">没有可展示的引用。</p>'
+    source_content = sources or '<p class="muted">没有对应产品资料。</p>'
+    revised_copy = proposal.revised_copy if proposal else '没有产生可审阅的修订稿。'
+    status_class = 'ok' if bundle.status == 'pending_review' else 'warn'
+    return _page('文案与来源审核', (
+        "<div class='eyebrow'>REVIEW BEFORE CONFIRMATION</div>"
+        f"<h1>{_esc(bundle.request.product_name)} · 文案审核</h1>"
+        f"<p class='badge {status_class}'>{_esc(_AUDIT_STATES[bundle.status])}</p>"
+        f"<p class='muted'>{_esc(messages[bundle.status])}</p>"
+        "<div class='layout'><section class='card'><h2>原始文案</h2>"
+        f"<div class='copy'>{_esc(bundle.request.original_copy)}</div>"
+        f"<h2 style='margin-top:24px'>需要核查的主张</h2>{issue_content}</section>"
+        "<section class='card'><h2>建议修订稿</h2>"
+        f"<div class='copy'>{_esc(revised_copy)}</div>"
+        f"<h2 style='margin-top:24px'>主张与来源对应</h2>{citation_content}</section></div>"
+        f"<section class='card'><h2>本次检索到的资料</h2>{source_content}</section>{approval}"
+        f"<details><summary>查看开发记录与字面检查</summary><pre>{trace}</pre></details>"
+        "<p><a href='/'>再审核一条文案</a></p>"
+    ))
 
 
 async def audit_approve(request: Request):
