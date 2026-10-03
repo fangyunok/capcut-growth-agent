@@ -3,21 +3,42 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "capcut-growth-agent"
-version = "0.1.0"
-description = "Independent, evidence-grounded growth content agent prototype using public CapCut information"
+name = "product-claim-review-agent"
+version = "0.3.0"
+description = "Open-weight model agent for evidence-based EN/ZH marketing claim review"
 readme = "README.md"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
+keywords = ["agent", "mcp", "rag", "marketing", "claim-review", "qwen"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+]
 dependencies = [
   "mcp==2.2.0",
   "pydantic==2.13.5",
   "starlette>=1.7,<2",
   "uvicorn>=0.54,<1",
   "python-multipart>=0.0.32,<1",
+  "httpx>=0.28.1,<1",
 ]
+
+[project.optional-dependencies]
+dev = ["build>=1.2,<2"]
+media = ["imageio-ffmpeg==0.6.0"]
+
+[project.urls]
+Repository = "https://github.com/fangyunok/capcut-growth-agent"
+Issues = "https://github.com/fangyunok/capcut-growth-agent/issues"
 
 [project.scripts]
 growth-agent = "growth_agent.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+growth_agent = ["data/*.json", "data/*.jsonl"]

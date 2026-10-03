@@ -1,0 +1,15 @@
+{
+  "disclaimer": "Demo editorial rules for a product-independent review workflow; not the product owner's official brand policy.",
+  "locales": {
+    "en-US": {
+      "tone": "Specific and helpful. Preserve supported claims; remove universal guarantees and unsupported performance or publishing promises.",
+      "forbidden_phrases": ["guaranteed lag-free", "guaranteed 4K", "works with every app", "automatically publishes", "guaranteed results", "100% accurate"],
+      "cta": "Check the current product documentation"
+    },
+    "zh-CN": {
+      "tone": "具体、清楚，保留有依据的功能说明，删除绝对化效果或未经证实的可用性承诺。",
+      "forbidden_phrases": ["保证零卡顿", "保证所有电脑", "保证观众永远", "自动发布到所有平台", "100%准确", "永久免费"],
+      "cta": "以当前产品文档为准"
+    }
+  }
+}

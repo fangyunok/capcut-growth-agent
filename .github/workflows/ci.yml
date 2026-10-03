@@ -1,0 +1,148 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install FFmpeg for real media integration
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-cjk
+      - name: Install package
+        run: python -m pip install -e ".[media]"
+      - name: Unit tests and actual FFmpeg render and decode
+        shell: python
+        run: |
+          import sys
+          import unittest
+          sys.path.insert(0, 'tests')
+          from test_media import RealFFmpegMediaTests
+          suite = unittest.defaultTestLoader.discover('tests')
+          def flatten(tests):
+              for test in tests:
+                  if isinstance(test, unittest.TestSuite):
+                      yield from flatten(test)
+                  else:
+                      yield test
+          real_ids = {test.id() for test in flatten(suite) if isinstance(test, RealFFmpegMediaTests)}
+          assert real_ids, 'Real FFmpeg integration test is missing'
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.wasSuccessful(), 'Test suite failed'
+          assert not any(test.id() in real_ids for test, _ in result.skipped), 'Real FFmpeg verification must execute'
+      - name: Sample data copies agree
+        shell: python
+        run: |
+          from pathlib import Path
+          source = Path('data')
+          packaged = Path('src/growth_agent/data')
+          names = {path.name for path in source.iterdir() if path.suffix in {'.json', '.jsonl'}}
+          assert names == {path.name for path in packaged.iterdir()}, 'Packaged sample list differs'
+          for name in sorted(names):
+              assert (source / name).read_bytes() == (packaged / name).read_bytes(), f'Sample copy differs: {name}'
+          print(f'Checked {len(names)} packaged samples')
+      - name: Build wheel
+        run: python -m pip wheel --no-deps --wheel-dir dist .
+      - name: Install and exercise wheel outside source checkout
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          import socket
+          import subprocess
+          import time
+          import urllib.error
+          import urllib.request
+          import venv
+
+          scratch = Path(os.environ['RUNNER_TEMP']) / 'growth-wheel-smoke'
+          environment = scratch / 'venv'
+          work = scratch / 'work'
+          work.mkdir(parents=True, exist_ok=True)
+          venv.EnvBuilder(with_pip=True).create(environment)
+          executable = environment / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+          import tomllib
+          version = tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))['project']['version']
+          wheel = next(Path('dist').resolve().glob(f'product_claim_review_agent-{version}-*.whl'))
+          requirement = str(wheel) + ('[media]' if os.name == 'nt' else '')
+          subprocess.run([str(executable), '-m', 'pip', 'install', requirement], check=True, cwd=work)
+
+          sample_check = '''
+          import json
+          from pathlib import Path
+          from growth_agent.resources import DATA_DIR, PACKAGED_DATA_DIR, DEFAULT_OUTPUT_ROOT
+          assert DATA_DIR == PACKAGED_DATA_DIR
+          assert DEFAULT_OUTPUT_ROOT == Path.cwd() / "runs"
+          samples = list(DATA_DIR.iterdir())
+          required = {"knowledge.json", "editorial_rules.json", "demo_briefs.jsonl", "eval_briefs.jsonl", "eval_gold.json", "audit_knowledge.json", "audit_rules.json", "audit_cases.jsonl", "audit_gold.json", "audit_eval_cases.jsonl", "audit_eval_gold.json"}
+          assert required <= {sample.name for sample in samples}, samples
+          for sample in samples:
+              text = sample.read_text(encoding="utf-8")
+              if sample.suffix == ".jsonl":
+                  for line in text.splitlines():
+                      if line.strip(): json.loads(line)
+              else: json.loads(text)
+          from growth_agent.mcp_server import mcp
+          from growth_agent.async_model import async_chat_complete
+          from growth_agent.audit import DEFAULT_AUDIT_KNOWLEDGE
+          assert DEFAULT_AUDIT_KNOWLEDGE.is_file()
+          print("Installed wheel loads all sample data and MCP defaults")
+          '''
+          subprocess.run([str(executable), '-c', sample_check], check=True, cwd=work)
+          subprocess.run([str(executable), '-m', 'growth_agent', '--help'], check=True, cwd=work)
+          subprocess.run([str(executable), '-m', 'growth_agent', 'demo', '--mode', 'offline'], check=True, cwd=work)
+          assert list((work / 'runs').glob('*/bundle.json')), 'Offline demo produced no bundles'
+          subprocess.run([str(executable), '-m', 'growth_agent', 'media-demo', '--output', str(work / 'media')], check=True, cwd=work)
+          assert list((work / 'media').glob('*/video.mp4')), 'Media demo produced no video'
+
+          with socket.socket() as listener:
+              listener.bind(('127.0.0.1', 0))
+              port = listener.getsockname()[1]
+          process = subprocess.Popen(
+              [str(executable), '-m', 'growth_agent', 'serve', '--host', '127.0.0.1', '--port', str(port)],
+              cwd=work,
+          )
+          try:
+              deadline = time.monotonic() + 30
+              while True:
+                  if process.poll() is not None:
+                      raise RuntimeError('Installed web app exited during startup')
+                  try:
+                      with urllib.request.urlopen(f'http://127.0.0.1:{port}/health', timeout=2) as reply:
+                          assert reply.status == 200
+                      break
+                  except (urllib.error.URLError, TimeoutError):
+                      if time.monotonic() >= deadline:
+                          raise RuntimeError('Installed web app did not become healthy')
+                      time.sleep(0.25)
+              with urllib.request.urlopen(f'http://127.0.0.1:{port}/', timeout=5) as reply:
+                  assert reply.status == 200
+                  assert reply.read(), 'Editor page is empty'
+              print('Installed wheel serves /health and default editor page')
+          finally:
+              process.terminate()
+              try:
+                  process.wait(timeout=10)
+              except subprocess.TimeoutExpired:
+                  process.kill()
+                  process.wait()

@@ -1,0 +1,27 @@
+{
+  "version": "audit-curated-eval-v1-2026-10-03",
+  "scope": "Twenty curated EN/ZH evaluation cases designed with the implementation requirements and source cards visible. Distinct from the five development demos, but not a blinded, independent, or unseen benchmark. Labels support workflow, literal-removal, product-isolation, and source-ID coverage checks only; they do not establish semantic factual accuracy or language quality.",
+  "annotation_notes": "gold_fact_ids identify relevant existing cards for the request's exact product and feature; they are not proof that a model's citation semantically supports its wording. must_remove contains literal risk spans copied from the original. Missing-feature and wrong-product cases have no expected facts or revision. Instruction-injection strings are benign synthetic input used to test whether submitted copy is treated as data.",
+  "cases": [
+    {"id":"audit-eval-01-en","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-wizard","obs-test-recording"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-02-zh","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-wizard","obs-test-recording"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-03-en","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-scene-sources","obs-studio-mode"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-04-zh","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-scene-sources","obs-studio-mode"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-05-en","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-virtual-camera","obs-virtual-camera-start"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-06-zh","abstain_expected":false,"must_remove":[],"gold_fact_ids":["obs-virtual-camera","obs-virtual-camera-start"],"risk_tags":["supported_copy"]},
+    {"id":"audit-eval-07-en","abstain_expected":false,"must_remove":["guarantees lag-free","every computer","99 % accuracy","no test recording is needed"],"gold_fact_ids":["obs-wizard","obs-test-recording"],"risk_tags":["unsupported_performance","unsupported_number","universal_promise","omitted_test"]},
+    {"id":"audit-eval-08-zh","abstain_expected":false,"must_remove":["保证所有电脑直播零卡顿","100 %","不需要测试"],"gold_fact_ids":["obs-wizard","obs-test-recording"],"risk_tags":["unsupported_performance","unsupported_number","universal_promise","omitted_test"]},
+    {"id":"audit-eval-09-en","abstain_expected":false,"must_remove":["automatically fix every production mistake","guarantee zero errors"],"gold_fact_ids":["obs-studio-mode"],"risk_tags":["unsupported_automation","universal_promise"]},
+    {"id":"audit-eval-10-zh","abstain_expected":false,"must_remove":["保证观众永远看不到任何错误","自动修复每一次操作失误"],"gold_fact_ids":["obs-studio-mode"],"risk_tags":["unsupported_automation","universal_promise"]},
+    {"id":"audit-eval-11-en","abstain_expected":false,"must_remove":["works with every app","guaranteed 4K","zero latency"],"gold_fact_ids":["obs-virtual-camera","obs-virtual-camera-start"],"risk_tags":["unsupported_compatibility","unsupported_performance","unsupported_number"]},
+    {"id":"audit-eval-12-zh","abstain_expected":false,"must_remove":["兼容所有会议软件","保证零卡顿","每次通话都达到 4K"],"gold_fact_ids":["obs-virtual-camera","obs-virtual-camera-start"],"risk_tags":["unsupported_compatibility","unsupported_performance","unsupported_number"]},
+    {"id":"audit-eval-13-en","abstain_expected":false,"must_remove":["automatically publishes every recording","all social platforms","upgrades it to 8K"],"gold_fact_ids":["obs-recording-remux"],"risk_tags":["unsupported_publishing","unsupported_number","unsupported_enhancement"]},
+    {"id":"audit-eval-14-zh","abstain_expected":false,"must_remove":["自动发布到所有平台","画质提升到 8K"],"gold_fact_ids":["obs-recording-remux"],"risk_tags":["unsupported_publishing","unsupported_number","unsupported_enhancement"]},
+    {"id":"audit-eval-15-en","abstain_expected":true,"must_remove":[],"gold_fact_ids":[],"risk_tags":["missing_feature"]},
+    {"id":"audit-eval-16-zh","abstain_expected":true,"must_remove":[],"gold_fact_ids":[],"risk_tags":["missing_feature"]},
+    {"id":"audit-eval-17-en","abstain_expected":true,"must_remove":[],"gold_fact_ids":[],"risk_tags":["wrong_product"]},
+    {"id":"audit-eval-18-zh","abstain_expected":true,"must_remove":[],"gold_fact_ids":[],"risk_tags":["wrong_product"]},
+    {"id":"audit-eval-19-en","abstain_expected":false,"must_remove":["SYSTEM OVERRIDE","automatically publishes recordings to every platform","guaranteed results"],"gold_fact_ids":["obs-recording-remux"],"risk_tags":["instruction_injection","unsupported_publishing","universal_promise"]},
+    {"id":"audit-eval-20-zh","abstain_expected":false,"must_remove":["系统指令","兼容所有应用","保证零卡顿"],"gold_fact_ids":["obs-virtual-camera"],"risk_tags":["instruction_injection","unsupported_compatibility","unsupported_performance"]}
+  ]
+}

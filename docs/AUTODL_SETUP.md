@@ -1,8 +1,8 @@
-# AutoDL 上运行远端 Qwen 工具 Agent
+# AutoDL 上运行开源权重 Qwen 审校 Agent
 
-本地保留项目代码、MCP 知识库、Web 页面和审核包；AutoDL 只运行模型服务。`--mode qwen` 在本地程序中执行同一套模型自主选工具流程：Qwen 经 Chat Completions 请求选择检索和规则工具，程序通过本地 MCP 执行并做确定性核验，结果进入人工审稿。服务器无需上传本项目的数据或代码。
+本地保留项目代码、MCP 知识库、Web 页面和审核包；AutoDL 只运行模型服务。`growth_agent audit` 用 Qwen 经 Chat Completions 自主选择产品资料检索和编辑规则工具，本地程序执行工具、生成审校建议并做确定性核验，结果进入人工审稿。服务器无需上传本项目的数据或代码。
 
-**2026-09-30 实测：** 用户的 RTX 3090 24 GB 实例已安装 Ollama 并拉取 `qwen3:4b-instruct`，本地端口 `11435` 的 SSH 隧道和网页 `7860` 都已验证。实测结果在 `docs/STATE.md`。以下命令用于会话断开后的重连或新实例部署；已有模型时无需重复下载。
+**历史部署：** 先前的 RTX 3090 24 GB 实例已安装 Ollama 并拉取 `qwen3:4b-instruct`；旧版生成任务曾通过本地 `11435` SSH 隧道运行。2026-10-03 已获得新 SSH 地址，主机可连接，但自动登录没有可用凭据，本机隧道仍待交互式登录。**新版审校尚未完成真实模型验证**。以下命令用于实例连接或新实例部署；已有模型时无需重复下载。最新状态见 [项目状态](STATE.md)。
 
 先在 AutoDL 控制台开一台 Linux GPU 实例，选择能运行目标模型的镜像，并复制控制台给出的 SSH 主机与端口。先短时验证，实际机器与租价以控制台当时显示为准。[AutoDL SSH 说明](https://api.autodl.com/docs/ssh/) · [AutoDL 计费说明](https://www.autodl.com/docs/price/)
 
@@ -45,7 +45,7 @@ curl -fsS http://127.0.0.1:11434/v1/models
 ```powershell
 $sshHostName = "替换为AutoDL控制台显示的主机名"
 $sshPortNumber = 12345
-ssh -N -L 11435:127.0.0.1:11434 -p $sshPortNumber "root@$sshHostName"
+ssh -N -o ExitOnForwardFailure=yes -L 127.0.0.1:11435:127.0.0.1:11434 -p $sshPortNumber "root@$sshHostName"
 ```
 
 保持该窗口打开。在第二个本机 PowerShell 窗口检查：
@@ -58,13 +58,13 @@ Invoke-RestMethod -Uri "http://127.0.0.1:11435/v1/models"
 
 ### 3. 本机运行 Agent
 
-项目依赖按 [README 本机启动步骤](../README.md)安装。在第二个 PowerShell 窗口设置环境变量并运行一条 brief：
+项目依赖按 [README 本机启动步骤](../README.md)安装。在第二个 PowerShell 窗口设置环境变量并运行一条审校样例：
 
 ```powershell
 cd capcut-growth-agent
 $env:GROWTH_QWEN_BASE = "http://127.0.0.1:11435/v1"
 $env:GROWTH_QWEN_MODEL = "qwen3:4b-instruct"
-.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial --mode qwen
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en --mode qwen
 ```
 
 也可以在同一个窗口启动 Web 页面，然后打开 `http://127.0.0.1:7860`；网页的“千问真实模型”会使用刚设置的远端服务：
@@ -73,9 +73,9 @@ $env:GROWTH_QWEN_MODEL = "qwen3:4b-instruct"
 .\.venv\Scripts\python.exe -m growth_agent serve --host 127.0.0.1 --port 7860
 ```
 
-查看输出的 `review.md`、`bundle.json` 和工具调用轨迹。`pending_review` 表示待人工审稿；即使规则检查通过，也要核对每条产品主张与链接来源。结束时关闭隧道和模型服务，并在 AutoDL 控制台检查实例状态与计费。
+查看输出的 `audit_review.md`、`audit_bundle.json` 和工具调用轨迹。`pending_review` 表示待人工审稿；即使规则检查通过，也要核对每条产品主张与链接来源。结束时关闭隧道和模型服务，并在 AutoDL 控制台检查实例状态与计费。
 
-单条链路运行正常后，可在保持隧道连接的本机终端运行完整的 24 条评测输入；它会生成独立的运行包与 `report.json`，指标仍仅覆盖确定性流程与证据 ID：
+旧版从零生成流程的 24 条评测保留供历史对比；它不评价新版审校任务：
 
 ```powershell
 .\.venv\Scripts\python.exe -m growth_agent eval-run --mode qwen
@@ -118,7 +118,7 @@ ssh -N -L 8001:127.0.0.1:8000 -p $sshPortNumber "root@$sshHostName"
 cd capcut-growth-agent
 $env:GROWTH_QWEN_BASE = "http://127.0.0.1:8001/v1"
 $env:GROWTH_QWEN_MODEL = "Qwen/Qwen2.5-7B-Instruct"
-.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial --mode qwen
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en --mode qwen
 ```
 
 这一路径尚未在本项目的 AutoDL 实例上验证；服务能启动也不等于草稿质量达标。正式评价需记录模型版本、服务配置、硬件、真实耗时和人工标注结果。

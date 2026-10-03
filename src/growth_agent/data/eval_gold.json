@@ -1,0 +1,39 @@
+{
+  "version": "held-out-v1-2026-09-29",
+  "source_catalog": "data/knowledge.json",
+  "source_snapshot_date": "2026-09-29",
+  "scope_note": "Gold labels only verified fact IDs, expected workflow abstention, and literal forbidden-claim phrases. They do not label semantic factual entailment or marketing quality.",
+  "fact_ids": [
+    "capcut-online-editor",
+    "capcut-auto-captions",
+    "capcut-bilingual-subtitles",
+    "capcut-text-to-speech",
+    "capcut-subtitle-import"
+  ],
+  "cases": [
+    {"brief_id":"eval-01-en","required_fact_ids":["capcut-online-editor"],"abstain_expected":false,"forbidden_claims":["automatic publishing","guaranteed rankings"]},
+    {"brief_id":"eval-01-es","required_fact_ids":["capcut-online-editor"],"abstain_expected":false,"forbidden_claims":["publicación automática","posicionamiento garantizado"]},
+    {"brief_id":"eval-02-en","required_fact_ids":["capcut-online-editor"],"abstain_expected":false,"forbidden_claims":["automatic publishing","guaranteed traffic"]},
+    {"brief_id":"eval-02-es","required_fact_ids":["capcut-online-editor"],"abstain_expected":false,"forbidden_claims":["publicación automática","tráfico garantizado"]},
+    {"brief_id":"eval-03-en","required_fact_ids":["capcut-auto-captions"],"abstain_expected":false,"forbidden_claims":["100% accurate","no review needed"]},
+    {"brief_id":"eval-03-es","required_fact_ids":["capcut-auto-captions"],"abstain_expected":false,"forbidden_claims":["100 % preciso","sin revisión"]},
+    {"brief_id":"eval-04-en","required_fact_ids":["capcut-auto-captions"],"abstain_expected":false,"forbidden_claims":["100% accurate","no review needed"]},
+    {"brief_id":"eval-04-es","required_fact_ids":["capcut-auto-captions"],"abstain_expected":false,"forbidden_claims":["100 % preciso","sin revisión"]},
+    {"brief_id":"eval-05-en","required_fact_ids":["capcut-bilingual-subtitles"],"abstain_expected":false,"forbidden_claims":["every language supported","100% accurate"]},
+    {"brief_id":"eval-05-es","required_fact_ids":["capcut-bilingual-subtitles"],"abstain_expected":false,"forbidden_claims":["todos los idiomas","100 % preciso"]},
+    {"brief_id":"eval-06-en","required_fact_ids":["capcut-bilingual-subtitles"],"abstain_expected":false,"forbidden_claims":["every language supported","100% accurate"]},
+    {"brief_id":"eval-06-es","required_fact_ids":["capcut-bilingual-subtitles"],"abstain_expected":false,"forbidden_claims":["todos los idiomas","100 % preciso"]},
+    {"brief_id":"eval-07-en","required_fact_ids":["capcut-text-to-speech"],"abstain_expected":false,"forbidden_claims":["always free","every voice available"]},
+    {"brief_id":"eval-07-es","required_fact_ids":["capcut-text-to-speech"],"abstain_expected":false,"forbidden_claims":["siempre gratis","todas las voces disponibles"]},
+    {"brief_id":"eval-08-en","required_fact_ids":["capcut-text-to-speech"],"abstain_expected":false,"forbidden_claims":["always free","every voice available"]},
+    {"brief_id":"eval-08-es","required_fact_ids":["capcut-text-to-speech"],"abstain_expected":false,"forbidden_claims":["siempre gratis","todas las voces disponibles"]},
+    {"brief_id":"eval-09-en","required_fact_ids":["capcut-subtitle-import"],"abstain_expected":false,"forbidden_claims":["TXT files are supported on Web","automatic publishing"]},
+    {"brief_id":"eval-09-es","required_fact_ids":["capcut-subtitle-import"],"abstain_expected":false,"forbidden_claims":["archivos TXT son compatibles con Web","publicación automática"]},
+    {"brief_id":"eval-10-en","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["100% accurate","no review needed"]},
+    {"brief_id":"eval-10-es","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["100 % preciso","sin revisión"]},
+    {"brief_id":"eval-11-en","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["free in every country","100% accurate"]},
+    {"brief_id":"eval-11-es","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["gratis en todos los países","100 % preciso"]},
+    {"brief_id":"eval-12-en","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["automatic publishing to TikTok and Instagram","guaranteed traffic"]},
+    {"brief_id":"eval-12-es","required_fact_ids":[],"abstain_expected":true,"forbidden_claims":["publicación automática en TikTok e Instagram","tráfico garantizado"]}
+  ]
+}

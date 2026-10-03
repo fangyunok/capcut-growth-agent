@@ -33,12 +33,13 @@ _TOOLS = [
         "type": "function",
         "function": {
             "name": "search_knowledge",
-            "description": "Find source-backed public CapCut fact cards for the requested feature.",
+            "description": "Find source-backed product fact cards for the requested feature.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "query": {"type": "string", "description": "Short feature and search-intent query"},
                     "top_k": {"type": "integer", "minimum": 1, "maximum": 5},
+                    "product_id": {"type": "string", "description": "Exact product ID when auditing a specific product"},
                 },
                 "required": ["query"],
                 "additionalProperties": False,
@@ -52,7 +53,7 @@ _TOOLS = [
             "description": "Read editorial constraints for the brief's exact locale.",
             "parameters": {
                 "type": "object",
-                "properties": {"locale": {"type": "string", "enum": ["en-US", "es-ES"]}},
+                "properties": {"locale": {"type": "string", "enum": ["en-US", "zh-CN", "es-ES"]}},
                 "required": ["locale"],
                 "additionalProperties": False,
             },
@@ -97,6 +98,18 @@ def _chat_complete(
         raise RuntimeError("Cannot reach model service") from exc
     if not isinstance(response, dict):
         raise ValueError("Model service returned a non-object response")
+    choices = response.get("choices")
+    if not isinstance(choices, list) or not choices or not isinstance(choices[0], dict):
+        raise ValueError("Model choices must contain an object")
+    message = choices[0].get("message")
+    if not isinstance(message, dict):
+        raise ValueError("Model message must be an object")
+    if message.get("content") is not None and not isinstance(message["content"], str):
+        raise ValueError("Model content must be a string or null")
+    if message.get("tool_calls") is not None and not isinstance(message["tool_calls"], list):
+        raise ValueError("Model tool_calls must be a list or null")
+    if response.get("usage") is not None and not isinstance(response["usage"], dict):
+        raise ValueError("Model usage must be an object or null")
     return response
 
 
@@ -128,15 +141,18 @@ def _validated_arguments(name: str, raw: Any, locale: str) -> dict[str, Any]:
     if not isinstance(arguments, dict):
         raise ValueError("tool arguments must be an object")
     if name == "search_knowledge":
-        if set(arguments) - {"query", "top_k"}:
+        if set(arguments) - {"query", "top_k", "product_id"}:
             raise ValueError("search_knowledge received unknown arguments")
         query = arguments.get("query")
         top_k = arguments.get("top_k", 5)
+        product_id = arguments.get("product_id", "")
         if not isinstance(query, str) or not 1 <= len(query.strip()) <= 200:
             raise ValueError("query must contain 1 to 200 characters")
         if type(top_k) is not int or not 1 <= top_k <= 5:
             raise ValueError("top_k must be an integer from 1 to 5")
-        return {"query": query.strip(), "top_k": top_k}
+        if not isinstance(product_id, str) or len(product_id) > 80:
+            raise ValueError("product_id must be a string up to 80 characters")
+        return {"query": query.strip(), "top_k": top_k, "product_id": product_id}
     if set(arguments) != {"locale"} or arguments["locale"] != locale:
         raise ValueError("rules locale must match the brief locale")
     return {"locale": locale}

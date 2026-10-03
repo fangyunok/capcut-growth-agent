@@ -194,7 +194,7 @@ class AgentLoopTests(unittest.IsolatedAsyncioTestCase):
         messages = [{"role": "user", "content": "test"}]
         with patch(
             "growth_agent.agent_loop.urllib.request.urlopen",
-            return_value=io.BytesIO(b'{"choices": []}'),
+            return_value=io.BytesIO(b'{"choices": [{"message": {"content": "{}"}}]}'),
         ) as request_call:
             _chat_complete(generator, messages, False)
             tool_payload = json.loads(request_call.call_args.args[0].data)
@@ -203,7 +203,7 @@ class AgentLoopTests(unittest.IsolatedAsyncioTestCase):
 
         with patch(
             "growth_agent.agent_loop.urllib.request.urlopen",
-            return_value=io.BytesIO(b'{"choices": []}'),
+            return_value=io.BytesIO(b'{"choices": [{"message": {"content": "{}"}}]}'),
         ) as request_call:
             _chat_complete(generator, messages, True)
             draft_payload = json.loads(request_call.call_args.args[0].data)

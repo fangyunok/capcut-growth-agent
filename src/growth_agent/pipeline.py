@@ -16,11 +16,7 @@ from .agent_loop import run_llm_agent
 from .generation import CompatibleApiGenerator, OfflineTemplateGenerator, QwenOllamaGenerator
 from .mcp_server import create_server
 from .schemas import Brief, Draft, RunResult
-
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_KNOWLEDGE = PROJECT_ROOT / "data" / "knowledge.json"
-DEFAULT_RULES = PROJECT_ROOT / "data" / "editorial_rules.json"
+from .resources import PROJECT_ROOT, DEFAULT_KNOWLEDGE, DEFAULT_RULES, DEFAULT_OUTPUT_ROOT
 
 
 def _trace(step: str, started: float, **details: Any) -> dict:
@@ -93,7 +89,7 @@ async def run_brief(
 
     if mode not in {"offline", "api", "qwen"}:
         raise ValueError("mode must be offline, api, or qwen")
-    output_root = output_root or (PROJECT_ROOT / "runs")
+    output_root = output_root or DEFAULT_OUTPUT_ROOT
     run_id = _run_id(brief)
 
     if mode in {"qwen", "api"}:

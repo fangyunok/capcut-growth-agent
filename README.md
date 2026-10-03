@@ -1,68 +1,137 @@
-# 全球化增长内容 Agent：CapCut 公开资料案例
+# 营销文案事实审校与视频合成 Agent
 
-这是一个独立作品项目，用 CapCut 官方公开页面作为产品事实来源，生成英语（美国）和西班牙语（西班牙）的 SEO 页面草稿与社媒文案。项目与 CapCut、剪映或字节跳动没有隶属或合作关系，也没有连接其内部系统。所有草稿都留给人工审稿，不会自动发布。
+[![CI](https://github.com/fangyunok/capcut-growth-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/fangyunok/capcut-growth-agent/actions/workflows/ci.yml)
 
-## 工作方式
+Python · Qwen · MCP · 检索增强审校 · 版本绑定的人工确认 · FFmpeg
 
-`qwen` 是真实模型模式：Ollama 运行 `qwen3:4b-instruct`，模型根据 brief 自主决定何时调用本地 MCP 的 `search_knowledge` 和 `get_editorial_rules`。应用限制工具调用次数、检查工具参数，在模型提交结构化草稿后调用 `check_draft`，生成带事实来源和调用轨迹的审核包。若模型选定了已检索的事实卡和有效正文位置、却把引用句抄错，程序会把引用句对齐到该位置的实际可见文本，并在轨迹记录原句和对齐后的句子。确定性检查覆盖事实卡 ID、禁用短语、无来源数字和引用位置；**引用对齐和规则通过都无法证明语义上得到来源支持**，编辑人员仍需逐条核对。
+这套 Agent 处理一个具体工作：**产品增长团队准备发布落地页或社媒文案时，逐句核查功能、性能和可用性说法是否有产品资料支持，并给出可审阅的修订稿。**输入已有文案、产品 ID、功能主题和语言；输出问题清单、修订文案、来源映射及执行轨迹。没有对应产品证据时停止生成修订稿，不自动发布。
 
-`offline` 使用人工整理的英、西双语事实意译和固定模板，不调用模型。它用于检查数据、MCP、审核包和拒绝证据不足请求的流程，不能代表 Qwen 的内容质量。`api` 使用同一套模型选工具的 Agent 循环，可连接自有的 Chat Completions 兼容服务；需要设置 `GROWTH_API_BASE`、`GROWTH_MODEL`，若服务启用鉴权再设置 `GROWTH_API_KEY`。兼容服务必须支持工具调用。
+核心流程与产品无关。默认资料使用 [OBS 官方知识库](https://obsproject.com/kb)作公开案例；替换 `data/audit_knowledge.json` 后可审核其他产品。演示项目与 OBS 无合作。原先基于 CapCut 公开资料的从零生成流程仍可用，但不是这个项目的主入口。
 
-`data/knowledge.json` 收录少量已核对的 CapCut 功能事实及短来源片段；`data/editorial_rules.json` 是项目自建演示规则，双语意译也不是 CapCut 官方文案。检索只覆盖这个小知识库，不会实时搜索网络。缺少对应功能事实时应停止生成或要求补充证据。
+v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短片＋字幕 → 竖屏 MP4”的媒体链路。分镜按确认文本切分，图片和短片由用户提供；音频可选，默认明确标为无声视频。运行质量与真实模型状态见 [项目状态](docs/STATE.md)。
 
-## Windows 本机启动
+## GitHub 上可以复现什么
 
-准备 Python 3.11 或更新版本，并从 [Ollama 官方 Windows 下载页](https://ollama.com/download/windows)安装 Ollama。Windows 安装版通常会在后台提供本地服务；若使用独立命令行版且服务未运行，另开 PowerShell 执行 `ollama serve`。项目默认模型是 [Ollama 模型库中的 `qwen3:4b-instruct`](https://ollama.com/library/qwen3:4b-instruct)，通过本机 `http://127.0.0.1:11434/v1` 接入。Ollama 官方文档说明了 [本地 Chat Completions 兼容接口](https://docs.ollama.com/api/openai-compatibility)和[工具调用](https://docs.ollama.com/capabilities/tool-calling)。
+| 能力 | 当前实现 |
+| --- | --- |
+| 文案审校 | 模型选择 MCP 资料 / 规则工具，输出问题、修订文案和引用；字面规则与人工语义审核分开 |
+| 基线对照 | `--strategy agent` 为模型选工具，`--strategy rag` 为固定一次检索 |
+| 审核确认 | 确认绑定文案 SHA256 和完整审核包；文本或来源改变后原确认失效 |
+| 视频合成 | 原文保留的三段模板、图片 / 短片、字幕、可选自有音频、真实 FFmpeg 输出与完整解码检查 |
+| 网页 | 本地单人审校与来源对照，任务进度、确认与失败结果；旧入口保留 |
+| 安装与测试 | 示例数据随 wheel 打包；Windows / Ubuntu CI、源码测试、独立目录安装验证 |
 
-在项目目录执行首选启动脚本：
+![本地营销审校首页](docs/assets/claim-studio-home.png)
+
+## 五分钟运行媒体示例
+
+媒体示例使用代码生成的占位图片和明确标注的模板文案，可以先验证安装和合成链路。Qwen 审校另需配置可访问的模型服务。
 
 ```powershell
+git clone https://github.com/fangyunok/capcut-growth-agent.git
 cd capcut-growth-agent
-powershell -ExecutionPolicy Bypass -File .\scripts\start_local.ps1
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[media]"
+.\.venv\Scripts\python.exe -m growth_agent media-demo --output runs
 ```
 
-脚本会检查 Ollama、在需要时启动服务并拉取模型；如果项目还没有 `.venv`，它会创建虚拟环境并安装项目依赖，然后启动 Web 页面。首次拉取模型需要网络和磁盘空间。终端显示地址后，在浏览器打开 [http://127.0.0.1:7860](http://127.0.0.1:7860)。页面默认选择“千问真实模型”；可切到“离线模板流程检查”对比运行方式。
+Linux / macOS：
 
-也可以手工准备环境并运行：
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[media]'
+.venv/bin/python -m growth_agent media-demo --output runs
+```
+
+`[media]` 是可选 FFmpeg 二进制依赖。已有系统 FFmpeg 时可只安装 `-e .`；路径也可由 `GROWTH_FFMPEG` 指定。示例成功会在输出目录生成 `video.mp4`、分镜、字幕和运行记录。
+
+![模板媒体示例，使用占位素材；没有模型输出或配音](docs/assets/template-media-preview.png)
+
+[查看三秒模板视频](docs/assets/template-media-demo.mp4)。该样例只证明媒体链路，文案质量由真实模型审校和人工来源评测另行验证。
+
+## 从审校走到实际素材视频
+
+完成下文模型配置后，运行：
 
 ```powershell
-cd capcut-growth-agent
+.\.venv\Scripts\python.exe -m growth_agent doctor
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en
+```
+
+打开该运行目录的 audit_review.md，逐句核查来源。得到 pending_review 后确认该版本，准备自己的素材清单：
+
+```powershell
+.\.venv\Scripts\python.exe -m growth_agent approve-audit --run-dir runs/<审核运行编号> --reviewer your-name
+.\.venv\Scripts\python.exe -m growth_agent storyboard --run-dir runs/<审核运行编号> --assets my-assets.json --output runs/my-storyboard.json
+.\.venv\Scripts\python.exe -m growth_agent render-video --storyboard runs/my-storyboard.json --asset-root my-assets
+```
+
+`<审核运行编号>` 替换为实际目录名。`my-assets.json` 是 1–3 项 `{asset_id, path, kind}` 的 JSON 数组；`path` 相对于 `--asset-root`，`kind` 为 `image` 或 `video`。确认后修改审核文件会使确认失效。完整格式、字体、音频和错误说明见 [媒体使用说明](docs/MEDIA.md)。
+
+人工确认记录用于本地演示，没有企业账号认证能力。网页默认绑定 loopback；[部署与 GitHub 说明](docs/GITHUB_SETUP.md)列出当前演示范围。
+
+## 工作流程
+
+```mermaid
+flowchart LR
+    A[已有中英营销文案] --> B[Qwen 选择 MCP 工具]
+    B --> C[按产品和功能检索事实卡]
+    B --> D[读取语言编辑规则]
+    C --> E[列出问题并改写]
+    D --> E
+    E --> F[校验引用位置、事实 ID、禁用短语和数字]
+    F --> G[人工审核包]
+    G --> H[人工核对来源并确认版本]
+    H --> I[三段模板分镜和用户素材]
+    I --> J[FFmpeg 合成字幕视频]
+```
+
+模型使用可本地部署的 [Qwen3-4B-Instruct](https://ollama.com/library/qwen3:4b-instruct) 权重，经 Ollama 的 Chat Completions 接口运行；[Qwen 官方项目](https://github.com/QwenLM/Qwen3)说明其开放权重采用 Apache 2.0 许可。模型自主调用本地 MCP 的 `search_knowledge` 和 `get_editorial_rules`；应用限制工具参数和回合数，随后调用 `check_draft`。若使用其他支持工具调用与 JSON 输出的兼容服务，可选 `--mode api` 并设置 `GROWTH_API_BASE`、`GROWTH_MODEL`、可选 `GROWTH_API_KEY`。
+
+程序对原文和修订文案分别检查规则。它会标记被禁用的绝对化措辞、事实卡没有支持的数字、引用事实 ID 和引文位置。**这些是确定性护栏，无法判断来源是否在语义上真正支持一句话**；状态 `pending_review` 只表示可以进入人工核查。
+
+## 直接体验
+
+准备 Python 3.11+。在仓库目录执行：
+
+```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e .
+```
+
+本机 Ollama 运行模型时：
+
+```powershell
 ollama pull qwen3:4b-instruct
+$env:GROWTH_QWEN_BASE = 'http://127.0.0.1:11434/v1'
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-recording-zh
+.\.venv\Scripts\python.exe -m growth_agent audit-eval
 .\.venv\Scripts\python.exe -m growth_agent serve --host 127.0.0.1 --port 7860
 ```
 
-如果已有 `.venv` 但缺少 Web 依赖，重跑 `.\.venv\Scripts\python.exe -m pip install -e .`。`ollama ls` 可检查已下载模型；`http://127.0.0.1:11434/v1/models` 可检查模型服务。启动脚本与 Web 服务会占用当前终端，关闭终端即停止 Web 页面。
-
-### 命令行运行与人工决定
-
-`run` 默认使用 `qwen` 模式；`demo` 默认使用 `offline` 模式，跑六条样例 brief，包括一条资料不足的配音宣传请求：
+也可按照 [AutoDL 配置](docs/AUTODL_SETUP.md)在 GPU 服务器运行 Ollama，通过 SSH 隧道把本机 `11435` 转发到远端 `11434`，然后设置：
 
 ```powershell
-.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial
-.\.venv\Scripts\python.exe -m growth_agent run --id es-bilingual-captions --mode qwen
-.\.venv\Scripts\python.exe -m growth_agent run --id en-auto-captions-tutorial --mode offline
-.\.venv\Scripts\python.exe -m growth_agent demo
+$env:GROWTH_QWEN_BASE = 'http://127.0.0.1:11435/v1'
+$env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-scene-zh
 ```
 
-每次运行写入 `runs/运行编号/bundle.json` 与 `review.md`。`pending_review` 只表示程序规则检查通过，**不表示事实已经由人工批准**。编辑人员查看来源和文案后，可记录决定；这个命令只写 `editor_decision.json`，不会发布内容：
+网页入口是 `http://127.0.0.1:7860`。默认展示中文审核表单；旧版从零生成流程在 `/generate`。单条审核的 `audit_bundle.json` 和 `audit_review.md` 保存在 `runs/<运行编号>/`。
+
+## 换成自己的产品
+
+1. 复制 `data/audit_knowledge.json`，为每条事实卡填写 `product_id`、`feature`、可核查的 `statement`、中文意译 `localized_statement.zh-CN`、`source_url`、简短的 `source_quote`、`checked_at` 和检索关键词。不同产品可放在同一文件，检索时按产品 ID 隔离。
+2. 复制 `data/audit_cases.jsonl`，把 `product_id`、`product_name`、`feature`、`original_copy`、`locale`（`en-US` 或 `zh-CN`）、`channel` 和 `audience` 换成自己的输入。
+3. 执行下面的命令；如需改编辑规则，再传入自己的 `--rules` 文件。
 
 ```powershell
-.\.venv\Scripts\python.exe -m growth_agent review --run-dir .\runs\YOUR_RUN_ID --decision approved --reviewer YourName --notes "Checked each claim against its source"
+.\.venv\Scripts\python.exe -m growth_agent audit --id your-case-id --cases .\my_cases.jsonl --knowledge .\my_knowledge.json --rules .\my_rules.json
 ```
 
-`GROWTH_QWEN_BASE` 和 `GROWTH_QWEN_MODEL` 可覆盖默认的本地服务地址与模型名；远端 AutoDL 的接入步骤见 [AutoDL 配置](docs/AUTODL_SETUP.md)。
+网页使用自定义事实库时，启动前设置 `GROWTH_AUDIT_KNOWLEDGE` 和可选 `GROWTH_AUDIT_RULES` 环境变量。事实库是人工整理的资料快照，当前版本不自动抓取网页或同步产品后台；资料更新后需要重新核对来源。
 
-## 评价与边界
+## 验证状态
 
-`data/demo_briefs.jsonl` 用于演示和流程检查，不是模型准确率样本。`data/eval_briefs.jsonl` 与 `data/eval_gold.json` 提供 24 条冻结的评测输入和预期事实 ID，可运行：
-
-```powershell
-.\.venv\Scripts\python.exe -m growth_agent eval-run --mode offline
-.\.venv\Scripts\python.exe -m growth_agent eval-run --mode qwen
-```
-
-`eval-run` 将每条运行结果和 `report.json` 放在独立的 `runs/eval-...` 目录。去除本机路径后的 v2、v4 报告分别在 [`reports/v2.json`](reports/v2.json) 和 [`reports/v4.json`](reports/v4.json)。报告中的事实 ID 覆盖、禁词命中和正确弃答是**确定性流程指标**，不能证明引文在语义上支持文案，也不能代替人工质量评估。本机 CPU 完整跑 24 条 Qwen brief 可能很慢，可在 AutoDL GPU 上按远端步骤运行。正式比较单次 Prompt、一次性 RAG 与工具 Agent 时，应冻结同一套资料和 brief，并增加盲审、重复运行、耗时与资源记录；当前不报告未经验证的质量提升或 SEO 增长数字。`docs/STATE.md` 记录了 AutoDL 实测结果和版本差异。
-
-[Google 的生成式 AI 内容指南](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content)要求关注准确性、质量与相关性，也提示批量生成无价值页面的风险。[Google 多语言站点指南](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)建议用独立 URL 和 `hreflang` 处理正式发布的多语言页面。本项目只生成草稿；排名、流量和转化需要真实站点及相应数据另行衡量。
+`python -m unittest discover -s tests -q` 覆盖工具协议、产品隔离、拒绝缺证据请求、引用位置、确认版本、媒体路径和旧版生成流程。安装媒体依赖后还会执行真实 FFmpeg 测试。最新测试数量与真实模型端到端结果以 [项目状态](docs/STATE.md)记录为准。历史 `reports/v2.json`、`reports/v4.json` 属于旧版 CapCut 英/西生成流程，**不能用作新版审校 Agent 的效果指标**。

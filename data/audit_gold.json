@@ -1,0 +1,11 @@
+{
+  "version": "audit-dev-v1-2026-09-30",
+  "scope": "Development regression labels for five OBS demo cases; not a blinded quality benchmark.",
+  "cases": [
+    {"id": "obs-virtual-camera-en", "abstain_expected": false, "must_remove": ["works with every app", "guarantees 4K"]},
+    {"id": "obs-recording-zh", "abstain_expected": false, "must_remove": ["保证所有电脑直播零卡顿", "最优设置", "不需要测试"]},
+    {"id": "obs-scene-zh", "abstain_expected": false, "must_remove": ["保证观众永远看不到任何错误"]},
+    {"id": "obs-remux-en", "abstain_expected": false, "must_remove": ["automatically publishes every recording"]},
+    {"id": "obs-missing-evidence-zh", "abstain_expected": true, "must_remove": []}
+  ]
+}

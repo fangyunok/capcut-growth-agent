@@ -1,0 +1,97 @@
+{
+  "catalog_version": "obs-public-docs-2026-09-30",
+  "scope": "Replace this catalog with sourced facts for another product; product_id isolates tenants.",
+  "facts": [
+    {
+      "id": "obs-wizard",
+      "product_id": "obs-studio",
+      "feature": "recording-setup",
+      "statement": "OBS Studio's Auto-Configuration Wizard considers the user's recording or streaming goal, hardware, and network conditions when suggesting settings.",
+      "localized_statement": {"zh-CN": "OBS Studio 的自动配置向导会考虑录制或直播目标、电脑硬件，以及直播时的网络状况来建议设置。"},
+      "source_quote": "your computer's hardware resources, and your network conditions",
+      "source_url": "https://obsproject.com/kb/quick-start-guide",
+      "source_title": "Quick Start Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["auto-configuration wizard", "recording setup", "自动配置向导", "录制设置", "直播设置"],
+      "availability_note": "The guide does not guarantee lag-free recording or a particular quality on every computer."
+    },
+    {
+      "id": "obs-test-recording",
+      "product_id": "obs-studio",
+      "feature": "recording-setup",
+      "statement": "OBS recommends running a short test recording or stream before the real session to check settings.",
+      "localized_statement": {"zh-CN": "OBS 建议在正式录制或直播前先做几分钟测试，检查设置是否合适。"},
+      "source_quote": "strongly encourage running a test for a few minutes",
+      "source_url": "https://obsproject.com/kb/quick-start-guide",
+      "source_title": "Quick Start Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["test recording", "test stream", "测试录制", "测试直播"],
+      "availability_note": "A test is recommended because actual performance varies with equipment and settings."
+    },
+    {
+      "id": "obs-scene-sources",
+      "product_id": "obs-studio",
+      "feature": "scene-switching",
+      "statement": "OBS scenes can contain sources such as windows, webcams, images, and text.",
+      "localized_statement": {"zh-CN": "OBS 场景可以组合窗口、摄像头、图片和文字等来源。"},
+      "source_quote": "add whatever you want to capture ... window ... image, text or your entire display",
+      "source_url": "https://obsproject.com/kb/sources-guide",
+      "source_title": "Sources Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["scene", "source", "window capture", "webcam", "场景", "来源", "摄像头"],
+      "availability_note": "Source availability can vary by operating system."
+    },
+    {
+      "id": "obs-studio-mode",
+      "product_id": "obs-studio",
+      "feature": "scene-switching",
+      "statement": "In Studio Mode, OBS shows the live scene and a separate edit scene; the user can transition the edited scene to live output.",
+      "localized_statement": {"zh-CN": "OBS 工作室模式把直播画面和待编辑画面分开，用户可以编辑后再切换到直播输出。"},
+      "source_quote": "current Live Scene ... on the right while your edit Scene on the left",
+      "source_url": "https://obsproject.com/kb/obs-studio-overview",
+      "source_title": "OBS Studio Overview Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["studio mode", "preview", "transition", "工作室模式", "预览", "场景切换"],
+      "availability_note": "This workflow does not guarantee error-free production."
+    },
+    {
+      "id": "obs-virtual-camera",
+      "product_id": "obs-studio",
+      "feature": "virtual-camera",
+      "statement": "OBS Studio's Virtual Camera can send an OBS scene to applications that accept a webcam input.",
+      "localized_statement": {"zh-CN": "OBS Studio 的虚拟摄像头可把场景输出到接受摄像头输入的应用。"},
+      "source_quote": "share your OBS Studio scene with any applications that can make use of a webcam",
+      "source_url": "https://obsproject.com/kb/virtual-camera-guide",
+      "source_title": "Virtual Camera Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["virtual camera", "webcam application", "虚拟摄像头", "视频会议"],
+      "availability_note": "Compatibility depends on whether the receiving application can use a webcam."
+    },
+    {
+      "id": "obs-virtual-camera-start",
+      "product_id": "obs-studio",
+      "feature": "virtual-camera",
+      "statement": "The OBS Virtual Camera can be started from the Controls dock using Start Virtual Camera.",
+      "localized_statement": {"zh-CN": "可以在 OBS 的控制区点击“启动虚拟摄像头”来开启该功能。"},
+      "source_quote": "click Start Virtual Camera in the Controls dock",
+      "source_url": "https://obsproject.com/kb/virtual-camera-guide",
+      "source_title": "Virtual Camera Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["start virtual camera", "controls dock", "启动虚拟摄像头", "控制区"],
+      "availability_note": "Interface labels can vary by locale and version."
+    },
+    {
+      "id": "obs-recording-remux",
+      "product_id": "obs-studio",
+      "feature": "recording-output",
+      "statement": "OBS has a Remux Recordings workflow for converting a recording into MP4 for editing or uploading.",
+      "localized_statement": {"zh-CN": "OBS 提供“重新封装录制文件”流程，可把录制文件转成 MP4，方便后续剪辑或上传。"},
+      "source_quote": "If you record in a file format that is not mp4 ... OBS has that built in for you",
+      "source_url": "https://obsproject.com/kb/standard-recording-output-guide",
+      "source_title": "Standard Recording Output Guide | OBS",
+      "checked_at": "2026-09-30",
+      "keywords": ["remux recordings", "mp4", "recording output", "重新封装", "录制输出"],
+      "availability_note": "Remuxing is a local file conversion; the guide does not describe automatic social publishing."
+    }
+  ]
+}

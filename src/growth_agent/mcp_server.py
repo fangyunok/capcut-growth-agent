@@ -12,6 +12,7 @@ from mcp.server import MCPServer
 from pydantic import BaseModel, Field
 
 from growth_agent.knowledge import KnowledgeBase
+from growth_agent.resources import DEFAULT_AUDIT_KNOWLEDGE, DEFAULT_AUDIT_RULES
 
 
 class SearchResponse(BaseModel):
@@ -65,8 +66,17 @@ def create_server(knowledge_path: str | Path, rules_path: str | Path) -> MCPServ
     if not isinstance(rule_data, dict) or not isinstance(rule_data.get("locales"), dict):
         raise ValueError("Editorial rules must contain a 'locales' object")
     locales = rule_data["locales"]
+    for locale, rules in locales.items():
+        if not isinstance(locale, str) or not isinstance(rules, dict):
+            raise ValueError("Editorial locales must map language codes to rule objects")
+        for field in ("tone", "cta"):
+            if not isinstance(rules.get(field), str) or not rules[field].strip():
+                raise ValueError(f"Editorial rules for {locale} require a nonblank {field}")
+        phrases = rules.get("forbidden_phrases")
+        if not isinstance(phrases, list) or not all(isinstance(phrase, str) and phrase.strip() for phrase in phrases):
+            raise ValueError(f"Editorial rules for {locale} require a list of nonblank forbidden_phrases")
     disclaimer = str(rule_data.get("disclaimer", ""))
-    server = MCPServer("CapCut Growth Knowledge", version="0.1.0")
+    server = MCPServer("Product Evidence Review", version="0.2.0")
 
     def locale_rules(locale: str) -> dict:
         rules = locales.get(locale)
@@ -77,11 +87,11 @@ def create_server(knowledge_path: str | Path, rules_path: str | Path) -> MCPServ
         return rules
 
     @server.tool()
-    def search_knowledge(query: str, top_k: int = 5) -> SearchResponse:
-        """Search the curated public CapCut fact catalog for source-backed evidence."""
+    def search_knowledge(query: str, top_k: int = 5, product_id: str = "") -> SearchResponse:
+        """Search the selected product fact catalog for source-backed evidence."""
         if not 1 <= top_k <= 20:
             raise ValueError("top_k must be between 1 and 20")
-        results = knowledge.search(query, top_k=top_k)
+        results = knowledge.search(query, top_k=top_k, product_id=product_id)
         return SearchResponse(query=query, results=results, count=len(results))
 
     @server.tool()
@@ -134,10 +144,9 @@ def create_server(knowledge_path: str | Path, rules_path: str | Path) -> MCPServ
     return server
 
 
-_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 mcp = create_server(
-    _PROJECT_ROOT / "data" / "knowledge.json",
-    _PROJECT_ROOT / "data" / "editorial_rules.json",
+    DEFAULT_AUDIT_KNOWLEDGE,
+    DEFAULT_AUDIT_RULES,
 )
 
 

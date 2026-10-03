@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from datetime import date
 import json
 from pathlib import Path
 import re
 import unicodedata
+from urllib.parse import urlsplit
 
 
 _STOPWORDS = {
@@ -58,8 +60,31 @@ class KnowledgeBase:
                 raise ValueError(f"Fact at index {position} is missing required fields")
             if not isinstance(fact["id"], str) or not fact["id"].strip():
                 raise ValueError(f"Fact at index {position} has an invalid ID")
+            for field in ("feature", "statement", "source_quote", "source_url", "source_title", "checked_at"):
+                if not isinstance(fact[field], str) or not fact[field].strip():
+                    raise ValueError(f"Fact {fact['id']} has invalid {field}; a nonblank string is required")
+            if not isinstance(fact["availability_note"], str):
+                raise ValueError(f"Fact {fact['id']} has invalid availability_note")
+            source = urlsplit(fact["source_url"])
+            if source.scheme not in {"https", "http"} or not source.hostname or source.username or source.password:
+                raise ValueError(f"Fact {fact['id']} requires an HTTP(S) source URL without credentials")
+            try:
+                date.fromisoformat(fact["checked_at"])
+            except ValueError as exc:
+                raise ValueError(f"Fact {fact['id']} requires checked_at in YYYY-MM-DD format") from exc
+            if "product_id" in fact and (
+                not isinstance(fact["product_id"], str) or not fact["product_id"].strip()
+            ):
+                raise ValueError(f"Fact {fact['id']} has an invalid product_id")
+            localized = fact.get("localized_statement", {})
+            if not isinstance(localized, dict) or not all(
+                isinstance(locale, str) and locale.strip()
+                and isinstance(text, str) and text.strip()
+                for locale, text in localized.items()
+            ):
+                raise ValueError(f"Fact {fact['id']} requires a locale-to-nonblank-text mapping")
             if not isinstance(fact["keywords"], list) or not all(
-                isinstance(keyword, str) for keyword in fact["keywords"]
+                isinstance(keyword, str) and keyword.strip() for keyword in fact["keywords"]
             ):
                 raise ValueError(f"Fact {fact['id']} must have a string keywords list")
         return cls(data["facts"])
@@ -71,7 +96,7 @@ class KnowledgeBase:
     def all(self) -> list[dict]:
         return deepcopy(self._facts)
 
-    def search(self, query: str, top_k: int = 5) -> list[dict]:
+    def search(self, query: str, top_k: int = 5, product_id: str = "") -> list[dict]:
         if top_k <= 0 or not query.strip():
             return []
         query_terms = _terms(query)
@@ -81,6 +106,8 @@ class KnowledgeBase:
         ranked: list[tuple[int, str, dict]] = []
 
         for fact in self._facts:
+            if product_id and fact.get("product_id") != product_id:
+                continue
             feature_terms = _terms(fact["feature"] + " " + fact["id"])
             keyword_terms = _terms(" ".join(fact["keywords"]))
             statement_terms = _terms(fact["statement"])
