@@ -14,28 +14,39 @@
 - wheel 随包附带 15 份公开示例数据；离开源码目录也能加载资料与 MCP 默认配置。提供 Windows／Ubuntu、Python 3.11／3.12 CI，以及安装包、HTTP 和实际媒体合成检查。
 - **检索链路已实测**：五种策略（词法／BM25／向量／混合／混合＋重排）经同一接口切换，MCP 工具签名不变，默认仍是原始词法实现以保持基线。知识库 690 张真实事实卡来自 110 个公开 OBS 文档页面，每张卡的引文都由程序校验为来源页面的逐字子串。主题级评测（60 条自然语言查询）Hit@5 从词法 10.0% 提升到混合＋重排 43.3%，中文查询分组从 0.0% 提升到 33.3%，产品泄漏在所有策略上恒为 0。详见 [检索结果](RETRIEVAL_RESULTS.md)。
 - **审校用例已拆分开发集与留出集**：`--suite curated` 为开发集（20 条），`--suite test` 为留出集（20 条，写于检索改造之后、未参与本轮任何调参）。两套中英各半、互不重叠，且合并后覆盖全部 7 张事实卡；套件完整性由 9 项测试约束（不再硬编码条数）。
+- **真实 Qwen 端到端评测已完成（2026-10-04）**。模型 `qwen3:4b-instruct`（Q4_K_M）经 Ollama 运行在 AutoDL 的 RTX 3090 24 GB 上，Ollama 上下文 8192，本机经 SSH 隧道调用，检索走默认词法策略。两套用例的真实结果：
+
+  | 指标 | 开发集 20 条 | 留出集 20 条 |
+  | --- | --- | --- |
+  | 流程成功（`pending_review` 且规则通过） | 8/20 = 40.0% | 13/20 = 65.0% |
+  | 缺证据正确弃答 | 4/4 = **100%** | 4/4 = **100%** |
+  | 必须删除的风险短语被删除 | 13/28 = 46.4% | 16/21 = 76.2% |
+  | 引用结构合规 | 7/7 = **100%** | 11/11 = **100%** |
+
+  没有任何执行期异常。**留出集高于开发集，说明结果未过拟合到开发集**。两个硬保证（缺证据弃答、引用结构）在两套上都是满分。未通过用例的根因是模型输出的 JSON 未通过 schema 校验（`proposal_invalid`，`ValueError`，3 次尝试后触发返修上限），即**结构化输出的稳定性不足**，而非检索或弃答失效。单条审校约 15 秒（约 5 次模型调用）。原始报告见 `reports/audit-dev-agent-report.json` 与 `reports/audit-test-agent-report.json`（逐条运行包在 `runs/` 下，未入库）。
 
 ## 尚待验证
 
-- **新版真实 Qwen 端到端验证尚未完成**。用户提供了当前 AutoDL 地址及已有免密公钥；本机 SSH 隧道仍未连通。代码、界面和媒体检查继续进行，不把模型服务缺失包装成成功。
-- 20 条中英评测用例由开发时可见的资料与需求设计，另有 5 条开发样例；它们不是盲测、独立评测或未见测试集。真实模型结果与人工来源判定尚未生成。
+- **端到端数字只反映 4B 模型在默认词法检索下的表现**。未测更大模型（14B 以上）、未测 `--strategy rag`、未测向量或重排检索下的端到端效果，因此上面的数字**不是**该架构的上限。40%–65% 的流程成功率说明当前配置尚不足以直接用于发布流程。
+- **未做人工来源语义判定**。`pending_review` 只表示规则与引用结构通过；程序不判断来源在语义上是否真正支持某句话，所以报告里没有"事实准确率"。
+- 两套用例各 20 条，由本人在来源可见的情况下自行标注，**不是盲测、独立评测或未见测试集**；样本量只够验证流程，不足以支撑细分维度的统计结论。
 - **检索的绝对水平仍然偏低**：最好的策略在主题级评测上 Hit@5 也只有 43.3%，不足以支撑生产使用。只在本机 CPU 上测过 `bge-small-zh-v1.5` 与 `bge-reranker-base`，GPU 推理与更大的 bge-m3 **尚未测量**。重排把 60 条查询耗时从 3.4 秒放大约 34 倍到 114.6 秒，尚未做延迟优化。
 - 60 条主题级查询每条只接受一个预期主题，标注偏严；部分查询（例如限幅与压缩）在语义上存在多个合理答案，因此报告的数字是保守估计。
 - 检索层与审校流程是两套独立测量，`topic-eval` 的命中率**不能**换算成事实准确率或可发布率。
 - 没有真实内容准确率、增长转化率或生产并发数据。GitHub 提供源码、演示资产及 CI；当前网页是本地单用户工具。Docker 配置已提供，本机未安装 Docker，未声称镜像构建通过。
 - `pending_review` 表示规则和引用结构允许进入人工审核；程序不会判断来源在语义上是否真正支持一句话。审核者为本地署名，无企业身份认证。
 
-## 恢复真实模型验证
+## 真实模型验证复现
 
-SSH 隧道可用后，在项目目录设置服务并先检查：
+实际使用的配置：AutoDL RTX 3090 24 GB 运行 Ollama（`OLLAMA_CONTEXT_LENGTH=8192`），本机经 SSH 隧道调用。注意 Ollama 在**无 GPU 时会回落到 4096 上下文**，因此必须确认 `nvidia-smi` 能看到 GPU 再跑评测。部署与选型细节见 [AutoDL 配置](AUTODL_SETUP.md)。
 
 ```powershell
 $env:GROWTH_QWEN_BASE = 'http://127.0.0.1:11435/v1'
 $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 .\.venv\Scripts\python.exe -m growth_agent doctor
-.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en
-.\.venv\Scripts\python.exe -m growth_agent audit --id obs-recording-zh
-.\.venv\Scripts\python.exe -m growth_agent audit --id obs-missing-evidence-zh
+.\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en --mode qwen
+.\.venv\Scripts\python.exe -m growth_agent audit-eval --suite curated --strategy agent --mode qwen --output runs\audit-dev-agent
+.\.venv\Scripts\python.exe -m growth_agent audit-eval --suite test --strategy agent --mode qwen --output runs\audit-test-agent
 ```
 
 逐条检查审核包的引用、删改和语言质量，再执行 [评测方案](EVALUATION.md)。旧版 `reports/v2.json`、`reports/v4.json` 的 24 条数据仅评价历史 CapCut 草稿生成，不能移用到这项审校任务。

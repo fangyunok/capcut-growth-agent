@@ -1,0 +1,215 @@
+{
+  "scope": "Twenty curated EN/ZH evaluation cases designed with the implementation requirements and source cards visible. Distinct from the five development demos, but not a blinded, independent, or unseen benchmark. Labels support workflow, literal-removal, product-isolation, and source-ID coverage checks only; they do not establish semantic factual accuracy or language quality.",
+  "semantic_support_measured": false,
+  "cases": 20,
+  "workflow_success": {
+    "numerator": 8,
+    "denominator": 20,
+    "rate": 0.4
+  },
+  "correct_abstention": {
+    "numerator": 4,
+    "denominator": 4,
+    "rate": 1.0
+  },
+  "required_risk_phrases_removed": {
+    "numerator": 13,
+    "denominator": 28,
+    "rate": 0.4642857142857143
+  },
+  "citation_structure": {
+    "numerator": 7,
+    "denominator": 7,
+    "rate": 1.0
+  },
+  "per_case": [
+    {
+      "id": "audit-eval-01-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070320382616Z-audit-audit-eval-01-en"
+    },
+    {
+      "id": "audit-eval-02-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070333765166Z-audit-audit-eval-02-zh"
+    },
+    {
+      "id": "audit-eval-03-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070348130607Z-audit-audit-eval-03-en"
+    },
+    {
+      "id": "audit-eval-04-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070358721081Z-audit-audit-eval-04-zh"
+    },
+    {
+      "id": "audit-eval-05-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070410468220Z-audit-audit-eval-05-en"
+    },
+    {
+      "id": "audit-eval-06-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070421546502Z-audit-audit-eval-06-zh"
+    },
+    {
+      "id": "audit-eval-07-en",
+      "status": "pending_review",
+      "expected_abstention": false,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070432099397Z-audit-audit-eval-07-en"
+    },
+    {
+      "id": "audit-eval-08-zh",
+      "status": "pending_review",
+      "expected_abstention": false,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070439769533Z-audit-audit-eval-08-zh"
+    },
+    {
+      "id": "audit-eval-09-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "automatically fix every production mistake",
+        "guarantee zero errors"
+      ],
+      "run_id": "20261004T070444956874Z-audit-audit-eval-09-en"
+    },
+    {
+      "id": "audit-eval-10-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "保证观众永远看不到任何错误",
+        "自动修复每一次操作失误"
+      ],
+      "run_id": "20261004T070452955940Z-audit-audit-eval-10-zh"
+    },
+    {
+      "id": "audit-eval-11-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "works with every app",
+        "guaranteed 4K",
+        "zero latency"
+      ],
+      "run_id": "20261004T070502077031Z-audit-audit-eval-11-en"
+    },
+    {
+      "id": "audit-eval-12-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "兼容所有会议软件",
+        "保证零卡顿",
+        "每次通话都达到 4K"
+      ],
+      "run_id": "20261004T070511735035Z-audit-audit-eval-12-zh"
+    },
+    {
+      "id": "audit-eval-13-en",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "automatically publishes every recording",
+        "all social platforms",
+        "upgrades it to 8K"
+      ],
+      "run_id": "20261004T070524357491Z-audit-audit-eval-13-en"
+    },
+    {
+      "id": "audit-eval-14-zh",
+      "status": "needs_revision",
+      "expected_abstention": false,
+      "workflow_success": false,
+      "remaining_required_removals": [
+        "自动发布到所有平台",
+        "画质提升到 8K"
+      ],
+      "run_id": "20261004T070533329780Z-audit-audit-eval-14-zh"
+    },
+    {
+      "id": "audit-eval-15-en",
+      "status": "insufficient_evidence",
+      "expected_abstention": true,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070542862208Z-audit-audit-eval-15-en"
+    },
+    {
+      "id": "audit-eval-16-zh",
+      "status": "insufficient_evidence",
+      "expected_abstention": true,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070543675512Z-audit-audit-eval-16-zh"
+    },
+    {
+      "id": "audit-eval-17-en",
+      "status": "insufficient_evidence",
+      "expected_abstention": true,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070544548071Z-audit-audit-eval-17-en"
+    },
+    {
+      "id": "audit-eval-18-zh",
+      "status": "insufficient_evidence",
+      "expected_abstention": true,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070545362906Z-audit-audit-eval-18-zh"
+    },
+    {
+      "id": "audit-eval-19-en",
+      "status": "pending_review",
+      "expected_abstention": false,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070546249920Z-audit-audit-eval-19-en"
+    },
+    {
+      "id": "audit-eval-20-zh",
+      "status": "pending_review",
+      "expected_abstention": false,
+      "workflow_success": true,
+      "remaining_required_removals": [],
+      "run_id": "20261004T070556426378Z-audit-audit-eval-20-zh"
+    }
+  ],
+  "batch": {
+    "mode": "qwen",
+    "strategy": "agent",
+    "suite": "curated",
+    "data_version": "audit-curated-eval-v1-2026-10-03",
+    "execution_errors": []
+  }
+}
