@@ -2,9 +2,27 @@
 
 ## 数据和指标边界
 
-`data/audit_cases.jsonl` / `audit_gold.json` 为 5 条开发样例。`audit_eval_cases.jsonl` / `audit_eval_gold.json` 为另行编写的 20 条中英用例：正常产品主张、夸大性能、无来源数字、缺失功能、错误产品及合成的指令注入文本。标注包含预期弃答、必须删除的字面片段与相关来源 ID。
+三套输入，角色不同：
 
-这 20 条用例是在需求及来源可见时设计，**不是盲测、独立评测或未见测试集**。当前没有新版真实模型结果，自动化单元测试中的脚本化模型不得计入模型评测。
+| 文件 | 角色 | 条数 |
+| --- | --- | --- |
+| `audit_cases.jsonl` / `audit_gold.json` | 演示样例，用于跑通流程（`--suite dev`） | 5 |
+| `audit_eval_cases.jsonl` / `audit_eval_gold.json` | **开发集**（`--suite curated`） | 20 |
+| `audit_test_cases.jsonl` / `audit_test_gold.json` | **留出集**（`--suite test`） | 20 |
+
+三套都覆盖正常产品主张、夸大性能、无来源数字、缺失功能、错误产品及合成的指令注入文本。标注包含预期弃答、必须删除的字面片段与相关来源 ID。每个套件内中英各半，两套互不重叠，也不与演示样例重叠。
+
+**为什么要分开开发集与留出集**：开发集在调整 prompt 与规则时可以反复查看；留出集写于检索改造完成之后，**未参与本轮任何调参决策**，因此它的数字可以按样本外结果报告。
+
+**但它仍然不是盲测。** 留出集的作者在编写时能看到来源卡片，所以它由本项目自行标注，不是独立第三方评测，也不是未见数据。自动化单元测试里的脚本化模型不得计入模型评测。
+
+```powershell
+# 开发集：调 prompt 时使用
+.\.venv\Scripts\python.exe -m growth_agent audit-eval --suite curated --strategy agent --mode qwen --report reports/audit-dev-agent.json
+
+# 留出集：只在报告最终数字时跑，且报告后不应据此改 prompt
+.\.venv\Scripts\python.exe -m growth_agent audit-eval --suite test --strategy agent --mode qwen --report reports/audit-test-agent.json
+```
 
 程序自动报告：流程状态达标比例、缺证据正确弃答比例、指定风险片段删除比例、引用 ID／文本位置合法比例。分子和分母同时保存，单例异常也留在统计中；批次不会跳过失败请求，已有报告不会覆盖。引用结构合法不代表来源在语义上支持该主张。
 

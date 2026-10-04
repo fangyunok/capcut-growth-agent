@@ -178,10 +178,13 @@ def evaluate_feature_retrieval(
     leakage = 0
     per_case: list[dict[str, Any]] = []
 
-    for item in queries:
-        results = catalog.search(
-            item["query"], top_k=top_k, product_id=item["product_id"]
-        )
+    # One batched call instead of one per query: the reranked strategy can then
+    # run its cross-encoder over all candidates at once.
+    all_results = catalog.search_many(
+        [(item["query"], item["product_id"]) for item in queries], top_k=top_k
+    )
+
+    for item, results in zip(queries, all_results):
         features = [card["feature"] for card in results]
         expected = item["expected_feature"]
         rank = features.index(expected) + 1 if expected in features else None

@@ -91,3 +91,21 @@ class KnowledgeBase:
         self, query: str, top_k: int = 5, product_id: str = ""
     ) -> list[dict[str, Any]]:
         return self._retriever.search(query, top_k=top_k, product_id=product_id)
+
+    def search_many(
+        self, requests: list[tuple[str, str]], top_k: int = 5
+    ) -> list[list[dict[str, Any]]]:
+        """Search several (query, product_id) pairs.
+
+        Strategies that can batch — currently the reranked hybrid — receive every
+        request at once, which lets the cross-encoder run on large batches
+        instead of many small ones. Strategies without that ability fall back to
+        sequential search, so the interface stays usable for all of them.
+        """
+        batched = getattr(self._retriever, "search_many", None)
+        if callable(batched):
+            return batched(requests, top_k=top_k)
+        return [
+            self.search(query, top_k=top_k, product_id=product_id)
+            for query, product_id in requests
+        ]

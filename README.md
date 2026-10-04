@@ -134,6 +134,8 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 
 设计与实测结果见 [检索链路](docs/RETRIEVAL.md) 与 [检索结果](docs/RETRIEVAL_RESULTS.md)。向量与重排策略需要可选依赖：`.\.venv\Scripts\python.exe -m pip install -e ".[embed]"`。
 
+审校用例拆成两套：`--suite curated` 是开发集（20 条），`--suite test` 是留出集（20 条，写于检索改造之后、未参与本轮任何调参）。两套中英各半、互不重叠，合并后覆盖全部来源卡；套件完整性由测试约束，而不是硬编码条数。
+
 ## 换成自己的产品
 
 1. 复制 `data/audit_knowledge.json`，为每条事实卡填写 `product_id`、`feature`、可核查的 `statement`、中文意译 `localized_statement.zh-CN`、`source_url`、简短的 `source_quote`、`checked_at` 和检索关键词。不同产品可放在同一文件，检索时按产品 ID 隔离。

@@ -19,6 +19,7 @@ from .resources import (
     DEFAULT_KNOWLEDGE, DEFAULT_RULES, DEFAULT_OUTPUT_ROOT, DEFAULT_DEMO_BRIEFS,
     DEFAULT_EVAL_BRIEFS, DEFAULT_EVAL_GOLD, DEFAULT_AUDIT_CASES, DEFAULT_AUDIT_GOLD, DATA_DIR,
     DEFAULT_AUDIT_KNOWLEDGE_OBS, DEFAULT_RETRIEVAL_QUERIES,
+    DEFAULT_AUDIT_TEST_CASES, DEFAULT_AUDIT_TEST_GOLD,
 )
 
 
@@ -65,6 +66,14 @@ async def _audit_eval_execute(args: argparse.Namespace) -> int:
             args.cases = DATA_DIR / "audit_eval_cases.jsonl"
         if args.gold == DEFAULT_AUDIT_GOLD:
             args.gold = DATA_DIR / "audit_eval_gold.json"
+    elif args.suite == "test":
+        # The held-out suite. It was written after the retrieval work and was
+        # not used for any tuning decision, so its numbers may be reported as
+        # out-of-sample. The development suite is ``curated``.
+        if args.cases == DEFAULT_AUDIT_CASES:
+            args.cases = DEFAULT_AUDIT_TEST_CASES
+        if args.gold == DEFAULT_AUDIT_GOLD:
+            args.gold = DEFAULT_AUDIT_TEST_GOLD
     requests = load_audit_requests(args.cases)
     gold = json.loads(args.gold.read_text(encoding="utf-8"))
     if {item.id for item in requests} != {case["id"] for case in gold["cases"]}:
@@ -356,7 +365,7 @@ def main(argv: list[str] | None = None) -> int:
     audit_eval = sub.add_parser("audit-eval", help="Run development or curated EN/ZH workflow evaluation")
     audit_eval.add_argument("--mode", choices=("qwen", "api"), default="qwen")
     audit_eval.add_argument("--strategy", choices=("agent", "rag"), default="agent")
-    audit_eval.add_argument("--suite", choices=("dev", "curated"), default="dev")
+    audit_eval.add_argument("--suite", choices=("dev", "curated", "test"), default="dev")
     audit_eval.add_argument("--cases", type=Path, default=DEFAULT_AUDIT_CASES)
     audit_eval.add_argument("--gold", type=Path, default=DEFAULT_AUDIT_GOLD)
     audit_eval.add_argument("--knowledge", type=Path, default=DEFAULT_AUDIT_KNOWLEDGE)
