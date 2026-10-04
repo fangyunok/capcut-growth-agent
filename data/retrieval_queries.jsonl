@@ -1,0 +1,60 @@
+{"id": "rq-001", "query": "use my scene as a webcam inside another program", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "virtual-camera-guide"}
+{"id": "rq-002", "query": "把画面当成摄像头给会议软件用", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "virtual-camera-guide"}
+{"id": "rq-003", "query": "balance desktop sound against the microphone", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "audio-mixer-guide"}
+{"id": "rq-004", "query": "调整系统声音和人声的音量比例", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "audio-mixer-guide"}
+{"id": "rq-005", "query": "record fullscreen gameplay without slowdown", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "game-capture-setup-guide"}
+{"id": "rq-006", "query": "低开销录制全屏游戏画面", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "game-capture-setup-guide"}
+{"id": "rq-007", "query": "put a web page on screen as a layer", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "browser-source"}
+{"id": "rq-008", "query": "把网页当成一个画面图层显示", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "browser-source"}
+{"id": "rq-009", "query": "place a logo picture into the scene", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "image-sources"}
+{"id": "rq-010", "query": "在画面里放一张 logo 图片", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "image-sources"}
+{"id": "rq-011", "query": "fill the background with one flat colour", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "color-source"}
+{"id": "rq-012", "query": "用纯色填满背景", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "color-source"}
+{"id": "rq-013", "query": "quiet down loud peaks in the microphone", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "compressor-filter"}
+{"id": "rq-014", "query": "自动压低麦克风里过高的音量", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "compressor-filter"}
+{"id": "rq-015", "query": "never let the volume go above a ceiling", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "limiter-filter"}
+{"id": "rq-016", "query": "给音量设一个上限防止爆音", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "limiter-filter"}
+{"id": "rq-017", "query": "make a faint microphone louder", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "gain-filter"}
+{"id": "rq-018", "query": "放大很轻的麦克风声音", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "gain-filter"}
+{"id": "rq-019", "query": "let the graphics card do the video encoding", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "hardware-encoding"}
+{"id": "rq-020", "query": "用显卡来做视频编码", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "hardware-encoding"}
+{"id": "rq-021", "query": "a recording format that survives a crash", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "hybrid-mp4"}
+{"id": "rq-022", "query": "录制中断也不会损坏的文件格式", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "hybrid-mp4"}
+{"id": "rq-023", "query": "begin and end recording with a key combination", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "keyboard-shortcuts"}
+{"id": "rq-024", "query": "用快捷键开始和结束录制", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "keyboard-shortcuts"}
+{"id": "rq-025", "query": "grant screen access on a Mac", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "macos-permissions-guide"}
+{"id": "rq-026", "query": "在苹果电脑上授权屏幕录制权限", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "macos-permissions-guide"}
+{"id": "rq-027", "query": "start the program with command line options", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "launch-parameters"}
+{"id": "rq-028", "query": "用命令行参数启动程序", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "launch-parameters"}
+{"id": "rq-029", "query": "make a layer glide across the canvas", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "dve-animating-sources-tutorial"}
+{"id": "rq-030", "query": "让素材在画布上平移移动", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "dve-animating-sources-tutorial"}
+{"id": "rq-031", "query": "hide part of a layer using a picture", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "image-mask-blend-filter"}
+{"id": "rq-032", "query": "用一张图片遮住图层的部分区域", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "image-mask-blend-filter"}
+{"id": "rq-033", "query": "the shape of the output canvas", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "aspect-ratio-guide"}
+{"id": "rq-034", "query": "输出画布的长宽比例", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "aspect-ratio-guide"}
+{"id": "rq-035", "query": "mute background hiss when nobody talks", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "noise-gate-filter"}
+{"id": "rq-036", "query": "没人说话时自动静音背景杂音", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "noise-gate-filter"}
+{"id": "rq-037", "query": "remove room noise from speech", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "noise-suppression-filter"}
+{"id": "rq-038", "query": "去掉人声里的环境噪声", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "noise-suppression-filter"}
+{"id": "rq-039", "query": "write a title on the stream", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "text-sources"}
+{"id": "rq-040", "query": "在画面上打字幕文字", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "text-sources"}
+{"id": "rq-041", "query": "grab just one application window", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "window-capture-sources"}
+{"id": "rq-042", "query": "只抓取某一个应用程序窗口", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "window-capture-sources"}
+{"id": "rq-043", "query": "grab the whole monitor", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "display-capture-sources"}
+{"id": "rq-044", "query": "抓取整个显示器的画面", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "display-capture-sources"}
+{"id": "rq-045", "query": "what hardware the program needs to run", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "system-requirements"}
+{"id": "rq-046", "query": "运行这个软件需要什么配置", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "system-requirements"}
+{"id": "rq-047", "query": "convert a finished recording to another format", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "transcodes-transcoding"}
+{"id": "rq-048", "query": "把录好的文件转成别的格式", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "transcodes-transcoding"}
+{"id": "rq-049", "query": "animate a logo wipe between scenes", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "track-matte-stinger-transitions"}
+{"id": "rq-050", "query": "场景切换时的动画特效", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "track-matte-stinger-transitions"}
+{"id": "rq-051", "query": "let someone else control the scene from a phone", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "remote-control-guide"}
+{"id": "rq-052", "query": "让人用手机远程控制场景", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "remote-control-guide"}
+{"id": "rq-053", "query": "keep separate settings for different shows", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "profiles"}
+{"id": "rq-054", "query": "为不同的节目保存不同的设置", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "profiles"}
+{"id": "rq-055", "query": "switch between whole sets of scenes", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "scene-collections"}
+{"id": "rq-056", "query": "在多套场景组合之间切换", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "scene-collections"}
+{"id": "rq-057", "query": "use more than two audio channels", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "surround-sound-guide"}
+{"id": "rq-058", "query": "使用超过两个声道的音频", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "surround-sound-guide"}
+{"id": "rq-059", "query": "pick a quality preset for recordings", "locale": "en-US", "product_id": "obs-studio", "expected_feature": "recording-encoder-presets-guide"}
+{"id": "rq-060", "query": "选择录制的画质预设", "locale": "zh-CN", "product_id": "obs-studio", "expected_feature": "recording-encoder-presets-guide"}

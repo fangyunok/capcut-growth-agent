@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/fangyunok/claim-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/fangyunok/claim-studio/actions/workflows/ci.yml)
 
-Python · Qwen · MCP · 检索增强审校 · 版本绑定的人工确认 · FFmpeg
+Python · Qwen · MCP · 混合检索（BM25 ＋ 向量 ＋ 重排）· 版本绑定的人工确认 · FFmpeg
 
 这套 Agent 处理一个具体工作：**产品增长团队准备发布落地页或社媒文案时，逐句核查功能、性能和可用性说法是否有产品资料支持，并给出可审阅的修订稿。**输入已有文案、产品 ID、功能主题和语言；输出问题清单、修订文案、来源映射及执行轨迹。没有对应产品证据时停止生成修订稿，不自动发布。
 
@@ -16,6 +16,7 @@ v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短�
 | --- | --- |
 | 文案审校 | 模型选择 MCP 资料 / 规则工具，输出问题、修订文案和引用；字面规则与人工语义审核分开 |
 | 基线对照 | `--strategy agent` 为模型选工具，`--strategy rag` 为固定一次检索 |
+| 检索链路 | `lexical` / `bm25` / `vector` / `hybrid` / `hybrid-rerank` 五种策略经同一接口切换并对比，MCP 工具签名不变 |
 | 审核确认 | 确认绑定文案 SHA256 和完整审核包；文本或来源改变后原确认失效 |
 | 视频合成 | 原文保留的三段模板、图片 / 短片、字幕、可选自有音频、真实 FFmpeg 输出与完整解码检查 |
 | 网页 | 本地单人审校与来源对照，任务进度、确认与失败结果；旧入口保留 |
@@ -119,6 +120,19 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 ```
 
 网页入口是 `http://127.0.0.1:7860`。默认展示中文审核表单；旧版从零生成流程在 `/generate`。单条审核的 `audit_bundle.json` 和 `audit_review.md` 保存在 `runs/<运行编号>/`。
+
+## 检索策略与评测
+
+证据检索是这条链路的上限：正确的资料没被召回，后面的审校就是在错误证据上进行的。检索层因此被抽成可替换的策略，`GROWTH_RETRIEVAL` 选择实现，**MCP 工具签名不变**，同一套应用可以在不同策略下评测。
+
+默认的 `lexical` 是原始词面重叠实现，被刻意保留为基线，所有新策略都相对它测量。知识库提供 690 张真实事实卡，来自 110 个公开的 OBS 文档页面，覆盖 84 个主题；每张卡的引文都由程序校验为其来源页面的逐字子串。
+
+```powershell
+.\.venv\Scripts\python.exe -m growth_agent topic-eval --retrieval bm25
+.\.venv\Scripts\python.exe -m growth_agent topic-eval --retrieval hybrid-rerank
+```
+
+设计与实测结果见 [检索链路](docs/RETRIEVAL.md) 与 [检索结果](docs/RETRIEVAL_RESULTS.md)。向量与重排策略需要可选依赖：`.\.venv\Scripts\python.exe -m pip install -e ".[embed]"`。
 
 ## 换成自己的产品
 

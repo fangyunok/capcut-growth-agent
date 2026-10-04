@@ -33,3 +33,5 @@ Thumbs.db
 .vscode/
 local-data/
 private/
+.cache/
+.index/

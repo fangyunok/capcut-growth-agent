@@ -1,0 +1,724 @@
+{
+  "scope": "Topic-level retrieval for naturally written queries. Measures whether the correct documented topic surfaced, not whether any claim is factually supported. Product leakage must stay at zero.",
+  "strategy": "lexical",
+  "top_k": 5,
+  "catalog_cards": 690,
+  "catalog_features": 84,
+  "overall": {
+    "cases": 60,
+    "hit_at_k": {
+      "numerator": 6,
+      "denominator": 60,
+      "rate": 0.1
+    },
+    "top1_accuracy": {
+      "numerator": 2,
+      "denominator": 60,
+      "rate": 0.03333333333333333
+    },
+    "mean_reciprocal_rank": 0.066667
+  },
+  "by_locale": {
+    "en-US": {
+      "cases": 30,
+      "hit_at_k": {
+        "numerator": 6,
+        "denominator": 30,
+        "rate": 0.2
+      },
+      "top1_accuracy": {
+        "numerator": 2,
+        "denominator": 30,
+        "rate": 0.06666666666666667
+      },
+      "mean_reciprocal_rank": 0.133333
+    },
+    "zh-CN": {
+      "cases": 30,
+      "hit_at_k": {
+        "numerator": 0,
+        "denominator": 30,
+        "rate": 0.0
+      },
+      "top1_accuracy": {
+        "numerator": 0,
+        "denominator": 30,
+        "rate": 0.0
+      },
+      "mean_reciprocal_rank": 0.0
+    }
+  },
+  "product_leakage": {
+    "numerator": 0,
+    "denominator": 60,
+    "rate": 0.0
+  },
+  "per_case": [
+    {
+      "id": "rq-001",
+      "locale": "en-US",
+      "query": "use my scene as a webcam inside another program",
+      "expected_feature": "virtual-camera-guide",
+      "rank": null,
+      "top_features": [
+        "dve-animating-sources-tutorial",
+        "scene-collections",
+        "faq-webcam"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-002",
+      "locale": "zh-CN",
+      "query": "把画面当成摄像头给会议软件用",
+      "expected_feature": "virtual-camera-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-003",
+      "locale": "en-US",
+      "query": "balance desktop sound against the microphone",
+      "expected_feature": "audio-mixer-guide",
+      "rank": null,
+      "top_features": [
+        "surround-sound-guide",
+        "macos-desktop-audio-capture-guide",
+        "stream-tutorial-1-game"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-004",
+      "locale": "zh-CN",
+      "query": "调整系统声音和人声的音量比例",
+      "expected_feature": "audio-mixer-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-005",
+      "locale": "en-US",
+      "query": "record fullscreen gameplay without slowdown",
+      "expected_feature": "game-capture-setup-guide",
+      "rank": 2,
+      "top_features": [
+        "game-capture-troubleshooting",
+        "game-capture-setup-guide",
+        "game-capture-source"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-006",
+      "locale": "zh-CN",
+      "query": "低开销录制全屏游戏画面",
+      "expected_feature": "game-capture-setup-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-007",
+      "locale": "en-US",
+      "query": "put a web page on screen as a layer",
+      "expected_feature": "browser-source",
+      "rank": 2,
+      "top_features": [
+        "macos-screen-capture-source",
+        "browser-source",
+        "encoding-performance-troubleshooting"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-008",
+      "locale": "zh-CN",
+      "query": "把网页当成一个画面图层显示",
+      "expected_feature": "browser-source",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-009",
+      "locale": "en-US",
+      "query": "place a logo picture into the scene",
+      "expected_feature": "image-sources",
+      "rank": null,
+      "top_features": [
+        "scene-collections",
+        "dve-animating-sources-tutorial",
+        "dve-animating-sources-tutorial"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-010",
+      "locale": "zh-CN",
+      "query": "在画面里放一张 logo 图片",
+      "expected_feature": "image-sources",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-011",
+      "locale": "en-US",
+      "query": "fill the background with one flat colour",
+      "expected_feature": "color-source",
+      "rank": null,
+      "top_features": [
+        "browser-source",
+        "obs-studio-overview",
+        "smartphone-camera-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-012",
+      "locale": "zh-CN",
+      "query": "用纯色填满背景",
+      "expected_feature": "color-source",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-013",
+      "locale": "en-US",
+      "query": "quiet down loud peaks in the microphone",
+      "expected_feature": "compressor-filter",
+      "rank": null,
+      "top_features": [
+        "application-audio-capture-guide",
+        "audio-mixer-technical-details",
+        "display-capture-sources"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-014",
+      "locale": "zh-CN",
+      "query": "自动压低麦克风里过高的音量",
+      "expected_feature": "compressor-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-015",
+      "locale": "en-US",
+      "query": "never let the volume go above a ceiling",
+      "expected_feature": "limiter-filter",
+      "rank": null,
+      "top_features": [
+        "compressor-filter",
+        "noise-gate-filter",
+        "audio-mixer-technical-details"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-016",
+      "locale": "zh-CN",
+      "query": "给音量设一个上限防止爆音",
+      "expected_feature": "limiter-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-017",
+      "locale": "en-US",
+      "query": "make a faint microphone louder",
+      "expected_feature": "gain-filter",
+      "rank": null,
+      "top_features": [
+        "display-capture-sources",
+        "encoding-performance-troubleshooting",
+        "game-capture-troubleshooting"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-018",
+      "locale": "zh-CN",
+      "query": "放大很轻的麦克风声音",
+      "expected_feature": "gain-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-019",
+      "locale": "en-US",
+      "query": "let the graphics card do the video encoding",
+      "expected_feature": "hardware-encoding",
+      "rank": 2,
+      "top_features": [
+        "encoding-performance-troubleshooting",
+        "hardware-encoding",
+        "hardware-encoding"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-020",
+      "locale": "zh-CN",
+      "query": "用显卡来做视频编码",
+      "expected_feature": "hardware-encoding",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-021",
+      "locale": "en-US",
+      "query": "a recording format that survives a crash",
+      "expected_feature": "hybrid-mp4",
+      "rank": null,
+      "top_features": [
+        "standard-recording-output-guide",
+        "advanced-recording-guide-and-multi-track-audio",
+        "standard-recording-output-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-022",
+      "locale": "zh-CN",
+      "query": "录制中断也不会损坏的文件格式",
+      "expected_feature": "hybrid-mp4",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-023",
+      "locale": "en-US",
+      "query": "begin and end recording with a key combination",
+      "expected_feature": "keyboard-shortcuts",
+      "rank": null,
+      "top_features": [
+        "standard-recording-output-guide",
+        "advanced-recording-guide-and-multi-track-audio",
+        "game-capture-troubleshooting"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-024",
+      "locale": "zh-CN",
+      "query": "用快捷键开始和结束录制",
+      "expected_feature": "keyboard-shortcuts",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-025",
+      "locale": "en-US",
+      "query": "grant screen access on a Mac",
+      "expected_feature": "macos-permissions-guide",
+      "rank": null,
+      "top_features": [
+        "macos-screen-capture-source",
+        "advanced-recording-guide-and-multi-track-audio",
+        "aspect-ratio-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-026",
+      "locale": "zh-CN",
+      "query": "在苹果电脑上授权屏幕录制权限",
+      "expected_feature": "macos-permissions-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-027",
+      "locale": "en-US",
+      "query": "start the program with command line options",
+      "expected_feature": "launch-parameters",
+      "rank": null,
+      "top_features": [
+        "quick-start-guide",
+        "advanced-nvenc-options",
+        "game-capture-setup-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-028",
+      "locale": "zh-CN",
+      "query": "用命令行参数启动程序",
+      "expected_feature": "launch-parameters",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-029",
+      "locale": "en-US",
+      "query": "make a layer glide across the canvas",
+      "expected_feature": "dve-animating-sources-tutorial",
+      "rank": null,
+      "top_features": [
+        "power-of-projectors",
+        "encoding-performance-troubleshooting",
+        "macos-desktop-audio-capture-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-030",
+      "locale": "zh-CN",
+      "query": "让素材在画布上平移移动",
+      "expected_feature": "dve-animating-sources-tutorial",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-031",
+      "locale": "en-US",
+      "query": "hide part of a layer using a picture",
+      "expected_feature": "image-mask-blend-filter",
+      "rank": null,
+      "top_features": [
+        "video-feedback-effect-troubleshooting",
+        "advanced-nvenc-options",
+        "application-audio-capture-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-032",
+      "locale": "zh-CN",
+      "query": "用一张图片遮住图层的部分区域",
+      "expected_feature": "image-mask-blend-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-033",
+      "locale": "en-US",
+      "query": "the shape of the output canvas",
+      "expected_feature": "aspect-ratio-guide",
+      "rank": null,
+      "top_features": [
+        "standard-recording-output-guide",
+        "standard-recording-output-guide",
+        "application-audio-capture-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-034",
+      "locale": "zh-CN",
+      "query": "输出画布的长宽比例",
+      "expected_feature": "aspect-ratio-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-035",
+      "locale": "en-US",
+      "query": "mute background hiss when nobody talks",
+      "expected_feature": "noise-gate-filter",
+      "rank": null,
+      "top_features": [
+        "browser-source",
+        "expander-filter",
+        "advanced-nvenc-options"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-036",
+      "locale": "zh-CN",
+      "query": "没人说话时自动静音背景杂音",
+      "expected_feature": "noise-gate-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-037",
+      "locale": "en-US",
+      "query": "remove room noise from speech",
+      "expected_feature": "noise-suppression-filter",
+      "rank": 1,
+      "top_features": [
+        "noise-suppression-filter",
+        "noise-suppression-filter",
+        "noise-gate-filter"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-038",
+      "locale": "zh-CN",
+      "query": "去掉人声里的环境噪声",
+      "expected_feature": "noise-suppression-filter",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-039",
+      "locale": "en-US",
+      "query": "write a title on the stream",
+      "expected_feature": "text-sources",
+      "rank": null,
+      "top_features": [
+        "faq-stream-chat",
+        "faq-stream-donations",
+        "obs-studio-overview"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-040",
+      "locale": "zh-CN",
+      "query": "在画面上打字幕文字",
+      "expected_feature": "text-sources",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-041",
+      "locale": "en-US",
+      "query": "grab just one application window",
+      "expected_feature": "window-capture-sources",
+      "rank": null,
+      "top_features": [
+        "sources-guide",
+        "application-audio-capture-guide",
+        "application-audio-capture-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-042",
+      "locale": "zh-CN",
+      "query": "只抓取某一个应用程序窗口",
+      "expected_feature": "window-capture-sources",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-043",
+      "locale": "en-US",
+      "query": "grab the whole monitor",
+      "expected_feature": "display-capture-sources",
+      "rank": null,
+      "top_features": [
+        "audio-mixer-guide",
+        "encoding-performance-troubleshooting",
+        "macos-screen-capture-source"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-044",
+      "locale": "zh-CN",
+      "query": "抓取整个显示器的画面",
+      "expected_feature": "display-capture-sources",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-045",
+      "locale": "en-US",
+      "query": "what hardware the program needs to run",
+      "expected_feature": "system-requirements",
+      "rank": null,
+      "top_features": [
+        "hardware-encoding",
+        "browser-source",
+        "audio-mixer-technical-details"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-046",
+      "locale": "zh-CN",
+      "query": "运行这个软件需要什么配置",
+      "expected_feature": "system-requirements",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-047",
+      "locale": "en-US",
+      "query": "convert a finished recording to another format",
+      "expected_feature": "transcodes-transcoding",
+      "rank": null,
+      "top_features": [
+        "standard-recording-output-guide",
+        "advanced-recording-guide-and-multi-track-audio",
+        "recording-encoder-presets-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-048",
+      "locale": "zh-CN",
+      "query": "把录好的文件转成别的格式",
+      "expected_feature": "transcodes-transcoding",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-049",
+      "locale": "en-US",
+      "query": "animate a logo wipe between scenes",
+      "expected_feature": "track-matte-stinger-transitions",
+      "rank": null,
+      "top_features": [
+        "encoding-performance-troubleshooting",
+        "encoding-performance-troubleshooting",
+        "stream-tutorial-3-brb"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-050",
+      "locale": "zh-CN",
+      "query": "场景切换时的动画特效",
+      "expected_feature": "track-matte-stinger-transitions",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-051",
+      "locale": "en-US",
+      "query": "let someone else control the scene from a phone",
+      "expected_feature": "remote-control-guide",
+      "rank": null,
+      "top_features": [
+        "scene-collections",
+        "dve-animating-sources-tutorial",
+        "dve-animating-sources-tutorial"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-052",
+      "locale": "zh-CN",
+      "query": "让人用手机远程控制场景",
+      "expected_feature": "remote-control-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-053",
+      "locale": "en-US",
+      "query": "keep separate settings for different shows",
+      "expected_feature": "profiles",
+      "rank": null,
+      "top_features": [
+        "dve-animating-sources-tutorial",
+        "scene-collections",
+        "advanced-recording-settings-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-054",
+      "locale": "zh-CN",
+      "query": "为不同的节目保存不同的设置",
+      "expected_feature": "profiles",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-055",
+      "locale": "en-US",
+      "query": "switch between whole sets of scenes",
+      "expected_feature": "scene-collections",
+      "rank": null,
+      "top_features": [
+        "encoding-performance-troubleshooting",
+        "profiles",
+        "encoding-performance-troubleshooting"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-056",
+      "locale": "zh-CN",
+      "query": "在多套场景组合之间切换",
+      "expected_feature": "scene-collections",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-057",
+      "locale": "en-US",
+      "query": "use more than two audio channels",
+      "expected_feature": "surround-sound-guide",
+      "rank": 2,
+      "top_features": [
+        "audio-mixer-technical-details",
+        "surround-sound-guide",
+        "surround-sound-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-058",
+      "locale": "zh-CN",
+      "query": "使用超过两个声道的音频",
+      "expected_feature": "surround-sound-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    },
+    {
+      "id": "rq-059",
+      "locale": "en-US",
+      "query": "pick a quality preset for recordings",
+      "expected_feature": "recording-encoder-presets-guide",
+      "rank": 1,
+      "top_features": [
+        "recording-encoder-presets-guide",
+        "obs-studio-overview",
+        "standard-recording-output-guide"
+      ],
+      "leaked": false
+    },
+    {
+      "id": "rq-060",
+      "locale": "zh-CN",
+      "query": "选择录制的画质预设",
+      "expected_feature": "recording-encoder-presets-guide",
+      "rank": null,
+      "top_features": [],
+      "leaked": false
+    }
+  ],
+  "batch": {
+    "retrieval": "lexical",
+    "top_k": 5,
+    "queries_path": "C:\\Users\\FANGJIALI\\WorkBuddy\\2026-10-04-10-39-40\\claim-studio\\data\\retrieval_queries.jsonl",
+    "knowledge_path": "C:\\Users\\FANGJIALI\\WorkBuddy\\2026-10-04-10-39-40\\claim-studio\\data\\audit_knowledge_obs.json"
+  }
+}

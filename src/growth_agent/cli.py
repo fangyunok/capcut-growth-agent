@@ -13,10 +13,12 @@ from .audit import AuditRequest, DEFAULT_AUDIT_KNOWLEDGE, DEFAULT_AUDIT_RULES, r
 from .audit_evaluation import evaluate_audits
 from .evaluation import evaluate_bundles
 from .pipeline import run_brief
+from .retrieval import STRATEGIES
 from .schemas import Brief
 from .resources import (
     DEFAULT_KNOWLEDGE, DEFAULT_RULES, DEFAULT_OUTPUT_ROOT, DEFAULT_DEMO_BRIEFS,
     DEFAULT_EVAL_BRIEFS, DEFAULT_EVAL_GOLD, DEFAULT_AUDIT_CASES, DEFAULT_AUDIT_GOLD, DATA_DIR,
+    DEFAULT_AUDIT_KNOWLEDGE_OBS, DEFAULT_RETRIEVAL_QUERIES,
 )
 
 
@@ -250,6 +252,64 @@ def _record_review(args: argparse.Namespace) -> int:
     return 0
 
 
+def _retrieval_eval(args: argparse.Namespace) -> int:
+    """Score one retrieval strategy against the curated gold fact IDs."""
+    from .retrieval_evaluation import evaluate_retrieval
+
+    report = evaluate_retrieval(
+        strategy=args.retrieval,
+        cases_path=args.cases,
+        gold_path=args.gold,
+        knowledge_path=args.knowledge,
+        top_k=args.top_k,
+    )
+    report["batch"] = {
+        "retrieval": args.retrieval,
+        "top_k": args.top_k,
+        "cases_path": str(args.cases),
+        "gold_path": str(args.gold),
+        "knowledge_path": str(args.knowledge),
+    }
+    serialized = json.dumps(report, ensure_ascii=False, indent=2)
+    if args.report is None:
+        print(serialized)
+    else:
+        if args.report.exists():
+            raise FileExistsError(f"Evaluation report already exists: {args.report}")
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(serialized + "\n", encoding="utf-8")
+        print(f"Saved retrieval evaluation ({args.retrieval}) -> {args.report}")
+    return 0
+
+
+def _topic_eval(args: argparse.Namespace) -> int:
+    """Score topic-level retrieval for naturally written queries."""
+    from .retrieval_evaluation import evaluate_feature_retrieval
+
+    report = evaluate_feature_retrieval(
+        strategy=args.retrieval,
+        queries_path=args.queries,
+        knowledge_path=args.knowledge,
+        top_k=args.top_k,
+    )
+    report["batch"] = {
+        "retrieval": args.retrieval,
+        "top_k": args.top_k,
+        "queries_path": str(args.queries),
+        "knowledge_path": str(args.knowledge),
+    }
+    serialized = json.dumps(report, ensure_ascii=False, indent=2)
+    if args.report is None:
+        print(serialized)
+    else:
+        if args.report.exists():
+            raise FileExistsError(f"Evaluation report already exists: {args.report}")
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(serialized + "\n", encoding="utf-8")
+        print(f"Saved topic retrieval evaluation ({args.retrieval}) -> {args.report}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="growth-agent",
@@ -302,6 +362,31 @@ def main(argv: list[str] | None = None) -> int:
     audit_eval.add_argument("--knowledge", type=Path, default=DEFAULT_AUDIT_KNOWLEDGE)
     audit_eval.add_argument("--rules", type=Path, default=DEFAULT_AUDIT_RULES)
     audit_eval.add_argument("--output", type=Path)
+    retrieval_eval = sub.add_parser(
+        "retrieval-eval",
+        help="Score one retrieval strategy against the curated gold fact IDs",
+    )
+    retrieval_eval.add_argument("--retrieval", choices=STRATEGIES, default="lexical")
+    retrieval_eval.add_argument("--top-k", type=int, default=5)
+    retrieval_eval.add_argument(
+        "--cases", type=Path, default=DATA_DIR / "audit_eval_cases.jsonl"
+    )
+    retrieval_eval.add_argument(
+        "--gold", type=Path, default=DATA_DIR / "audit_eval_gold.json"
+    )
+    retrieval_eval.add_argument("--knowledge", type=Path, default=DEFAULT_AUDIT_KNOWLEDGE)
+    retrieval_eval.add_argument("--report", type=Path)
+    topic_eval = sub.add_parser(
+        "topic-eval",
+        help="Score topic-level retrieval for naturally written queries",
+    )
+    topic_eval.add_argument("--retrieval", choices=STRATEGIES, default="lexical")
+    topic_eval.add_argument("--top-k", type=int, default=5)
+    topic_eval.add_argument("--queries", type=Path, default=DEFAULT_RETRIEVAL_QUERIES)
+    topic_eval.add_argument(
+        "--knowledge", type=Path, default=DEFAULT_AUDIT_KNOWLEDGE_OBS
+    )
+    topic_eval.add_argument("--report", type=Path)
     doctor = sub.add_parser("doctor", help="Check model catalog, bundled data and optional FFmpeg")
     doctor.add_argument("--mode", choices=("qwen", "api"), default="qwen")
     doctor.add_argument("--timeout", type=int, default=5)
@@ -378,6 +463,10 @@ def main(argv: list[str] | None = None) -> int:
         return asyncio.run(_audit_execute(args))
     if args.command == "audit-eval":
         return asyncio.run(_audit_eval_execute(args))
+    if args.command == "retrieval-eval":
+        return _retrieval_eval(args)
+    if args.command == "topic-eval":
+        return _topic_eval(args)
     if args.command == "serve":
         import uvicorn
 
