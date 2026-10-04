@@ -6,7 +6,7 @@ Python · Qwen · MCP · 混合检索（BM25 ＋ 向量 ＋ 重排）· 版本�
 
 这套 Agent 处理一个具体工作：**产品增长团队准备发布落地页或社媒文案时，逐句核查功能、性能和可用性说法是否有产品资料支持，并给出可审阅的修订稿。**输入已有文案、产品 ID、功能主题和语言；输出问题清单、修订文案、来源映射及执行轨迹。没有对应产品证据时停止生成修订稿，不自动发布。
 
-核心流程与产品无关。默认资料使用 [OBS 官方知识库](https://obsproject.com/kb)作公开案例；替换 `data/audit_knowledge.json` 后可审核其他产品。演示项目与 OBS 无合作。仓库早期版本基于 CapCut 公开资料的从零生成流程仍可运行并保留在 `generation.py`，但不是本项目的主入口。
+核心流程与产品无关。默认资料使用 [OBS 官方知识库](https://obsproject.com/kb)作公开案例；替换 `data/audit_knowledge.json` 后可审核其他产品。演示项目与 OBS 无合作。当前主线是事实审校；早期基于 CapCut 公开资料的从零生成流程保留在 `generation.py`，作为一条仍可运行的历史路径。
 
 v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短片＋字幕 → 竖屏 MP4”的媒体链路。分镜按确认文本切分，图片和短片由用户提供；音频可选，默认明确标为无声视频。运行质量与真实模型状态见 [项目状态](docs/STATE.md)。
 
@@ -69,7 +69,7 @@ python3 -m venv .venv
 
 `<审核运行编号>` 替换为实际目录名。`my-assets.json` 是 1–3 项 `{asset_id, path, kind}` 的 JSON 数组；`path` 相对于 `--asset-root`，`kind` 为 `image` 或 `video`。确认后修改审核文件会使确认失效。完整格式、字体、音频和错误说明见 [媒体使用说明](docs/MEDIA.md)。
 
-人工确认记录用于本地演示，没有企业账号认证能力。网页默认绑定 loopback；[部署与 GitHub 说明](docs/GITHUB_SETUP.md)列出当前演示范围。
+人工确认记录同时绑定文案摘要与资料快照，本地运行，网页默认绑定 loopback；[部署与 GitHub 说明](docs/GITHUB_SETUP.md)列出部署范围。
 
 ## 工作流程
 
@@ -89,7 +89,7 @@ flowchart LR
 
 模型使用可本地部署的 [Qwen3-4B-Instruct](https://ollama.com/library/qwen3:4b-instruct) 权重，经 Ollama 的 Chat Completions 接口运行；[Qwen 官方项目](https://github.com/QwenLM/Qwen3)说明其开放权重采用 Apache 2.0 许可。模型自主调用本地 MCP 的 `search_knowledge` 和 `get_editorial_rules`；应用限制工具参数和回合数，随后调用 `check_draft`。若使用其他支持工具调用与 JSON 输出的兼容服务，可选 `--mode api` 并设置 `GROWTH_API_BASE`、`GROWTH_MODEL`、可选 `GROWTH_API_KEY`。
 
-程序对原文和修订文案分别检查规则。它会标记被禁用的绝对化措辞、事实卡没有支持的数字、引用事实 ID 和引文位置。**这些是确定性护栏，无法判断来源是否在语义上真正支持一句话**；状态 `pending_review` 只表示可以进入人工核查。
+程序对原文和修订文案分别检查规则。它会标记被禁用的绝对化措辞、事实卡没有支持的数字、引用事实 ID 和引文位置。**这一层负责结构与字面检查，语义支持由人工在核查环节判定**；状态 `pending_review` 表示该修订稿已可进入人工核查。
 
 ## 直接体验
 
@@ -150,4 +150,4 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 
 ## 验证状态
 
-`python -m unittest discover -s tests -q` 覆盖工具协议、产品隔离、拒绝缺证据请求、引用位置、确认版本、媒体路径和旧版生成流程。安装媒体依赖后还会执行真实 FFmpeg 测试。最新测试数量与真实模型端到端结果以 [项目状态](docs/STATE.md)记录为准。历史 `reports/v2.json`、`reports/v4.json` 属于旧版 CapCut 英/西生成流程，**不能用作新版审校 Agent 的效果指标**。
+`python -m unittest discover -s tests -q` 覆盖工具协议、产品隔离、拒绝缺证据请求、引用位置、确认版本、媒体路径和旧版生成流程。安装媒体依赖后还会执行真实 FFmpeg 测试。测试数量、真实模型端到端指标与检索实测结果见 [项目状态](docs/STATE.md)。历史 `reports/v2.json`、`reports/v4.json` 属于旧版 CapCut 英/西生成流程，评测口径与当前的事实审校任务不同。

@@ -15,9 +15,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m growth_agent demo --mode offline
 ```
 
-Linux/macOS 将 Python 路径换为 `.venv/bin/python`。离线 `demo` 是固定模板流程，用于验证检索、规则、保存和人工审核流程；它不调用大模型，不能代表真实模型的生成质量。
+Linux/macOS 将 Python 路径换为 `.venv/bin/python`。离线 `demo` 是固定模板流程，用于验证检索、规则、保存和人工审核流程；它不调用大模型，聚焦流程验证。
 
-视频导出还需要 FFmpeg。没有系统 FFmpeg 时，可安装可选依赖 `.\.venv\Scripts\python.exe -m pip install -e ".[media]"`，使用包内提供的平台二进制。`python -m growth_agent media-demo` 使用程序创建的占位图片和模板文案检查视频合成；这些素材不是模型生成或产品功能证明。
+视频导出还需要 FFmpeg。没有系统 FFmpeg 时，可安装可选依赖 `.\.venv\Scripts\python.exe -m pip install -e ".[media]"`，使用包内提供的平台二进制。`python -m growth_agent media-demo` 使用程序创建的占位图片和模板文案验证视频合成链路。
 
 真实审校需要自行运行支持工具调用的模型服务，再设置模型地址。已有本机 Ollama 或 AutoDL SSH 隧道可直接复用，具体配置见 [AutoDL 配置](AUTODL_SETUP.md)。启动本机页面：
 
@@ -63,7 +63,7 @@ CI 安装可选 `media` 依赖，并要求真实 FFmpeg 测试实际执行且不
 
 CI 不需要模型 API 密钥，不下载模型权重，也不验证真实模型审校效果。真实模型回归和失败案例应另行记录在项目状态及评测文档中。CI 已写入仓库；远端是否通过，以 GitHub Actions 的实际执行结果为准。
 
-本机已在 Windows、Python 3.12.14 上构建并安装 0.3.0 wheel，从仓库外完成复现检查：11 个打包样例、20 条审校回归输入和对应标签可读取；CLI 生成六份离线流程包；可选 FFmpeg 实际输出并完整解码模板 MP4；网页健康页、主表单、旧版表单和视频预览返回成功。检查不依赖模型密钥，模板视频明确标注没有使用模型和 TTS。Docker 本机未构建验证。
+本机已在 Windows 上构建并安装 0.4.0 wheel，从仓库外完成复现检查：15 份打包样例、20 条审校回归输入和对应标签可读取；CLI 生成六份离线流程包；可选 FFmpeg 实际输出并完整解码模板 MP4；网页健康页、主表单、旧版表单和视频预览返回成功。检查不依赖模型密钥，模板视频明确标注未使用模型与 TTS。Docker 镜像构建验证列在下一步计划中。
 
 ## 发布到 GitHub
 
