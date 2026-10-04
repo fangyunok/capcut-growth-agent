@@ -30,8 +30,8 @@ dev = ["build>=1.2,<2"]
 media = ["imageio-ffmpeg==0.6.0"]
 
 [project.urls]
-Repository = "https://github.com/fangyunok/capcut-growth-agent"
-Issues = "https://github.com/fangyunok/capcut-growth-agent/issues"
+Repository = "https://github.com/fangyunok/claim-studio"
+Issues = "https://github.com/fangyunok/claim-studio/issues"
 
 [project.scripts]
 growth-agent = "growth_agent.cli:main"

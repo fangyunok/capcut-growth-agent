@@ -61,7 +61,7 @@ Invoke-RestMethod -Uri "http://127.0.0.1:11435/v1/models"
 项目依赖按 [README 本机启动步骤](../README.md)安装。在第二个 PowerShell 窗口设置环境变量并运行一条审校样例：
 
 ```powershell
-cd capcut-growth-agent
+cd claim-studio
 $env:GROWTH_QWEN_BASE = "http://127.0.0.1:11435/v1"
 $env:GROWTH_QWEN_MODEL = "qwen3:4b-instruct"
 .\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en --mode qwen
@@ -115,7 +115,7 @@ ssh -N -L 8001:127.0.0.1:8000 -p $sshPortNumber "root@$sshHostName"
 在第二个 PowerShell 窗口运行：
 
 ```powershell
-cd capcut-growth-agent
+cd claim-studio
 $env:GROWTH_QWEN_BASE = "http://127.0.0.1:8001/v1"
 $env:GROWTH_QWEN_MODEL = "Qwen/Qwen2.5-7B-Instruct"
 .\.venv\Scripts\python.exe -m growth_agent audit --id obs-virtual-camera-en --mode qwen

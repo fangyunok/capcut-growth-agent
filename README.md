@@ -1,12 +1,12 @@
 # 营销文案事实审校与视频合成 Agent
 
-[![CI](https://github.com/fangyunok/capcut-growth-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/fangyunok/capcut-growth-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/fangyunok/claim-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/fangyunok/claim-studio/actions/workflows/ci.yml)
 
 Python · Qwen · MCP · 检索增强审校 · 版本绑定的人工确认 · FFmpeg
 
 这套 Agent 处理一个具体工作：**产品增长团队准备发布落地页或社媒文案时，逐句核查功能、性能和可用性说法是否有产品资料支持，并给出可审阅的修订稿。**输入已有文案、产品 ID、功能主题和语言；输出问题清单、修订文案、来源映射及执行轨迹。没有对应产品证据时停止生成修订稿，不自动发布。
 
-核心流程与产品无关。默认资料使用 [OBS 官方知识库](https://obsproject.com/kb)作公开案例；替换 `data/audit_knowledge.json` 后可审核其他产品。演示项目与 OBS 无合作。原先基于 CapCut 公开资料的从零生成流程仍可用，但不是这个项目的主入口。
+核心流程与产品无关。默认资料使用 [OBS 官方知识库](https://obsproject.com/kb)作公开案例；替换 `data/audit_knowledge.json` 后可审核其他产品。演示项目与 OBS 无合作。仓库早期版本基于 CapCut 公开资料的从零生成流程仍可运行并保留在 `generation.py`，但不是本项目的主入口。
 
 v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短片＋字幕 → 竖屏 MP4”的媒体链路。分镜按确认文本切分，图片和短片由用户提供；音频可选，默认明确标为无声视频。运行质量与真实模型状态见 [项目状态](docs/STATE.md)。
 
@@ -28,8 +28,8 @@ v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短�
 媒体示例使用代码生成的占位图片和明确标注的模板文案，可以先验证安装和合成链路。Qwen 审校另需配置可访问的模型服务。
 
 ```powershell
-git clone https://github.com/fangyunok/capcut-growth-agent.git
-cd capcut-growth-agent
+git clone https://github.com/fangyunok/claim-studio.git
+cd claim-studio
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[media]"
 .\.venv\Scripts\python.exe -m growth_agent media-demo --output runs

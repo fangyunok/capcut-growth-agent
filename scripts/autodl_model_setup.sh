@@ -3,7 +3,7 @@
 set -euo pipefail
 
 model="${GROWTH_QWEN_MODEL:-qwen3:4b-instruct}"
-log_dir="/root/autodl-tmp/capcut-growth-agent"
+log_dir="/root/autodl-tmp/claim-studio"
 mkdir -p "$log_dir"
 
 echo "GPU:"

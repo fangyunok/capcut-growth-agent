@@ -7,8 +7,8 @@
 项目支持 Python 3.11+，CI 覆盖 Python 3.11、3.12 的 Ubuntu 和 Windows。首次安装需要访问 Python 包源。
 
 ```powershell
-git clone https://github.com/fangyunok/capcut-growth-agent.git
-cd capcut-growth-agent
+git clone https://github.com/fangyunok/claim-studio.git
+cd claim-studio
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e .
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
@@ -67,7 +67,7 @@ CI 不需要模型 API 密钥，不下载模型权重，也不验证真实模型
 
 ## 发布到 GitHub
 
-已配置的仓库地址：`https://github.com/fangyunok/capcut-growth-agent.git`。修改代码后先检查文件列表和差异：
+已配置的仓库地址：`https://github.com/fangyunok/claim-studio.git`。修改代码后先检查文件列表和差异：
 
 ```powershell
 git status --short
