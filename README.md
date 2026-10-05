@@ -10,13 +10,32 @@ Python · Qwen · MCP · 混合检索（BM25 ＋ 向量 ＋ 重排）· 版本�
 
 v0.3 增加“确认修订文案 → 三段模板分镜 → 自有图片 / 短片＋字幕 → 竖屏 MP4”的媒体链路。分镜按确认文本切分，图片和短片由用户提供；音频可选，默认明确标为无声视频。运行质量与真实模型状态见 [项目状态](docs/STATE.md)。
 
-## GitHub 上可以复现什么
+## 先看结论
 
-| 能力 | 当前实现 |
+| 维度 | 实测值 | 出处 |
+| --- | --- | --- |
+| 自动化测试 | **148 用例 / 15 文件** | `pytest tests/` |
+| CI 矩阵 | **Windows + Ubuntu × Python 3.11 / 3.12** | `.github/workflows/ci.yml` |
+| 检索策略 | **5 种**（`lexical`/`bm25`/`vector`/`hybrid`/`hybrid-rerank`）经同一接口切换，MCP 工具签名不变 | `GROWTH_RETRIEVAL` |
+| 检索质量 | 主题级 Hit@5 **10.0% → 43.3%**；中文分组 **0% → 33.3%** | [检索结果](docs/RETRIEVAL_RESULTS.md) |
+| 产品隔离泄漏 | **恒为 0**（全部策略，含稠密检索） | 硬约束 |
+| 事实知识库 | **690 张卡 / 84 主题 / 110 个公开文档页**，每条引文由程序校验为来源页逐字子串 | `data/audit_knowledge_obs.json` |
+| 审校用例 | 开发集 **20** + 留出集 **20**（中英各半），套件完整性由测试约束 | `data/audit_eval_*.jsonl` |
+| 对抗扩集 | **200 条**（10 bucket × 20），确定性护栏 **100%** 通过，bootstrap 95% CI | [评测说明](docs/EVALUATION.md) |
+| 模型规模对照 | `qwen3:14b` 留出集 **100%** / 开发集 **95%**，`qwen3:4b-instruct` **75%** / **45%** | [模型对照](docs/MODEL_COMPARISON.md) |
+| 服务化性能 | p50 **53 ms** / p99 **54 ms**，QPS **18.8**，并发上限 8，0 错误 | `reports/perf-service.json` |
+| 可观测性 | OTEL span + Prometheus `/v1/metrics`，缺包时全部降级 no-op | [可观测性](docs/OBSERVABILITY.md) |
+| 数据版本化 | 快照 → per-feature 漂移告警 → 人工审批门（签名永久审计） | [数据更新](docs/DATA_UPDATE.md) |
+| 审批绑定 | 文案 SHA256 + 完整审核包 SHA256 双绑定，任一方改动即失效 | `approval.py` |
+| 媒体链路 | 三段模板分镜 → FFmpeg 竖屏字幕 MP4，含完整解码检查 | [媒体说明](docs/MEDIA.md) |
+
+## 各模块做什么
+
+| 模块 | 实现 |
 | --- | --- |
 | 文案审校 | 模型选择 MCP 资料 / 规则工具，输出问题、修订文案和引用；字面规则与人工语义审核分开 |
 | 基线对照 | `--strategy agent` 为模型选工具，`--strategy rag` 为固定一次检索 |
-| 检索链路 | `lexical` / `bm25` / `vector` / `hybrid` / `hybrid-rerank` 五种策略经同一接口切换并对比，MCP 工具签名不变 |
+| 检索链路 | 五种策略经同一接口切换并对比，`MCP 工具签名不变` |
 | 审核确认 | 确认绑定文案 SHA256 和完整审核包；文本或来源改变后原确认失效 |
 | 视频合成 | 原文保留的三段模板、图片 / 短片、字幕、可选自有音频、真实 FFmpeg 输出与完整解码检查 |
 | 网页 | 本地单人审校与来源对照，任务进度、确认与失败结果；旧入口保留 |
@@ -155,6 +174,8 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 
 结构层对抗扩集见 [`docs/EVALUATION.md`](docs/EVALUATION.md) 末尾章节 —— 200 条机器生成、覆盖 10 个 bucket（禁用词/越界/注入/伪引用/数字夸大/缺证据/边界长度等），确定性 guard rails 全部 100% 通过；端到端 CI 计算就绪。
 
+模型规模对照：在**相同 pipeline、语料、prompt 与检索策略**下只切换模型规模，`qwen3:14b` 在留出集上 **100%**（20/20）、开发集 **95%**（19/20），`qwen3:4b-instruct` 分别为 **75%** / **45%**；代价是 **4.2 倍**延迟。失败模式差异明显：4b 的失败几乎全由引文结构不合法（`citation_invalid`）导致，14b 仅 1 条失败。详见 [`docs/MODEL_COMPARISON.md`](docs/MODEL_COMPARISON.md)。
+
 ## 换成自己的产品
 
 1. 复制 `data/audit_knowledge.json`，为每条事实卡填写 `product_id`、`feature`、可核查的 `statement`、中文意译 `localized_statement.zh-CN`、`source_url`、简短的 `source_quote`、`checked_at` 和检索关键词。不同产品可放在同一文件，检索时按产品 ID 隔离。
@@ -170,3 +191,18 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 ## 验证状态
 
 `python -m unittest discover -s tests -q` 覆盖工具协议、产品隔离、拒绝缺证据请求、引用位置、确认版本、媒体路径和旧版生成流程。安装媒体依赖后还会执行真实 FFmpeg 测试。测试数量、真实模型端到端指标与检索实测结果见 [项目状态](docs/STATE.md)。历史 `reports/v2.json`、`reports/v4.json` 属于旧版 CapCut 英/西生成流程，评测口径与当前的事实审校任务不同。
+
+## 工程资料
+
+| 文档 | 内容 |
+| --- | --- |
+| [项目状态](docs/STATE.md) | 测试数量、真实模型端到端指标、当前进度 |
+| [评测说明](docs/EVALUATION.md) | 开发集 / 留出集拆分、200 条对抗扩集与 bootstrap CI |
+| [模型规模对照](docs/MODEL_COMPARISON.md) | `qwen3:4b-instruct` vs `qwen3:14b` 同条件实测 |
+| [检索链路](docs/RETRIEVAL.md) · [检索结果](docs/RETRIEVAL_RESULTS.md) | 五种策略设计说明与实测数字 |
+| [服务化部署](docs/SERVICE.md) | FastAPI 接口、并发控制与端到端测试 |
+| [可观测性](docs/OBSERVABILITY.md) | OTEL span 与 Prometheus 指标 |
+| [数据更新](docs/DATA_UPDATE.md) · [数据来源](docs/DATA_PROVENANCE.md) | 版本化快照、漂移告警、审批门与语料来源 |
+| [媒体说明](docs/MEDIA.md) | 分镜、素材、字幕与 FFmpeg 渲染 |
+| [GPU 服务器配置](docs/AUTODL_SETUP.md) | 远端 Ollama 与 SSH 隧道 |
+| [构建记录](docs/BUILD_LOG.md) | 实现步骤、设计决策与 Roadmap |
