@@ -54,7 +54,12 @@ def _build_argparse(suite: str, cases: Path, gold: Path, model: str, output: Pat
         suite=suite,
         cases=cases,
         gold=gold,
-        knowledge=DATA_DIR / "audit_knowledge_obs.json",
+        # Use the curated card catalog whose `feature` names match the audit
+        # suites. The 690-card OBS catalog uses URL-derived feature slugs
+        # (e.g. `advanced-recording-settings-guide`) that never equal the brief
+        # feature (`recording-setup`), so the agent loop's exact-feature gate
+        # would filter every retrieved card and force `insufficient_evidence`.
+        knowledge=DATA_DIR / "audit_knowledge.json",
         rules=DATA_DIR / "audit_rules.json",
         mode="qwen",
         strategy="agent",
@@ -181,8 +186,8 @@ def main() -> int:
     parser.add_argument("--base", default=os.getenv("GROWTH_QWEN_BASE", "http://127.0.0.1:11435/v1"))
     parser.add_argument("--small", default="qwen3:4b-instruct")
     parser.add_argument("--large", default="qwen3:14b")
-    parser.add_argument("--output", default=REPO_ROOT / "reports" / "model-size-ab.json")
-    parser.add_argument("--run-root", default=REPO_ROOT / "runs" / "w3-model-size-ab")
+    parser.add_argument("--output", type=Path, default=REPO_ROOT / "reports" / "model-size-ab.json")
+    parser.add_argument("--run-root", type=Path, default=REPO_ROOT / "runs" / "w3-model-size-ab")
     args = parser.parse_args()
     return asyncio.run(main_async(args.base, args.small, args.large, args.output, args.run_root))
 
