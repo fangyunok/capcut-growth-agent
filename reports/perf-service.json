@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-10-04T12:02:59Z",
+  "service": "growth_agent.service",
+  "endpoint": "POST /v1/audits",
+  "model": "scripted (no real LLM)",
+  "concurrency_limit": 8,
+  "bench_delay_ms_per_call": 50,
+  "runs": [
+    {
+      "concurrency": 10,
+      "total": 200,
+      "wall_seconds": 10.627,
+      "qps": 18.82,
+      "latency_p50_ms": 52.98,
+      "latency_p95_ms": 53.73,
+      "latency_p99_ms": 54.4,
+      "latency_max_ms": 56.46,
+      "status_2xx": 200,
+      "status_4xx": 0,
+      "status_5xx": 0,
+      "status_429": 0
+    },
+    {
+      "concurrency": 50,
+      "total": 400,
+      "wall_seconds": 21.258,
+      "qps": 18.82,
+      "latency_p50_ms": 53.07,
+      "latency_p95_ms": 53.64,
+      "latency_p99_ms": 54.02,
+      "latency_max_ms": 56.06,
+      "status_2xx": 400,
+      "status_4xx": 0,
+      "status_5xx": 0,
+      "status_429": 0
+    },
+    {
+      "concurrency": 100,
+      "total": 400,
+      "wall_seconds": 21.22,
+      "qps": 18.85,
+      "latency_p50_ms": 52.96,
+      "latency_p95_ms": 53.55,
+      "latency_p99_ms": 53.98,
+      "latency_max_ms": 54.29,
+      "status_2xx": 400,
+      "status_4xx": 0,
+      "status_5xx": 0,
+      "status_429": 0
+    }
+  ],
+  "notes": [
+    "Bench delay of 50ms stands in for a real LLM call; the service-layer overhead is what is measured here.",
+    "Live-model benchmarks live in reports/perf-model-llm.json (see docs/BUILD_LOG.md).",
+    "Status 429 indicates the global asyncio.Semaphore (default 8) refused; tune GROWTH_SERVICE_CONCURRENCY upward."
+  ]
+}

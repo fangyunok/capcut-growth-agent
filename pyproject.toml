@@ -29,6 +29,12 @@ dependencies = [
 dev = ["build>=1.2,<2"]
 media = ["imageio-ffmpeg==0.6.0"]
 embed = ["numpy>=1.26,<3", "torch>=2.2", "transformers>=4.40,<6"]
+service = ["fastapi>=0.110,<1"]
+observability = [
+  "opentelemetry-api>=1.27,<2",
+  "opentelemetry-sdk>=1.27,<2",
+  "prometheus-client>=0.20,<1",
+]
 
 [project.urls]
 Repository = "https://github.com/fangyunok/claim-studio"
