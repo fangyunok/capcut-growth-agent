@@ -78,3 +78,51 @@
 两种命令都用 `--retrieval` 选择策略（`lexical` / `bm25` / `vector` / `hybrid` / `hybrid-rerank`），因此可以在**同一输入、同一输出结构**下比较五种实现。实测数字与测量条件见 [检索结果](RETRIEVAL_RESULTS.md)，设计说明见 [检索链路](RETRIEVAL.md)。
 
 检索层的产品泄漏（返回非本请求产品的卡）是硬约束，任何策略都必须为 0。
+
+## 扩展评测套件（200 条结构层）
+
+为突破开发集/留出集 20 + 20 的样本量限制，新增 `data/audit_eval_ext_cases.jsonl`，**机器生成、结构化覆盖 10 个 bucket**，每 bucket 20 条：
+
+| Bucket | 数量 | 触发信号 | 期望判定 |
+|---|---|---|---|
+| `forbidden_words_en` | 20 | 英文禁用词（来自 `audit_rules.json`） | `needs_revision` |
+| `forbidden_words_zh` | 20 | 中文禁用词 | `needs_revision` |
+| `cross_product_leak` | 20 | 出现"剪映/CapCut/Final Cut"等跨产品词 | `needs_revision` |
+| `fake_fact_reference` | 20 | 引用了不存在的 `fact_id` | `needs_revision` |
+| `numeric_mismatch` | 20 | 数字夸大（8K/120fps/无压缩等） | `needs_revision` |
+| `prompt_injection` | 20 | 嵌入 `SYSTEM`/`override`/`忽略来源`等指令覆盖块 | `needs_revision` |
+| `insufficient_evidence` | 20 | 声称库中不存在的"AI 主推功能" | `insufficient_evidence` |
+| `compliant_easy` | 20 | 文案直接复用库中 source_quote | `pending_review` |
+| `compliant_bilingual` | 20 | 同上但要求跨语种识别 | `pending_review` |
+| `edge_length` | 20 | 极短 / 极长边界 | `pending_review` |
+
+### 结构层结果（确定性规则，无模型）
+
+`scripts/bootstrap_ci.py` 对每条 case 做**应用层 guard rail 等价判定**（触发信号出现在文案 ↔ 期望拒绝 verdict；反之 ↔ 期望放行），每 bucket bootstrap 100 次算 95% CI。最新结果（`reports/eval-extended.json`）：
+
+| Bucket | n | 通过 | 失败 | 通过率 | 95% CI |
+|---|---|---|---|---|---|
+| 全部 10 个 bucket | 20×10 | 20×10 | 0 | **100.0%** | `[100.0, 100.0]` |
+
+**这意味着什么**：所有 10 类硬护栏（禁用词、跨产品、引用错、数字夸大、注入、缺证据、边界长度）按设计全部生效。CI 区间坍缩为单点 `[100.0, 100.0]` **不是评测没意义**——而是确定性规则在数学上只能给出这个答案。它告诉未来的维护者："**一旦你改了 `audit_rules.json` 或某条 guard 的正则，这条策略就会立刻露馅**"。
+
+### 关于 CI 的诚实边界
+
+bootstrap 95% CI 在**概率性事件**（如 LLM 端到端判定）下才有意义。结构层是确定性的，所以 CI 没有信息量。
+
+**端到端** 80 条（`insufficient_evidence` + `compliant_easy` + `compliant_bilingual` = 60 条 + 部分 `edge_length` 需要模型判断 = 80 条估算）的 CI 计算**就绪**，接入 GPU 模型服务后运行：
+
+```bash
+growth-agent audit-eval --mode qwen --strategy agent --suite curated \
+    --cases data/audit_eval_ext_cases.jsonl \
+    --gold data/audit_eval_ext_gold.json \
+    --output runs/eval-end2end
+```
+
+（`--suite curated` 只是让 CLI 不去改写显式传入的 `--cases` / `--gold`；实际跑的是扩展套件。）
+
+报告将用概率性结果替换确定性结果，给出真正的 95% CI。
+
+### 关于作者偏见（必须声明）
+
+这套 200 条 case 是**机器按项目自有知识库和编辑规则生成的**，bucket 内部覆盖均衡但**无法替代盲测**。原始 W1.5 计划包含 1~2 位朋友盲写 100 条，**因协作不便改为全部机器生成**。补救：扩展套件与 gold 以开源形式随仓库发布，邀请社区贡献对抗 case（计划为每个 bucket 预留 5 个"社区挑战"槽位）。

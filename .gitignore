@@ -35,3 +35,4 @@ local-data/
 private/
 .cache/
 .index/
+tmp/

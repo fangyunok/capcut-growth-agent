@@ -249,14 +249,27 @@ class QwenOllamaGenerator(CompatibleApiGenerator):
         return super().generate(brief, facts, rules)
 
     def _request(self, messages: list[dict]) -> dict:
-        url = f"{self.base_url}/chat/completions"
+        # Use Ollama's native `/api/chat` instead of the OpenAI-compat
+        # `/v1/chat/completions` endpoint. The OpenAI-compat endpoint does NOT
+        # forward the `think` field to qwen3's chat template, so thinking stays
+        # on and the model burns the entire max_tokens budget on a `<think>`
+        # block instead of returning the JSON we need. The native endpoint
+        # honours `think=False` and disables reasoning end-to-end.
+        base = self.base_url.rstrip("/")
+        for suffix in ("/v1", "/v1/"):
+            if base.endswith(suffix):
+                base = base[: -len(suffix)]
+                break
+        url = f"{base}/api/chat"
         body = json.dumps(
             {
                 "model": self.model,
                 "messages": messages,
+                "stream": False,
                 "temperature": 0.1,
                 "max_tokens": 900,
-                "response_format": {"type": "json_object"},
+                "think": False,
+                "format": "json",
             },
             ensure_ascii=False,
         ).encode("utf-8")
@@ -273,4 +286,18 @@ class QwenOllamaGenerator(CompatibleApiGenerator):
             raise RuntimeError(f"Cannot reach Qwen service: {exc.reason}") from exc
         if not isinstance(result, dict):
             raise ValueError("Qwen service returned a non-object JSON value")
-        return result
+        # Translate Ollama's native response shape to the OpenAI-compat shape
+        # the base class consume site expects (`choices[0].message.content` +
+        # `usage.prompt_tokens` / `usage.completion_tokens`).
+        message = result.get("message") or {}
+        return {
+            "choices": [
+                {"message": {"content": message.get("content", ""), "role": message.get("role", "assistant")}}
+            ],
+            "usage": {
+                "prompt_tokens": result.get("prompt_eval_count"),
+                "completion_tokens": result.get("eval_count"),
+            },
+            "model": result.get("model"),
+            "raw": result,
+        }

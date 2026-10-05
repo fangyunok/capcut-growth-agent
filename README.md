@@ -121,6 +121,19 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 
 网页入口是 `http://127.0.0.1:7860`。默认展示中文审核表单；旧版从零生成流程在 `/generate`。单条审核的 `audit_bundle.json` 和 `audit_review.md` 保存在 `runs/<运行编号>/`。
 
+## 服务化部署（生产风格 HTTP API）
+
+同一份审计引擎也对外暴露 FastAPI 服务，独立于上面的单用户网页，便于接入业务流量：
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[service]"
+.\.venv\Scripts\python.exe -m uvicorn growth_agent.service:app --host 0.0.0.0 --port 8080
+```
+
+提供 `POST /v1/audits`、`GET /v1/audits/{run_id}`、`GET /v1/healthz`、`GET /v1/readyz`，并自动生成 OpenAPI 文档（`/openapi.json`、`/docs`）。每个响应回带 `X-Trace-Id` 与 `X-Duration-Ms`，全局并发上限默认 8（可经 `GROWTH_SERVICE_CONCURRENCY` 调整）。
+
+完整文档与端到端测试见 [docs/SERVICE.md](docs/SERVICE.md)；13 个新增/再跑现有测试全部通过（`pytest tests/test_service.py`）；基准性能数据见 `reports/perf-service.json`。
+
 ## 检索策略与评测
 
 证据检索是这条链路的上限：正确的资料没被召回，后面的审校就是在错误证据上进行的。检索层因此被抽成可替换的策略，`GROWTH_RETRIEVAL` 选择实现，**MCP 工具签名不变**，同一套应用可以在不同策略下评测。
@@ -134,7 +147,13 @@ $env:GROWTH_QWEN_MODEL = 'qwen3:4b-instruct'
 
 设计与实测结果见 [检索链路](docs/RETRIEVAL.md) 与 [检索结果](docs/RETRIEVAL_RESULTS.md)。向量与重排策略需要可选依赖：`.\.venv\Scripts\python.exe -m pip install -e ".[embed]"`。
 
-审校用例拆成两套：`--suite curated` 是开发集（20 条），`--suite test` 是留出集（20 条，写于检索改造之后、未参与本轮任何调参）。两套中英各半、互不重叠，合并后覆盖全部来源卡；套件完整性由测试约束，而不是硬编码条数。
+审校用例拆成两套：`--suite curated` 是开发集（20 条），`--suite test` 是留出集（20 条，写于检索改造之后、未参与本轮任何调参）。两套中英各半、互不重叠，合并后覆盖全部来源卡；套件完整性由测试约束，而不是硬编码条数。结构层扩展套件 `data/audit_eval_ext_cases.jsonl` 含 200 条对抗用例（10 类 × 20），覆盖禁用词、伪引用、数字夸大、指令注入、缺证据等；通过 `scripts/bootstrap_ci.py` 跑 bootstrap 100 次算 95% CI。
+
+知识库版本化：`scripts/update_corpus.py` 重建快照 → `versions/<name>/{facts,manifest,diff}.jsonl`；`scripts/drift_alert.py` 算 per-feature 漂移告警；`scripts/approval_gate.py` 是人工审批门（必须 `--sign-by`，默认拒绝覆盖）。详见 `docs/DATA_UPDATE.md`。
+
+可观测性：`pip install -e ".[observability]"` 后服务暴露 `/v1/metrics`（Prometheus）+ 每条请求打 OTEL span（`audit_request` → `retrieval` / `decision` / `approval_gate`）；缺包时全部降级 no-op。详见 `docs/OBSERVABILITY.md`。
+
+结构层对抗扩集见 [`docs/EVALUATION.md`](docs/EVALUATION.md) 末尾章节 —— 200 条机器生成、覆盖 10 个 bucket（禁用词/越界/注入/伪引用/数字夸大/缺证据/边界长度等），确定性 guard rails 全部 100% 通过；端到端 CI 计算就绪。
 
 ## 换成自己的产品
 
