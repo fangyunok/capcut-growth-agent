@@ -1,0 +1,25 @@
+{
+  "versions": [
+    {
+      "name": "v1",
+      "generated_at": "2026-10-04T13:24:29Z",
+      "fact_count": 690,
+      "added": 690,
+      "removed": 0,
+      "changed": 0,
+      "mode": "fixture"
+    },
+    {
+      "name": "v2",
+      "generated_at": "2026-10-04T13:24:30Z",
+      "fact_count": 690,
+      "added": 0,
+      "removed": 0,
+      "changed": 33,
+      "mode": "fixture"
+    }
+  ],
+  "active": "v2",
+  "active_activated_at": "2026-10-04T13:24:32Z",
+  "active_signed_by": "fangyunok"
+}

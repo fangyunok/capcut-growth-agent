@@ -1,0 +1,1462 @@
+{
+  "vs_previous": "v1",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "old": {
+        "id": "obs-studio-obs-studio-overview-003",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "Select the server (or enter its URL for Custom Streaming Servers)",
+        "source_quote": "Select the server (or enter its URL for Custom Streaming Servers)",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "select",
+          "the",
+          "server",
+          "enter",
+          "url"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-obs-studio-overview-003",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "track-matte-stinger-transitions",
+        "statement": "Select the server (or enter its URL for Custom Streaming Servers)",
+        "source_quote": "Select the server (or enter its URL for Custom Streaming Servers)",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "select",
+          "the",
+          "server",
+          "enter",
+          "url"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-obs-studio-overview-006",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "Generally, unless you know why you need to change it, the default options are recommended.",
+        "source_quote": "Generally, unless you know why you need to change it, the default options are recommended.",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "generally",
+          "unless",
+          "know",
+          "why",
+          "need"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-obs-studio-overview-006",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "windows-gaming-features-troubleshooting",
+        "statement": "Generally, unless you know why you need to change it, the default options are recommended.",
+        "source_quote": "Generally, unless you know why you need to change it, the default options are recommended.",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "generally",
+          "unless",
+          "know",
+          "why",
+          "need"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-obs-studio-overview-007",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "Record using a preset (Same as stream, High Quality, Indistinguishable Quality, and Lossless) and a different Encoder (if available)",
+        "source_quote": "Record using a preset (Same as stream, High Quality, Indistinguishable Quality, and Lossless) and a different Encoder (if available)",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "record",
+          "using",
+          "preset",
+          "same",
+          "stream"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-obs-studio-overview-007",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "remote-control-guide",
+        "statement": "Record using a preset (Same as stream, High Quality, Indistinguishable Quality, and Lossless) and a different Encoder (if available)",
+        "source_quote": "Record using a preset (Same as stream, High Quality, Indistinguishable Quality, and Lossless) and a different Encoder (if available)",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "record",
+          "using",
+          "preset",
+          "same",
+          "stream"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-obs-studio-overview-026",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "Filters can be added to each Source/Audio Device, and even to a Scene.",
+        "source_quote": "Filters can be added to each Source/Audio Device, and even to a Scene.",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "filters",
+          "can",
+          "added",
+          "source",
+          "audio"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-obs-studio-overview-026",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "recording-encoder-presets-guide",
+        "statement": "Filters can be added to each Source/Audio Device, and even to a Scene.",
+        "source_quote": "Filters can be added to each Source/Audio Device, and even to a Scene.",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "filters",
+          "can",
+          "added",
+          "source",
+          "audio"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-obs-studio-overview-044",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "If you want more control over your Recording settings or want to record multiple audio tracks, switch the Output Mode to Advanced and check out this guide: High quality recording and multiple Audio Tracks",
+        "source_quote": "If you want more control over your Recording settings or want to record multiple audio tracks, switch the Output Mode to Advanced and check out this guide: High quality recording and multiple Audio Tracks",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "want",
+          "control",
+          "over",
+          "recording",
+          "settings"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-obs-studio-overview-044",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "srt-protocol-streaming-guide",
+        "statement": "If you want more control over your Recording settings or want to record multiple audio tracks, switch the Output Mode to Advanced and check out this guide: High quality recording and multiple Audio Tracks",
+        "source_quote": "If you want more control over your Recording settings or want to record multiple audio tracks, switch the Output Mode to Advanced and check out this guide: High quality recording and multiple Audio Tracks",
+        "source_url": "https://obsproject.com/kb/obs-studio-overview",
+        "source_title": "OBS Studio Overview Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "obs studio overview",
+          "want",
+          "control",
+          "over",
+          "recording",
+          "settings"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-standard-recording-output-guide-008",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "standard-recording-output-guide",
+        "statement": "If you record in a file format that is not mp4 and want to convert it to mp4 for easy use in the video editing software of your choice or to make it easier to upload to social media, OBS has that built in for you.",
+        "source_quote": "If you record in a file format that is not mp4 and want to convert it to mp4 for easy use in the video editing software of your choice or to make it easier to upload to social media, OBS has that built in for you.",
+        "source_url": "https://obsproject.com/kb/standard-recording-output-guide",
+        "source_title": "Standard Recording Output Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "standard recording output guide",
+          "record",
+          "file",
+          "format",
+          "mp4",
+          "and"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-standard-recording-output-guide-008",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "windows-gaming-features-troubleshooting",
+        "statement": "If you record in a file format that is not mp4 and want to convert it to mp4 for easy use in the video editing software of your choice or to make it easier to upload to social media, OBS has that built in for you.",
+        "source_quote": "If you record in a file format that is not mp4 and want to convert it to mp4 for easy use in the video editing software of your choice or to make it easier to upload to social media, OBS has that built in for you.",
+        "source_url": "https://obsproject.com/kb/standard-recording-output-guide",
+        "source_title": "Standard Recording Output Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "standard recording output guide",
+          "record",
+          "file",
+          "format",
+          "mp4",
+          "and"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-game-capture-source-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "game-capture-source",
+        "statement": "Game Capture is the most efficient way you can add your games to OBS Studio and should always be tried first.",
+        "source_quote": "Game Capture is the most efficient way you can add your games to OBS Studio and should always be tried first.",
+        "source_url": "https://obsproject.com/kb/game-capture-source",
+        "source_title": "Game Capture Source | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture source",
+          "game",
+          "capture",
+          "the",
+          "efficient",
+          "way"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-game-capture-source-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "developer-guide",
+        "statement": "Game Capture is the most efficient way you can add your games to OBS Studio and should always be tried first.",
+        "source_quote": "Game Capture is the most efficient way you can add your games to OBS Studio and should always be tried first.",
+        "source_url": "https://obsproject.com/kb/game-capture-source",
+        "source_title": "Game Capture Source | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture source",
+          "game",
+          "capture",
+          "the",
+          "efficient",
+          "way"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-power-of-projectors-014",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "power-of-projectors",
+        "statement": "An example multiview output with 8 scenes, set horizontally.",
+        "source_quote": "An example multiview output with 8 scenes, set horizontally.",
+        "source_url": "https://obsproject.com/kb/power-of-projectors",
+        "source_title": "Power of Projectors | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "power of projectors",
+          "example",
+          "multiview",
+          "output",
+          "scenes",
+          "set"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-power-of-projectors-014",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "encoding-performance-troubleshooting",
+        "statement": "An example multiview output with 8 scenes, set horizontally.",
+        "source_quote": "An example multiview output with 8 scenes, set horizontally.",
+        "source_url": "https://obsproject.com/kb/power-of-projectors",
+        "source_title": "Power of Projectors | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "power of projectors",
+          "example",
+          "multiview",
+          "output",
+          "scenes",
+          "set"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-stream-tutorial-3-brb-010",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "stream-tutorial-3-brb",
+        "statement": "Again, click the \"+\" icon below the sources list, but now click \"Game Capture\" instead.",
+        "source_quote": "Again, click the \"+\" icon below the sources list, but now click \"Game Capture\" instead.",
+        "source_url": "https://obsproject.com/kb/stream-tutorial-3-brb",
+        "source_title": "Stream Layout Tutorial 3: Be Right Back screen | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "stream tutorial 3 brb",
+          "again",
+          "click",
+          "the",
+          "icon",
+          "below"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-stream-tutorial-3-brb-010",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "stream-connection-troubleshooting",
+        "statement": "Again, click the \"+\" icon below the sources list, but now click \"Game Capture\" instead.",
+        "source_quote": "Again, click the \"+\" icon below the sources list, but now click \"Game Capture\" instead.",
+        "source_url": "https://obsproject.com/kb/stream-tutorial-3-brb",
+        "source_title": "Stream Layout Tutorial 3: Be Right Back screen | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "stream tutorial 3 brb",
+          "again",
+          "click",
+          "the",
+          "icon",
+          "below"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-video-capture-sources-003",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "video-capture-sources",
+        "statement": "On Windows, for a device to work with OBS the drivers needs to support DirectShow output.",
+        "source_quote": "On Windows, for a device to work with OBS the drivers needs to support DirectShow output.",
+        "source_url": "https://obsproject.com/kb/video-capture-sources",
+        "source_title": "Video Capture Sources | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "video capture sources",
+          "windows",
+          "for",
+          "device",
+          "work",
+          "obs"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-video-capture-sources-003",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "window-capture-sources",
+        "statement": "On Windows, for a device to work with OBS the drivers needs to support DirectShow output.",
+        "source_quote": "On Windows, for a device to work with OBS the drivers needs to support DirectShow output.",
+        "source_url": "https://obsproject.com/kb/video-capture-sources",
+        "source_title": "Video Capture Sources | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "video capture sources",
+          "windows",
+          "for",
+          "device",
+          "work",
+          "obs"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-windows-gaming-features-troubleshooting-002",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "windows-gaming-features-troubleshooting",
+        "statement": "All features can be found in the Windows Settings App under Gaming.",
+        "source_quote": "All features can be found in the Windows Settings App under Gaming.",
+        "source_url": "https://obsproject.com/kb/windows-gaming-features-troubleshooting",
+        "source_title": "Windows Gaming Features Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "windows gaming features troubleshooting",
+          "features",
+          "can",
+          "found",
+          "the",
+          "windows"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-windows-gaming-features-troubleshooting-002",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "application-audio-capture-guide",
+        "statement": "All features can be found in the Windows Settings App under Gaming.",
+        "source_quote": "All features can be found in the Windows Settings App under Gaming.",
+        "source_url": "https://obsproject.com/kb/windows-gaming-features-troubleshooting",
+        "source_title": "Windows Gaming Features Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "windows gaming features troubleshooting",
+          "features",
+          "can",
+          "found",
+          "the",
+          "windows"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-hardware-encoding-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "hardware-encoding",
+        "statement": "Hardware encoders, as opposed to the included x264 software encoder, are generally recommended for best performance as they take the workload off the CPU and to a specialised component in the GPU that can perform video encoding more efficiently.",
+        "source_quote": "Hardware encoders, as opposed to the included x264 software encoder, are generally recommended for best performance as they take the workload off the CPU and to a specialised component in the GPU that can perform video encoding more efficiently.",
+        "source_url": "https://obsproject.com/kb/hardware-encoding",
+        "source_title": "Hardware Encoding | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "hardware encoding",
+          "hardware",
+          "encoders",
+          "opposed",
+          "the",
+          "included"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-hardware-encoding-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "video-capture-devices-with-hdr-support",
+        "statement": "Hardware encoders, as opposed to the included x264 software encoder, are generally recommended for best performance as they take the workload off the CPU and to a specialised component in the GPU that can perform video encoding more efficiently.",
+        "source_quote": "Hardware encoders, as opposed to the included x264 software encoder, are generally recommended for best performance as they take the workload off the CPU and to a specialised component in the GPU that can perform video encoding more efficiently.",
+        "source_url": "https://obsproject.com/kb/hardware-encoding",
+        "source_title": "Hardware Encoding | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "hardware encoding",
+          "hardware",
+          "encoders",
+          "opposed",
+          "the",
+          "included"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-faq-webcam-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "faq-webcam",
+        "statement": "To add a webcam to your stream, add a Video Capture Source to your scene.",
+        "source_quote": "To add a webcam to your stream, add a Video Capture Source to your scene.",
+        "source_url": "https://obsproject.com/kb/faq-webcam",
+        "source_title": "How do I add my webcam? | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "faq webcam",
+          "add",
+          "webcam",
+          "stream",
+          "video",
+          "capture"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-faq-webcam-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "text-sources",
+        "statement": "To add a webcam to your stream, add a Video Capture Source to your scene.",
+        "source_quote": "To add a webcam to your stream, add a Video Capture Source to your scene.",
+        "source_url": "https://obsproject.com/kb/faq-webcam",
+        "source_title": "How do I add my webcam? | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "faq webcam",
+          "add",
+          "webcam",
+          "stream",
+          "video",
+          "capture"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-advanced-nvenc-options-009",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "advanced-nvenc-options",
+        "statement": "Low latency application client can set goplength to NVENC_INFINITE_GOPLENGTH (4294967295) so that keyframes are not inserted automatically.",
+        "source_quote": "Low latency application client can set goplength to NVENC_INFINITE_GOPLENGTH (4294967295) so that keyframes are not inserted automatically.",
+        "source_url": "https://obsproject.com/kb/advanced-nvenc-options",
+        "source_title": "Advanced NVENC Options (31.0) | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "advanced nvenc options",
+          "low",
+          "latency",
+          "application",
+          "client",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-advanced-nvenc-options-009",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "audio-mixer-technical-details",
+        "statement": "Low latency application client can set goplength to NVENC_INFINITE_GOPLENGTH (4294967295) so that keyframes are not inserted automatically.",
+        "source_quote": "Low latency application client can set goplength to NVENC_INFINITE_GOPLENGTH (4294967295) so that keyframes are not inserted automatically.",
+        "source_url": "https://obsproject.com/kb/advanced-nvenc-options",
+        "source_title": "Advanced NVENC Options (31.0) | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "advanced nvenc options",
+          "low",
+          "latency",
+          "application",
+          "client",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-audio-mixer-guide-012",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "audio-mixer-guide",
+        "statement": "Most games do not allow per-user volume control so keep this in mind when playing in a matchmaking system.",
+        "source_quote": "Most games do not allow per-user volume control so keep this in mind when playing in a matchmaking system.",
+        "source_url": "https://obsproject.com/kb/audio-mixer-guide",
+        "source_title": "Audio Mixer Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "audio mixer guide",
+          "games",
+          "allow",
+          "per",
+          "user",
+          "volume"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-audio-mixer-guide-012",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "windows-installation",
+        "statement": "Most games do not allow per-user volume control so keep this in mind when playing in a matchmaking system.",
+        "source_quote": "Most games do not allow per-user volume control so keep this in mind when playing in a matchmaking system.",
+        "source_url": "https://obsproject.com/kb/audio-mixer-guide",
+        "source_title": "Audio Mixer Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "audio mixer guide",
+          "games",
+          "allow",
+          "per",
+          "user",
+          "volume"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-encoding-performance-troubleshooting-026",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "encoding-performance-troubleshooting",
+        "statement": "Filters can let you do all sorts of cool stuff: color adjustments, image masking, image sharpening, render delays, and more!",
+        "source_quote": "Filters can let you do all sorts of cool stuff: color adjustments, image masking, image sharpening, render delays, and more!",
+        "source_url": "https://obsproject.com/kb/encoding-performance-troubleshooting",
+        "source_title": "Encoding Performance Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "encoding performance troubleshooting",
+          "filters",
+          "can",
+          "let",
+          "sorts",
+          "cool"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-encoding-performance-troubleshooting-026",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "faq-stream-alerts",
+        "statement": "Filters can let you do all sorts of cool stuff: color adjustments, image masking, image sharpening, render delays, and more!",
+        "source_quote": "Filters can let you do all sorts of cool stuff: color adjustments, image masking, image sharpening, render delays, and more!",
+        "source_url": "https://obsproject.com/kb/encoding-performance-troubleshooting",
+        "source_title": "Encoding Performance Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "encoding performance troubleshooting",
+          "filters",
+          "can",
+          "let",
+          "sorts",
+          "cool"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-aspect-ratio-guide-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "aspect-ratio-guide",
+        "statement": "You can access these by right clicking the source -> scale filtering.",
+        "source_quote": "You can access these by right clicking the source -> scale filtering.",
+        "source_url": "https://obsproject.com/kb/aspect-ratio-guide",
+        "source_title": "Aspect Ratio Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "aspect ratio guide",
+          "can",
+          "access",
+          "right",
+          "clicking",
+          "the"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-aspect-ratio-guide-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "advanced-nvenc-options",
+        "statement": "You can access these by right clicking the source -> scale filtering.",
+        "source_quote": "You can access these by right clicking the source -> scale filtering.",
+        "source_url": "https://obsproject.com/kb/aspect-ratio-guide",
+        "source_title": "Aspect Ratio Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "aspect ratio guide",
+          "can",
+          "access",
+          "right",
+          "clicking",
+          "the"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-aspect-ratio-guide-006",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "aspect-ratio-guide",
+        "statement": "Retro and pixel art can use \"point\" or \"area\" to maintain the original sharp look.",
+        "source_quote": "Retro and pixel art can use \"point\" or \"area\" to maintain the original sharp look.",
+        "source_url": "https://obsproject.com/kb/aspect-ratio-guide",
+        "source_title": "Aspect Ratio Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "aspect ratio guide",
+          "retro",
+          "and",
+          "pixel",
+          "art",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-aspect-ratio-guide-006",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "limiter-filter",
+        "statement": "Retro and pixel art can use \"point\" or \"area\" to maintain the original sharp look.",
+        "source_quote": "Retro and pixel art can use \"point\" or \"area\" to maintain the original sharp look.",
+        "source_url": "https://obsproject.com/kb/aspect-ratio-guide",
+        "source_title": "Aspect Ratio Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "aspect ratio guide",
+          "retro",
+          "and",
+          "pixel",
+          "art",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-track-matte-stinger-transitions-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "track-matte-stinger-transitions",
+        "statement": "Track Mattes for a Stinger Transition can be provided in three ways:",
+        "source_quote": "Track Mattes for a Stinger Transition can be provided in three ways:",
+        "source_url": "https://obsproject.com/kb/track-matte-stinger-transitions",
+        "source_title": "Track Matte Stinger Transitions | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "track matte stinger transitions",
+          "track",
+          "mattes",
+          "for",
+          "stinger",
+          "transition"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-track-matte-stinger-transitions-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "keyboard-shortcuts",
+        "statement": "Track Mattes for a Stinger Transition can be provided in three ways:",
+        "source_quote": "Track Mattes for a Stinger Transition can be provided in three ways:",
+        "source_url": "https://obsproject.com/kb/track-matte-stinger-transitions",
+        "source_title": "Track Matte Stinger Transitions | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "track matte stinger transitions",
+          "track",
+          "mattes",
+          "for",
+          "stinger",
+          "transition"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-macos-desktop-audio-capture-guide-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "macos-desktop-audio-capture-guide",
+        "statement": "When using OBS Studio 30 on macOS 13 (Ventura) and higher, you can use the new macOS Audio Capture Source.",
+        "source_quote": "When using OBS Studio 30 on macOS 13 (Ventura) and higher, you can use the new macOS Audio Capture Source.",
+        "source_url": "https://obsproject.com/kb/macos-desktop-audio-capture-guide",
+        "source_title": "macOS Desktop Audio Capture Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "macos desktop audio capture guide",
+          "using",
+          "obs",
+          "studio",
+          "macos",
+          "ventura"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-macos-desktop-audio-capture-guide-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "video-feedback-effect-troubleshooting",
+        "statement": "When using OBS Studio 30 on macOS 13 (Ventura) and higher, you can use the new macOS Audio Capture Source.",
+        "source_quote": "When using OBS Studio 30 on macOS 13 (Ventura) and higher, you can use the new macOS Audio Capture Source.",
+        "source_url": "https://obsproject.com/kb/macos-desktop-audio-capture-guide",
+        "source_title": "macOS Desktop Audio Capture Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "macos desktop audio capture guide",
+          "using",
+          "obs",
+          "studio",
+          "macos",
+          "ventura"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-macos-desktop-audio-capture-guide-013",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "macos-desktop-audio-capture-guide",
+        "statement": "It must be set up manually does not support per-application audio capture.",
+        "source_quote": "It must be set up manually does not support per-application audio capture.",
+        "source_url": "https://obsproject.com/kb/macos-desktop-audio-capture-guide",
+        "source_title": "macOS Desktop Audio Capture Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "macos desktop audio capture guide",
+          "must",
+          "set",
+          "manually",
+          "does",
+          "support"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-macos-desktop-audio-capture-guide-013",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "video-call-streaming-tutorial",
+        "statement": "It must be set up manually does not support per-application audio capture.",
+        "source_quote": "It must be set up manually does not support per-application audio capture.",
+        "source_url": "https://obsproject.com/kb/macos-desktop-audio-capture-guide",
+        "source_title": "macOS Desktop Audio Capture Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "macos desktop audio capture guide",
+          "must",
+          "set",
+          "manually",
+          "does",
+          "support"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-game-capture-troubleshooting-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "game-capture-troubleshooting",
+        "statement": "Finally, configure the Scene Switcher to automatically swap between them.",
+        "source_quote": "Finally, configure the Scene Switcher to automatically swap between them.",
+        "source_url": "https://obsproject.com/kb/game-capture-troubleshooting",
+        "source_title": "Game Capture Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture troubleshooting",
+          "finally",
+          "configure",
+          "the",
+          "scene",
+          "switcher"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-game-capture-troubleshooting-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "application-audio-capture-guide",
+        "statement": "Finally, configure the Scene Switcher to automatically swap between them.",
+        "source_quote": "Finally, configure the Scene Switcher to automatically swap between them.",
+        "source_url": "https://obsproject.com/kb/game-capture-troubleshooting",
+        "source_title": "Game Capture Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture troubleshooting",
+          "finally",
+          "configure",
+          "the",
+          "scene",
+          "switcher"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-game-capture-troubleshooting-017",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "game-capture-troubleshooting",
+        "statement": "Right-click on the source, select the Transform menu, then click Reset Transform (Ctrl-R).",
+        "source_quote": "Right-click on the source, select the Transform menu, then click Reset Transform (Ctrl-R).",
+        "source_url": "https://obsproject.com/kb/game-capture-troubleshooting",
+        "source_title": "Game Capture Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture troubleshooting",
+          "right",
+          "click",
+          "the",
+          "source",
+          "select"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-game-capture-troubleshooting-017",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "faq-stream-alerts",
+        "statement": "Right-click on the source, select the Transform menu, then click Reset Transform (Ctrl-R).",
+        "source_quote": "Right-click on the source, select the Transform menu, then click Reset Transform (Ctrl-R).",
+        "source_url": "https://obsproject.com/kb/game-capture-troubleshooting",
+        "source_title": "Game Capture Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "game capture troubleshooting",
+          "right",
+          "click",
+          "the",
+          "source",
+          "select"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-noise-suppression-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "noise-suppression-filter",
+        "statement": "The Noise Suppression filter can be used to remove mild background noise or white noise that may be in any of your audio sources.",
+        "source_quote": "The Noise Suppression filter can be used to remove mild background noise or white noise that may be in any of your audio sources.",
+        "source_url": "https://obsproject.com/kb/noise-suppression-filter",
+        "source_title": "Noise Suppression Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "noise suppression filter",
+          "the",
+          "noise",
+          "suppression",
+          "filter",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-noise-suppression-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "display-capture-sources",
+        "statement": "The Noise Suppression filter can be used to remove mild background noise or white noise that may be in any of your audio sources.",
+        "source_quote": "The Noise Suppression filter can be used to remove mild background noise or white noise that may be in any of your audio sources.",
+        "source_url": "https://obsproject.com/kb/noise-suppression-filter",
+        "source_title": "Noise Suppression Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "noise suppression filter",
+          "the",
+          "noise",
+          "suppression",
+          "filter",
+          "can"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-plugins-guide-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "plugins-guide",
+        "statement": "If you wish to use a custom plugin directory, you can set the environment variables OBS_PLUGINS_PATH and OBS_PLUGINS_DATA_PATH to a directory of your choice.",
+        "source_quote": "If you wish to use a custom plugin directory, you can set the environment variables OBS_PLUGINS_PATH and OBS_PLUGINS_DATA_PATH to a directory of your choice.",
+        "source_url": "https://obsproject.com/kb/plugins-guide",
+        "source_title": "Plugins Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "plugins guide",
+          "wish",
+          "use",
+          "custom",
+          "plugin",
+          "directory"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-plugins-guide-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "faq-webcam",
+        "statement": "If you wish to use a custom plugin directory, you can set the environment variables OBS_PLUGINS_PATH and OBS_PLUGINS_DATA_PATH to a directory of your choice.",
+        "source_quote": "If you wish to use a custom plugin directory, you can set the environment variables OBS_PLUGINS_PATH and OBS_PLUGINS_DATA_PATH to a directory of your choice.",
+        "source_url": "https://obsproject.com/kb/plugins-guide",
+        "source_title": "Plugins Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "plugins guide",
+          "wish",
+          "use",
+          "custom",
+          "plugin",
+          "directory"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-video-feedback-effect-troubleshooting-009",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "video-feedback-effect-troubleshooting",
+        "statement": "Capture a single window on Windows, Linux, and macOS 12.6 and prior.",
+        "source_quote": "Capture a single window on Windows, Linux, and macOS 12.6 and prior.",
+        "source_url": "https://obsproject.com/kb/video-feedback-effect-troubleshooting",
+        "source_title": "Video Feedback Effect Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "video feedback effect troubleshooting",
+          "capture",
+          "single",
+          "window",
+          "windows",
+          "linux"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-video-feedback-effect-troubleshooting-009",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "gain-filter",
+        "statement": "Capture a single window on Windows, Linux, and macOS 12.6 and prior.",
+        "source_quote": "Capture a single window on Windows, Linux, and macOS 12.6 and prior.",
+        "source_url": "https://obsproject.com/kb/video-feedback-effect-troubleshooting",
+        "source_title": "Video Feedback Effect Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "video feedback effect troubleshooting",
+          "capture",
+          "single",
+          "window",
+          "windows",
+          "linux"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-surround-sound-guide-017",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "surround-sound-guide",
+        "statement": "In order for this feature to work, obviously you will need an ambisonics capture device.",
+        "source_quote": "In order for this feature to work, obviously you will need an ambisonics capture device.",
+        "source_url": "https://obsproject.com/kb/surround-sound-guide",
+        "source_title": "Surround Sound Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "surround sound guide",
+          "order",
+          "for",
+          "feature",
+          "work",
+          "obviously"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-surround-sound-guide-017",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "obs-studio-overview",
+        "statement": "In order for this feature to work, obviously you will need an ambisonics capture device.",
+        "source_quote": "In order for this feature to work, obviously you will need an ambisonics capture device.",
+        "source_url": "https://obsproject.com/kb/surround-sound-guide",
+        "source_title": "Surround Sound Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "surround sound guide",
+          "order",
+          "for",
+          "feature",
+          "work",
+          "obviously"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-surround-sound-guide-018",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "surround-sound-guide",
+        "statement": "If you have an aac or uncompressed audio recording with 4 ambisonics, you can also play it by adding a Media Source.",
+        "source_quote": "If you have an aac or uncompressed audio recording with 4 ambisonics, you can also play it by adding a Media Source.",
+        "source_url": "https://obsproject.com/kb/surround-sound-guide",
+        "source_title": "Surround Sound Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "surround sound guide",
+          "aac",
+          "uncompressed",
+          "audio",
+          "recording",
+          "ambisonics"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-surround-sound-guide-018",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "noise-suppression-filter",
+        "statement": "If you have an aac or uncompressed audio recording with 4 ambisonics, you can also play it by adding a Media Source.",
+        "source_quote": "If you have an aac or uncompressed audio recording with 4 ambisonics, you can also play it by adding a Media Source.",
+        "source_url": "https://obsproject.com/kb/surround-sound-guide",
+        "source_title": "Surround Sound Guide | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "surround sound guide",
+          "aac",
+          "uncompressed",
+          "audio",
+          "recording",
+          "ambisonics"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-stream-connection-troubleshooting-012",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "stream-connection-troubleshooting",
+        "statement": "Go to Settings → Advanced → Network and set IP Family to IPv4 Only",
+        "source_quote": "Go to Settings → Advanced → Network and set IP Family to IPv4 Only",
+        "source_url": "https://obsproject.com/kb/stream-connection-troubleshooting",
+        "source_title": "Stream Connection Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "stream connection troubleshooting",
+          "settings",
+          "advanced",
+          "network",
+          "and",
+          "set"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-stream-connection-troubleshooting-012",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "launch-parameters",
+        "statement": "Go to Settings → Advanced → Network and set IP Family to IPv4 Only",
+        "source_quote": "Go to Settings → Advanced → Network and set IP Family to IPv4 Only",
+        "source_url": "https://obsproject.com/kb/stream-connection-troubleshooting",
+        "source_title": "Stream Connection Troubleshooting | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "stream connection troubleshooting",
+          "settings",
+          "advanced",
+          "network",
+          "and",
+          "set"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-dve-animating-sources-tutorial-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "dve-animating-sources-tutorial",
+        "statement": "In the scene that will be presented to the viewer, add a Scene source, selecting the crop scene.",
+        "source_quote": "In the scene that will be presented to the viewer, add a Scene source, selecting the crop scene.",
+        "source_url": "https://obsproject.com/kb/dve-animating-sources-tutorial",
+        "source_title": "DVE/Animating Sources Tutorial | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "dve animating sources tutorial",
+          "the",
+          "scene",
+          "presented",
+          "viewer",
+          "add"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-dve-animating-sources-tutorial-004",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "profiles",
+        "statement": "In the scene that will be presented to the viewer, add a Scene source, selecting the crop scene.",
+        "source_quote": "In the scene that will be presented to the viewer, add a Scene source, selecting the crop scene.",
+        "source_url": "https://obsproject.com/kb/dve-animating-sources-tutorial",
+        "source_title": "DVE/Animating Sources Tutorial | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "dve animating sources tutorial",
+          "the",
+          "scene",
+          "presented",
+          "viewer",
+          "add"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-dve-animating-sources-tutorial-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "dve-animating-sources-tutorial",
+        "statement": "Right-click on the position scene source, then set up the Show Transition and Hide Transition.",
+        "source_quote": "Right-click on the position scene source, then set up the Show Transition and Hide Transition.",
+        "source_url": "https://obsproject.com/kb/dve-animating-sources-tutorial",
+        "source_title": "DVE/Animating Sources Tutorial | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "dve animating sources tutorial",
+          "right",
+          "click",
+          "the",
+          "position",
+          "scene"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-dve-animating-sources-tutorial-005",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "quick-start-guide",
+        "statement": "Right-click on the position scene source, then set up the Show Transition and Hide Transition.",
+        "source_quote": "Right-click on the position scene source, then set up the Show Transition and Hide Transition.",
+        "source_url": "https://obsproject.com/kb/dve-animating-sources-tutorial",
+        "source_title": "DVE/Animating Sources Tutorial | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "dve animating sources tutorial",
+          "right",
+          "click",
+          "the",
+          "position",
+          "scene"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-scroll-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "scroll-filter",
+        "statement": "If Limit Width or Limit Height is set, specifies the dimension(s) of the Source",
+        "source_quote": "If Limit Width or Limit Height is set, specifies the dimension(s) of the Source",
+        "source_url": "https://obsproject.com/kb/scroll-filter",
+        "source_title": "Scroll Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "scroll filter",
+          "limit",
+          "width",
+          "height",
+          "set",
+          "specifies"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-scroll-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "game-capture-source",
+        "statement": "If Limit Width or Limit Height is set, specifies the dimension(s) of the Source",
+        "source_quote": "If Limit Width or Limit Height is set, specifies the dimension(s) of the Source",
+        "source_url": "https://obsproject.com/kb/scroll-filter",
+        "source_title": "Scroll Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "scroll filter",
+          "limit",
+          "width",
+          "height",
+          "set",
+          "specifies"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    },
+    {
+      "old": {
+        "id": "obs-studio-vst-2-x-plugin-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "vst-2-x-plugin-filter",
+        "statement": "Lastly, always keep an eye on CPU usage, some VST plugins can be very CPU hungry!",
+        "source_quote": "Lastly, always keep an eye on CPU usage, some VST plugins can be very CPU hungry!",
+        "source_url": "https://obsproject.com/kb/vst-2-x-plugin-filter",
+        "source_title": "VST 2.x Plugin Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "vst 2 x plugin filter",
+          "lastly",
+          "always",
+          "keep",
+          "eye",
+          "cpu"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      },
+      "new": {
+        "id": "obs-studio-vst-2-x-plugin-filter-001",
+        "product_id": "obs-studio",
+        "product_name": "OBS Studio",
+        "feature": "faq-stream-alerts",
+        "statement": "Lastly, always keep an eye on CPU usage, some VST plugins can be very CPU hungry!",
+        "source_quote": "Lastly, always keep an eye on CPU usage, some VST plugins can be very CPU hungry!",
+        "source_url": "https://obsproject.com/kb/vst-2-x-plugin-filter",
+        "source_title": "VST 2.x Plugin Filter | OBS",
+        "checked_at": "2026-10-04",
+        "keywords": [
+          "vst 2 x plugin filter",
+          "lastly",
+          "always",
+          "keep",
+          "eye",
+          "cpu"
+        ],
+        "availability_note": "Automatically extracted from the linked public page. Re-check the live page before publishing.",
+        "localized_statement": {}
+      }
+    }
+  ],
+  "added_count": 0,
+  "removed_count": 0,
+  "changed_count": 33
+}

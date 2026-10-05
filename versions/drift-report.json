@@ -1,0 +1,819 @@
+{
+  "generated_at": "2026-10-04T13:24:31Z",
+  "old": "v1",
+  "new": "v2",
+  "threshold": 0.2,
+  "rows": [
+    {
+      "feature": "advanced-nvenc-options",
+      "before": 15,
+      "after": 15,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "advanced-recording-guide-and-multi-track-audio",
+      "before": 11,
+      "after": 11,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "advanced-recording-settings-guide",
+      "before": 1,
+      "after": 1,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "application-audio-capture-guide",
+      "before": 19,
+      "after": 21,
+      "delta": 2,
+      "delta_pct": 0.1053,
+      "alarm": false
+    },
+    {
+      "feature": "aspect-ratio-guide",
+      "before": 6,
+      "after": 4,
+      "delta": -2,
+      "delta_pct": -0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "audio-mixer-guide",
+      "before": 12,
+      "after": 11,
+      "delta": -1,
+      "delta_pct": -0.0833,
+      "alarm": false
+    },
+    {
+      "feature": "audio-mixer-technical-details",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "audio-sources",
+      "before": 4,
+      "after": 4,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "audio-video-formats-guide",
+      "before": 11,
+      "after": 11,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "browser-source",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "capture-hook-certificate-update",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "color-source",
+      "before": 4,
+      "after": 4,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "compressor-filter",
+      "before": 6,
+      "after": 6,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "developer-guide",
+      "before": 6,
+      "after": 7,
+      "delta": 1,
+      "delta_pct": 0.1667,
+      "alarm": false
+    },
+    {
+      "feature": "display-capture-sources",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "dve-animating-sources-tutorial",
+      "before": 10,
+      "after": 8,
+      "delta": -2,
+      "delta_pct": -0.2,
+      "alarm": true
+    },
+    {
+      "feature": "encoding-performance-troubleshooting",
+      "before": 32,
+      "after": 32,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "expander-filter",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "faq-game-capture",
+      "before": 6,
+      "after": 6,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "faq-stream-alerts",
+      "before": 2,
+      "after": 5,
+      "delta": 3,
+      "delta_pct": 1.5,
+      "alarm": true
+    },
+    {
+      "feature": "faq-stream-chat",
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "faq-stream-donations",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "faq-webcam",
+      "before": 2,
+      "after": 2,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "gain-filter",
+      "before": 1,
+      "after": 2,
+      "delta": 1,
+      "delta_pct": 1.0,
+      "alarm": true
+    },
+    {
+      "feature": "game-capture-setup-guide",
+      "before": 12,
+      "after": 12,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "game-capture-source",
+      "before": 10,
+      "after": 10,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "game-capture-troubleshooting",
+      "before": 17,
+      "after": 15,
+      "delta": -2,
+      "delta_pct": -0.1176,
+      "alarm": false
+    },
+    {
+      "feature": "gpu-selection-guide",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "hardware-encoding",
+      "before": 6,
+      "after": 5,
+      "delta": -1,
+      "delta_pct": -0.1667,
+      "alarm": false
+    },
+    {
+      "feature": "hdr-configuration",
+      "before": 2,
+      "after": 2,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "hybrid-mp4",
+      "before": 9,
+      "after": 9,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "image-mask-blend-filter",
+      "before": 2,
+      "after": 2,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "image-sources",
+      "before": 6,
+      "after": 6,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "keyboard-shortcuts",
+      "before": 1,
+      "after": 2,
+      "delta": 1,
+      "delta_pct": 1.0,
+      "alarm": true
+    },
+    {
+      "feature": "known-conflicts",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "launch-parameters",
+      "before": 7,
+      "after": 8,
+      "delta": 1,
+      "delta_pct": 0.1429,
+      "alarm": false
+    },
+    {
+      "feature": "league-of-legends-capture-guide",
+      "before": 8,
+      "after": 8,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "limiter-filter",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "macos-desktop-audio-capture-guide",
+      "before": 17,
+      "after": 15,
+      "delta": -2,
+      "delta_pct": -0.1176,
+      "alarm": false
+    },
+    {
+      "feature": "macos-permissions-guide",
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "macos-screen-capture-source",
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "media-sources",
+      "before": 4,
+      "after": 4,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "minecraft-java-edition-troubleshooting",
+      "before": 8,
+      "after": 8,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "multiple-audio-track-recording-guide",
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "noise-gate-filter",
+      "before": 2,
+      "after": 2,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "noise-suppression-filter",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "obs-studio-overview",
+      "before": 44,
+      "after": 40,
+      "delta": -4,
+      "delta_pct": -0.0909,
+      "alarm": false
+    },
+    {
+      "feature": "plugins-guide",
+      "before": 4,
+      "after": 3,
+      "delta": -1,
+      "delta_pct": -0.25,
+      "alarm": true
+    },
+    {
+      "feature": "power-of-projectors",
+      "before": 21,
+      "after": 20,
+      "delta": -1,
+      "delta_pct": -0.0476,
+      "alarm": false
+    },
+    {
+      "feature": "profiles",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "quick-start-guide",
+      "before": 14,
+      "after": 15,
+      "delta": 1,
+      "delta_pct": 0.0714,
+      "alarm": false
+    },
+    {
+      "feature": "recording-encoder-presets-guide",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "remote-control-guide",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "rist-protocol-streaming-guide",
+      "before": 2,
+      "after": 2,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "scene-collections",
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "scripting-guide",
+      "before": 15,
+      "after": 15,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "scroll-filter",
+      "before": 1,
+      "after": 0,
+      "delta": -1,
+      "delta_pct": -1.0,
+      "alarm": true
+    },
+    {
+      "feature": "smartphone-camera-guide",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "sources-guide",
+      "before": 22,
+      "after": 22,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "srt-protocol-streaming-guide",
+      "before": 9,
+      "after": 10,
+      "delta": 1,
+      "delta_pct": 0.1111,
+      "alarm": false
+    },
+    {
+      "feature": "standard-recording-output-guide",
+      "before": 14,
+      "after": 13,
+      "delta": -1,
+      "delta_pct": -0.0714,
+      "alarm": false
+    },
+    {
+      "feature": "steam-faq",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "stream-connection-troubleshooting",
+      "before": 14,
+      "after": 14,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "stream-tutorial-1-game",
+      "before": 4,
+      "after": 4,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "stream-tutorial-2-alerts",
+      "before": 13,
+      "after": 13,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "stream-tutorial-3-brb",
+      "before": 15,
+      "after": 14,
+      "delta": -1,
+      "delta_pct": -0.0667,
+      "alarm": false
+    },
+    {
+      "feature": "surround-sound-guide",
+      "before": 30,
+      "after": 28,
+      "delta": -2,
+      "delta_pct": -0.0667,
+      "alarm": false
+    },
+    {
+      "feature": "system-requirements",
+      "before": 1,
+      "after": 1,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "text-sources",
+      "before": 2,
+      "after": 3,
+      "delta": 1,
+      "delta_pct": 0.5,
+      "alarm": true
+    },
+    {
+      "feature": "track-matte-stinger-transitions",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "transcodes-transcoding",
+      "before": 4,
+      "after": 4,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "twitch-vod-track-guide",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "video-call-streaming-tutorial",
+      "before": 12,
+      "after": 13,
+      "delta": 1,
+      "delta_pct": 0.0833,
+      "alarm": false
+    },
+    {
+      "feature": "video-capture-devices-with-hdr-support",
+      "before": 4,
+      "after": 5,
+      "delta": 1,
+      "delta_pct": 0.25,
+      "alarm": true
+    },
+    {
+      "feature": "video-capture-sources",
+      "before": 19,
+      "after": 18,
+      "delta": -1,
+      "delta_pct": -0.0526,
+      "alarm": false
+    },
+    {
+      "feature": "video-feedback-effect-troubleshooting",
+      "before": 13,
+      "after": 13,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "virtual-camera-guide",
+      "before": 6,
+      "after": 6,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "virtual-camera-troubleshooting",
+      "before": 7,
+      "after": 7,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "vst-2-x-plugin-filter",
+      "before": 3,
+      "after": 2,
+      "delta": -1,
+      "delta_pct": -0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "whip-streaming-guide",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    },
+    {
+      "feature": "window-capture-sources",
+      "before": 7,
+      "after": 8,
+      "delta": 1,
+      "delta_pct": 0.1429,
+      "alarm": false
+    },
+    {
+      "feature": "windows-gaming-features-troubleshooting",
+      "before": 15,
+      "after": 16,
+      "delta": 1,
+      "delta_pct": 0.0667,
+      "alarm": false
+    },
+    {
+      "feature": "windows-installation",
+      "before": 2,
+      "after": 3,
+      "delta": 1,
+      "delta_pct": 0.5,
+      "alarm": true
+    },
+    {
+      "feature": "windows-on-arm",
+      "before": 5,
+      "after": 5,
+      "delta": 0,
+      "delta_pct": 0.0,
+      "alarm": false
+    }
+  ],
+  "alarmed_count": 17,
+  "alarmed": [
+    {
+      "feature": "aspect-ratio-guide",
+      "before": 6,
+      "after": 4,
+      "delta": -2,
+      "delta_pct": -0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "audio-mixer-technical-details",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "display-capture-sources",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "dve-animating-sources-tutorial",
+      "before": 10,
+      "after": 8,
+      "delta": -2,
+      "delta_pct": -0.2,
+      "alarm": true
+    },
+    {
+      "feature": "faq-stream-alerts",
+      "before": 2,
+      "after": 5,
+      "delta": 3,
+      "delta_pct": 1.5,
+      "alarm": true
+    },
+    {
+      "feature": "gain-filter",
+      "before": 1,
+      "after": 2,
+      "delta": 1,
+      "delta_pct": 1.0,
+      "alarm": true
+    },
+    {
+      "feature": "keyboard-shortcuts",
+      "before": 1,
+      "after": 2,
+      "delta": 1,
+      "delta_pct": 1.0,
+      "alarm": true
+    },
+    {
+      "feature": "limiter-filter",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "plugins-guide",
+      "before": 4,
+      "after": 3,
+      "delta": -1,
+      "delta_pct": -0.25,
+      "alarm": true
+    },
+    {
+      "feature": "profiles",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "recording-encoder-presets-guide",
+      "before": 3,
+      "after": 4,
+      "delta": 1,
+      "delta_pct": 0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "remote-control-guide",
+      "before": 5,
+      "after": 6,
+      "delta": 1,
+      "delta_pct": 0.2,
+      "alarm": true
+    },
+    {
+      "feature": "scroll-filter",
+      "before": 1,
+      "after": 0,
+      "delta": -1,
+      "delta_pct": -1.0,
+      "alarm": true
+    },
+    {
+      "feature": "text-sources",
+      "before": 2,
+      "after": 3,
+      "delta": 1,
+      "delta_pct": 0.5,
+      "alarm": true
+    },
+    {
+      "feature": "video-capture-devices-with-hdr-support",
+      "before": 4,
+      "after": 5,
+      "delta": 1,
+      "delta_pct": 0.25,
+      "alarm": true
+    },
+    {
+      "feature": "vst-2-x-plugin-filter",
+      "before": 3,
+      "after": 2,
+      "delta": -1,
+      "delta_pct": -0.3333,
+      "alarm": true
+    },
+    {
+      "feature": "windows-installation",
+      "before": 2,
+      "after": 3,
+      "delta": 1,
+      "delta_pct": 0.5,
+      "alarm": true
+    }
+  ]
+}
