@@ -30,7 +30,7 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-cjk
       - name: Install package
-        run: python -m pip install -e ".[media]"
+        run: python -m pip install -e ".[media,service,observability]"
       - name: Unit tests and actual FFmpeg render and decode
         shell: python
         run: |
@@ -84,7 +84,8 @@ jobs:
           import tomllib
           version = tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))['project']['version']
           wheel = next(Path('dist').resolve().glob(f'product_claim_review_agent-{version}-*.whl'))
-          requirement = str(wheel) + ('[media]' if os.name == 'nt' else '')
+          extras = ['service', 'observability'] + (['media'] if os.name == 'nt' else [])
+          requirement = f"{wheel}[{','.join(extras)}]"
           subprocess.run([str(executable), '-m', 'pip', 'install', requirement], check=True, cwd=work)
 
           sample_check = '''
